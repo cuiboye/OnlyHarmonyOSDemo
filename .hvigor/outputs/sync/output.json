@@ -1,0 +1,366 @@
+{
+  "ohos-module-entry": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/src/main",
+        "RESOURCES_PATH": [
+          "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/src/main/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/cache/default/default@CompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/cache/default/default@CompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/hap_metadata/default/output_metadata.json",
+          "SOURCE_MAP_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry/build/default/intermediates/source_map/default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "sourceOption": {
+          "workers": [
+            "./src/main/ets/workers/worker.ts"
+          ]
+        }
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {
+        "sourceOption": {
+          "workers": [
+            "./src/main/ets/workers/worker.ts"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "name": "default",
+          "runtimeOS": "HarmonyOS"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-sharelibrary": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/src/main",
+        "RESOURCES_PATH": [
+          "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/src/main/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/cache/default/default@CompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/cache/default/default@CompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/hsp_metadata/default/output_metadata.json",
+          "SOURCE_MAP_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary/build/default/intermediates/source_map/default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "targets": [
+        {
+          "name": "default",
+          "runtimeOS": "HarmonyOS",
+          "config": {
+            "deviceType": [
+              "phone"
+            ]
+          }
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-harlibrary": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/src/main",
+        "RESOURCES_PATH": [
+          "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/src/main/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/cache/default/default@HarCompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/cache/default/default@HarCompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/hap_metadata/default/output_metadata.json",
+          "SOURCE_MAP_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary/build/default/intermediates/source_map/default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "targets": [
+        {
+          "name": "default",
+          "runtimeOS": "HarmonyOS"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-entry2": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/src/main",
+        "RESOURCES_PATH": [
+          "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/src/main/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/cache/default/default@CompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/cache/default/default@CompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/hap_metadata/default/output_metadata.json",
+          "SOURCE_MAP_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/source_map/default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/src/ohosTest",
+        "RESOURCES_PATH": [
+          "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/src/ohosTest/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/outputs/ohosTest",
+          "INTERMEDIA_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader_out/ohosTest",
+          "JS_LITE_ASSETS_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader_out_lite/ohosTest",
+          "RES_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/res/ohosTest",
+          "RES_PROFILE_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/res/ohosTest/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/cache/ohosTest/ohosTest@OhosTestCompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/cache/ohosTest/ohosTest@OhosTestCompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/loader/ohosTest/loader.json",
+          "MANIFEST_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/manifest/ohosTest",
+          "OUTPUT_METADATA_JSON": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/hap_metadata/ohosTest/output_metadata.json",
+          "SOURCE_MAP_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2/build/default/intermediates/source_map/ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "entryModules": [
+        "entry"
+      ],
+      "targets": [
+        {
+          "name": "default",
+          "runtimeOS": "HarmonyOS"
+        },
+        {
+          "name": "ohosTest",
+          "runtimeOS": "HarmonyOS"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-project": {
+    "SELECT_PRODUCT_NAME": "default",
+    "MODULE_BUILD_DIR": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/build",
+    "BUNDLE_NAME": "com.example.myapplication",
+    "BUILD_PATH": {
+      "OUTPUT_PATH": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/build/outputs/default"
+    },
+    "MODULES": [
+      {
+        "name": "entry",
+        "srcPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ],
+        "belongProjectPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo"
+      },
+      {
+        "name": "sharelibrary",
+        "srcPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/sharelibrary",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ],
+        "belongProjectPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo"
+      },
+      {
+        "name": "harlibrary",
+        "srcPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/harlibrary",
+        "belongProjectPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo"
+      },
+      {
+        "name": "entry2",
+        "srcPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo/entry2",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ],
+        "belongProjectPath": "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo"
+      }
+    ],
+    "PROFILE_OPT": {
+      "app": {
+        "signingConfigs": [
+          {
+            "name": "default",
+            "type": "HarmonyOS",
+            "material": {
+              "certpath": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.cer",
+              "keyAlias": "debugKey",
+              "keyPassword": "0000001A691A924A8954F39DFD48643E85B034401C3CE8137567C07D54741805C1ECE91A93C2E4364A82",
+              "profile": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.p7b",
+              "signAlg": "SHA256withECDSA",
+              "storeFile": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.p12",
+              "storePassword": "0000001A0E62FF0855E1AF13AA61A68A3323394245BF2A9AE094099537E06C07033A35A60437F2C558CD"
+            }
+          }
+        ],
+        "products": [
+          {
+            "name": "default",
+            "bundleName": "com.example.myapplication",
+            "signingConfig": "default",
+            "compatibleSdkVersion": "5.0.0(12)",
+            "runtimeOS": "HarmonyOS"
+          }
+        ]
+      },
+      "modules": [
+        {
+          "name": "entry",
+          "srcPath": "./entry",
+          "targets": [
+            {
+              "name": "default",
+              "applyToProducts": [
+                "default"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "sharelibrary",
+          "srcPath": "./sharelibrary",
+          "targets": [
+            {
+              "name": "default",
+              "applyToProducts": [
+                "default"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "harlibrary",
+          "srcPath": "./harlibrary"
+        },
+        {
+          "name": "entry2",
+          "srcPath": "./entry2",
+          "targets": [
+            {
+              "name": "default",
+              "applyToProducts": [
+                "default"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "CONFIG_PROPERTIES": {
+      "enableSignTask": true,
+      "skipNativeIncremental": false,
+      "hvigor.keepDependency": true
+    },
+    "OVERALL_PROJECT_PATHS": [
+      "/Users/cuiboye/work/HarmonyProject/harmonydemo/OnlyHongmengDemo"
+    ],
+    "BUILD_CACHE_DIR": ""
+  },
+  "version": 1
+}

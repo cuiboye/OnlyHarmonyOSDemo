@@ -1,0 +1,26 @@
+{
+  "apiType": 'stageMode',
+  "buildOption": {
+  },
+  "targets": [
+    {
+      "name": "default",
+      "runtimeOS": "HarmonyOS",
+      "config": {
+        "deviceType": [
+          'phone'
+        ]
+      }
+    },
+    //    {
+    //      "name": "free",
+    //      "runtimeOS": "HarmonyOS",
+    //      "config": {"deviceType": ['phone']}
+    //    },
+    //    {
+    //      "name": "pay",
+    //      "runtimeOS": "HarmonyOS",
+    //      "config": {"deviceType": ['phone']}
+    //    }
+  ]
+}

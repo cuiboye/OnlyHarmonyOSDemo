@@ -1,0 +1,133 @@
+{
+  "app": {
+    "signingConfigs": [
+      //      {
+      //        "name": "default",
+      //        "type": "HarmonyOS",
+      //        "material": {
+      //          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+      //          "storePassword": "00000019DCBAD0C1C4402FF469D725E760FFE7E566D7B7C72B6F9D3C5E0E0A8A401B68C2CE398FECBD",
+      //          "keyAlias": "debugKey",
+      //          "keyPassword": "00000019AA3773211FE8A3B728A9C536813863320F09371F93265232CA7F976581256A1E1EF8CEDE13",
+      //          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+      //          "signAlg": "SHA256withECDSA",
+      //          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+      //        }
+      //      }
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A691A924A8954F39DFD48643E85B034401C3CE8137567C07D54741805C1ECE91A93C2E4364A82",
+          "profile": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/cuiboye/.ohos/config/default_HongmengDemo_8KVnPYl4CosRFPjIFKDbnVLkHyx4FWtZnfoH43gCioM=.p12",
+          "storePassword": "0000001A0E62FF0855E1AF13AA61A68A3323394245BF2A9AE094099537E06C07033A35A60437F2C558CD"
+        }
+      }
+    ],
+    //参考：https://zhuanlan.zhihu.com/p/637132642
+    "products": [
+      {
+        "name": "default",
+        "bundleName": 'com.example.myapplication',
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS"
+      },
+      //      {
+      //        "name": "productA",
+      //        "compatibleSdkVersion": "5.0.0(12)",
+      //        "bundleName": 'com.example.myapplication.debug',
+      //        "signingConfig": "productASigning"
+      //      },
+      //      {
+      //        "name": "productB",
+      //        "compatibleSdkVersion": "5.0.0(12)",
+      //        "bundleName": 'com.example.myapplication3',
+      //        "signingConfig": "productBSigning"
+      //      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            //            "productA",
+            //            "productB"
+          ]
+        },
+        //确认都配置没有问题后，安装报MSG_ERR_INSTALL_FAILED_INCONSISTENT_SIGNATURE的错误，可以把签名删掉再重新签名试试，或者改下签名然后在项目配置中删除签名再重新添加签名试试
+        //        {
+        //          "name": "free",
+        //          "applyToProducts": [
+        //            "default",
+        //            "productA",
+        //            "productB"
+        //          ]
+        //        },
+        //        {
+        //          "name": "pay",
+        //          "applyToProducts": [
+        //            "default",
+        //            "productA",
+        //            "productB"
+        //          ]
+        //        }
+      ]
+    },
+    {
+      "name": "sharelibrary",
+      "srcPath": "./sharelibrary",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            //            "productA",
+            //            "productB",
+          ]
+        },
+        //        {
+        //          "name": "free",
+        //          "applyToProducts": [
+        //            "default",
+        //            "productA",
+        //            "productB"
+        //          ]
+        //        },
+        //        {
+        //          "name": "pay",
+        //          "applyToProducts": [
+        //            "default",
+        //            "productA",
+        //            "productB"
+        //          ]
+        //        }
+      ]
+    },
+    {
+      "name": "harlibrary",
+      "srcPath": "./harlibrary"
+    },
+    {
+      "name": "entry2",
+      "srcPath": "./entry2",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

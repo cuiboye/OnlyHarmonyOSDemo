@@ -1,0 +1,134 @@
+<html lang="en"> 
+     <head> 
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no"> 
+      <style>
+          body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+          }
+          video {
+            max-width: 100%;
+          }
+          .video-container {
+            position: relative;
+          }
+          .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+          }
+          .product-sales-box-content {
+            font-size: 12px;
+            color: #bababa;
+            line-height: 24px;
+            border-bottom: 1px solid #ebebeb;
+            padding: 10px 13px;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+    
+          .product-sales-box-content span {
+            color: #343434;
+          }
+          p img {
+            display: block;
+          }    </style> 
+     </head> 
+     <body> 
+      <div> 
+       <div> 
+        <div class="product-sales-box-content">
+          采购小组： <span>一组</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          产品ID： <span>CL20220127164427313</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          境内单价(元/瓶)： <span>55.90</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          现货库存(箱)： <span>354</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          广州仓(箱)： <span>354</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          是否持续供货： <span>是</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          是否OEM： <span>是</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          是否供应商独家： <span>是</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          供应商： <span>ANUN</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          建议零售价： <span>￥1188.00</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          产品等级： <span>G</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          提成系数： <span>2.00</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          条形码： <span>7804650741206</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          售卖方式： <span>可零售可包销</span> 
+        </div> 
+        <div class="product-sales-box-content">
+          采购合同： <span>WJGZSWCG220421ANUN02</span> 
+         <br>收货仓库： <span>广州仓 </span> 
+         <br>入库数量： <span>690箱</span> 
+         <br>灌装日期： <span>2021-11-24<br></span> 
+        </div> 
+       </div> 
+      </div> 
+      <p>    </p>
+      <div class="video-container"> 
+       <video class="edui-upload-video  vjs-default-skinvideo-js" controls="" preload="none" width="420" height="280" src="https://image.59cdn.com/static/upload/video/20211208/1638936067762081309.mp4" data-setup="{}" style="width:100% !important; height:auto !important">
+        <source src="http://upload.wajiu.com/static/upload/video/20211208/1638936067762081309.mp4" type="video/mp4">
+       </video>
+
+      </div>  
+      <p></p> 
+      <p><br></p> 
+      <p><img title="1535535727592025236.jpg" alt="艾斯经典珍藏干红.jpg" src="http://image.59cdn.com/static/upload/image/ueditor/20180829/1535535727592025236.jpg?imageslim" style="width:100%"></p> 
+      <p style="line-height:0;"><img src="https://image.59cdn.com/images/common/product-service1-v1.jpg" style="width:100%"><img src="https://image.59cdn.com/images/common/product-service2-v1.jpg" style="width:100%"><img src="https://image.59cdn.com/images/common/product-service3-v1.jpg" style="width:100%"><img src="http://image.59cdn.com/static/upload/image/app/20231215/o_1702618848680.jpg" style="width:100%"></p> 
+      <script>
+    
+          const videoOverlay = document.querySelectorAll("#videoOverlay");
+          const userAgent = window.navigator.userAgent.toLowerCase();
+2024-05-03 11:42:54.886 17544-17544/? E/=====================>:       const isIOS = /iphone|ipad|ipod/.test(userAgent);
+          const isMacOS = /macintosh|mac os x/.test(userAgent);
+    
+          if (isIOS || isMacOS) {
+            // 遍历
+            videoOverlay.forEach((item) => {
+              item.addEventListener("click", () => {
+                // video
+                var preEle = item.previousElementSibling;
+                var srcUrl = preEle.getAttribute("src");
+                console.log(srcUrl);
+                window.webkit.messageHandlers.downloadVideo.postMessage({
+                  src: srcUrl,
+                });
+              });
+            });
+          } else {
+            videoOverlay.forEach((item) => {
+              item.parentNode.removeChild(item);
+            });
+          }
+        </script>  
+     </body>
+    </html>

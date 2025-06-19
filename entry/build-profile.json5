@@ -1,0 +1,26 @@
+{
+  "apiType": 'stageMode',
+  "buildOption": {
+    "sourceOption": {
+      "workers": [
+        "./src/main/ets/workers/worker.ts"
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "default",
+      "runtimeOS": "HarmonyOS"
+    },
+    //    {
+    //      "name": "free",
+    //      "runtimeOS": "HarmonyOS",
+    //      "config": {"deviceType": ['phone']}
+    //    },
+    //    {
+    //      "name": "pay",
+    //      "runtimeOS": "HarmonyOS",
+    //      "config": {"deviceType": ['phone']}
+    //    }
+  ]
+}

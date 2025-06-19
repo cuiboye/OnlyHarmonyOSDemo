@@ -1,0 +1,90 @@
+{
+  "lockVersion": "1.0",
+  "settings": {
+    "resolveConflict": true,
+    "resolveConflictStrict": false,
+    "installAll": true
+  },
+  "overrides": {},
+  "overrideDependencyMap": {},
+  "modules": {
+    ".": {
+      "name": "",
+      "dependencies": {
+        "@ohos/axios": {
+          "specifier": "^2.2.4",
+          "version": "2.2.4"
+        }
+      },
+      "devDependencies": {
+        "@ohos/hypium": {
+          "specifier": "1.0.6",
+          "version": "1.0.6"
+        }
+      },
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "entry": {
+      "name": "entry",
+      "dependencies": {
+        "sharelibrary": {
+          "specifier": "file:sharelibrary",
+          "version": "file:sharelibrary"
+        }
+      },
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "entry2": {
+      "name": "entry2",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "harlibrary": {
+      "name": "harlibrary",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "sharelibrary": {
+      "name": "sharelibrary",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    }
+  },
+  "packages": {
+    "@ohos/axios@2.2.4": {
+      "integrity": "sha512-5oH753kGFwfJP1kvCnI92RRaSqRbN0b24vmNNrUV+T8+5ako98rtVQOhA7ezMPox5Z3PFWndLQTF/P/hEK/yeQ==",
+      "storePath": "oh_modules/.ohpm/@ohos+axios@2.2.4",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "@ohos/hypium@1.0.6": {
+      "integrity": "sha512-bb3DWeWhYrFqj9mPFV3yZQpkm36kbcK+YYaeY9g292QKSjOdmhEIQR2ULPvyMsgSR4usOBf5nnYrDmaCCXirgQ==",
+      "storePath": "oh_modules/.ohpm/@ohos+hypium@1.0.6",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": true,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "sharelibrary@file:sharelibrary": {
+      "storePath": "sharelibrary",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    }
+  }
+}

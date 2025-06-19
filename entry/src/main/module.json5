@@ -1,0 +1,72 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "srcEntry": './ets/multitonability/MyAbilityStage.ts',
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet"
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
+      },
+      {
+        "name": "ohos.permission.READ_CALENDAR",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:app_name",
+        "usedScene": {
+          "when": "always"
+        }
+      }
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "launchType": "singleton",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:00a0e9",
+        //启动背景颜色，没有生效
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MultitonabilityEntryAbility",
+        "srcEntry": "./ets/multitonability/MultitonabilityEntryAbility.ts",
+        "description": "dfsfdsf",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        //        "launchType": "specified"
+      },
+    ]
+  }
+}
