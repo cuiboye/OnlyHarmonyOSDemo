@@ -47,6 +47,10 @@
     {
       "name": "clear_no_search_top",
       "value": "172vp"
+    },
+    {
+      "name": "page_text_font_size",
+      "value": "50fp"
     }
   ]
 }

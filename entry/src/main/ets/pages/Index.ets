@@ -208,9 +208,17 @@ struct Index {
             )
           })
           Button('异步操作').onClick(() => {
+
             router.pushUrl(
               {
                 url: 'pages/AsynchronyPage',
+              },
+            )
+          })
+          Button('openCustomDialog的使用').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/OpenCustomDialogPage',
               },
             )
           })

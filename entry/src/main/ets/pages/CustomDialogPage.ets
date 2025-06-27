@@ -13,14 +13,14 @@ export  struct CustomDialogPage {
       cancel:this.onCancel,
       confirm:this.onConfirm
     }),
-    alignment:DialogAlignment.Top, //Dialog的对齐方式
+    alignment:DialogAlignment.Bottom, //Dialog的对齐方式
     // 弹窗容器样式是否自定义。
     // 默认值：false，弹窗容器的宽度根据栅格系统自适应，不跟随子节点；高度自适应子节点，最大为窗口
     // 高度的90%；圆角为24vp。
     customStyle:true,
     //注意:使用@State之类的状态管理是不能刷新CustomDialogController中的属性
     offset:{dy:this.buttonPosition,dx:0},//x和y轴的偏移量
-    autoCancel:false//点击外部是否使弹框消失
+    autoCancel:true//点击外部是否使弹框消失
   })
 
   aboutToDisappear(){

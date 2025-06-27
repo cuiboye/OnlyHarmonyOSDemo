@@ -44,6 +44,7 @@
     "pages/FilePage",
     "pages/AsynchronyPage",
     "pages/CameraPage",
-    "pages/CeilingPage"
+    "pages/CeilingPage",
+    "pages/OpenCustomDialogPage"
   ]
 }

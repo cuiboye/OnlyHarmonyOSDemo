@@ -8,13 +8,10 @@ struct WidgetPage {
 
   build() {
     Row() {
-      Toggle({type: ToggleType.Button, isOn: true }) {
+      Row() {
         Text('status button')
           .fontColor('#182431')
           .fontSize(12)
-      }.width(100).selectedColor(Color.Pink)
-
-      Row() {
         Text('姓名:')
           .fontSize(15)
           .fontColor('#000')
@@ -26,7 +23,7 @@ struct WidgetPage {
             // .width('90%')
           .onChange((value) => {
             // this.userName = value;
-          }).layoutWeight(1)
+          }).layoutWeight(1)//让TextInput沾满剩余宽度
       }
     }
     .height('100%')
