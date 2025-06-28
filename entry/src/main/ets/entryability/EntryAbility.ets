@@ -85,11 +85,11 @@ export default class EntryAbility extends UIAbility{
       })
 
       windowClass.setWindowSystemBarProperties({
-        statusBarColor: '#00a0e9',
-        navigationBarColor: '#00a0e9',
+        statusBarColor: '#f56e1d',
+        navigationBarColor: '#f56e1d',
         // 以下两个属性从API Version 8开始支持A03d00/JSAPP
-        statusBarContentColor: '#00a0e9',
-        navigationBarContentColor: '#00a0e9'
+        statusBarContentColor: '#f56e1d',
+        navigationBarContentColor: '#f56e1d'
       })
 
       // 4.获取底部导航栏高度，此时的高度单位是px

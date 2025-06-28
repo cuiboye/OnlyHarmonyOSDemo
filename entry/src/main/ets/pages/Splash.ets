@@ -51,7 +51,7 @@ struct Splash {
 
   build() {
     Column() {
-      Image($r('app.media.splash_bg'))
+      Image($r('app.media.launch_new'))
         .width('100%')
         .layoutWeight(1)
       Text('底部')

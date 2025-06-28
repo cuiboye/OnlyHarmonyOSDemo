@@ -74,10 +74,10 @@ struct Index {
     window.getLastWindow(this.context).then((windowClass) => {
       //
       windowClass.setWindowSystemBarProperties({
-        statusBarColor: '#ffef7134',
-        navigationBarColor: '#ffef7134',
-        statusBarContentColor: '#ffef7134',
-        navigationBarContentColor: '#ffef7134'
+        statusBarColor: '#f56e1d',
+        navigationBarColor: '#f56e1d',
+        statusBarContentColor: '#f56e1d',
+        navigationBarContentColor: '#f56e1d'
       })
 
       windowClass.setWindowSystemBarEnable(['status','navigation'], (err) => {
@@ -205,6 +205,13 @@ struct Index {
                 url: 'pages/media_page',
               },
               router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+          Button('数据库').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/DBPage',
+              },
             )
           })
           Button('异步操作').onClick(() => {

@@ -2,6 +2,7 @@
  * 异步操作
  */
 import { BusinessError } from '@kit.BasicServicesKit'
+import { CommonHeader } from '../common/common_header'
 
 @Entry
 @Component
@@ -10,6 +11,8 @@ struct AsynchronyPage {
 
   build() {
     Column() {
+      CommonHeader({title:'异步操作'})
+
       Button('Promise最基本的用法')
         .onClick(()=>{
           const promise:Promise<number> = new Promise((resolve:Function,reject:Function)=>{

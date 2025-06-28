@@ -39,11 +39,11 @@
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:EntryAbility_desc",
-        "icon": "$media:icon",
+        "icon": "$media:ic_launcher",
         "label": "$string:EntryAbility_label",
         "launchType": "singleton",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:00a0e9",
+        "startWindowIcon": "$media:launch_new",
+        "startWindowBackground": "$color:f56e1d",
         //启动背景颜色，没有生效
         "exported": true,
         "skills": [

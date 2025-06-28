@@ -4,6 +4,8 @@
 import common from '@ohos.app.ability.common'
 import { CommonHeader } from '../common/common_header'
 import FileUtils from '../common/FileUtils'
+import ReadRawFileUtils, { FileCallBack } from '../common/ReadRawFileUtils'
+
 @Entry
 @Component
 struct FilePage {
@@ -81,6 +83,15 @@ struct FilePage {
         .onClick(()=>{
           //没有分享成功，还需要再研究下
           FileUtils.shareFile(getContext(this) as common.UIAbilityContext)
+        })
+      Button('读取rawfile下的文件内容')
+        .onClick(()=>{
+          let callBack:FileCallBack = {
+            getFileContent: (content: string): void => {
+              //这里取读取到的内容，不用回调也可以使用async和await
+            }
+          }
+          ReadRawFileUtils.readRawFile(getContext(this) as common.UIAbilityContext,callBack)
         })
     }
     .height('100%')
