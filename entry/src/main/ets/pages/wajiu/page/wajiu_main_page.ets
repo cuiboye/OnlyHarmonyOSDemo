@@ -40,9 +40,9 @@ struct WajiuMainPage {
         }.tabBar(this.TabBuilder('我的', 4, $r('app.media.tabbar_mine'), $r('app.media.tabbar_mine_red')))
       }.layoutWeight(1)
       .onChange((index:number)=>{
-        if(index){
+        // if(index){
           this.currentIndex = index
-        }
+        // }
       })
     }
 

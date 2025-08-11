@@ -1,4 +1,4 @@
-import { ComponentContent } from '@kit.ArkUI';
+import { ComponentContent, router } from '@kit.ArkUI';
 import { PromptActionClass } from '../widget/PromptActionClass';
 
 class Params {
@@ -13,11 +13,11 @@ class Params {
 @Builder
 function buildText(params: Params) {
   Column() {
-    buildText2(params.text)
-    // Text(params.text)
-    //   .fontSize(50)
-    //   .fontWeight(FontWeight.Bold)
-      // .margin({ bottom: 36 })
+    // buildText2(params.text)
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
     Button('Close')
       .onClick(() => {
         PromptActionClass.closeDialog();
@@ -82,6 +82,15 @@ export struct OpenCustomDialogPage {
               this.contentNode.update(new Params('update'));
             }, 1500)
           })
+        Button("阴影+进入退出的动画")
+          .margin({ top: 50 })
+          .onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/OpenCustomDialogWithAnimatorPage',
+              },
+            )
+          })
       }
       .width('100%')
       .height('100%')
@@ -89,3 +98,158 @@ export struct OpenCustomDialogPage {
     .height('100%')
   }
 }
+//
+//
+//
+// import { ComponentContent } from '@kit.ArkUI';
+//
+// // let duration = 1000
+// // let effect: TransitionEffect =
+// //   // TransitionEffect.asymmetric(
+// //   //   TransitionEffect.OPACITY.animation({ duration: duration })
+// //   //     .combine(
+// //   //       TransitionEffect.translate({ y: 1000 }).animation({ duration: duration })
+// //   //     )
+// //   //   ,
+// //   //   TransitionEffect.OPACITY.animation({ delay: duration, duration: duration })
+// //   //     .combine(
+// //   //       TransitionEffect.translate({ y: 0 }).animation({ duration: duration })
+// //   //     )
+// //
+// //   TransitionEffect.asymmetric(
+// //     TransitionEffect.translate({y:'100%'}).animation({duration:1000}),
+// //     TransitionEffect.translate({y:'100%'}).animation({duration:1000})
+// //   )
+//
+// class BaseParam {
+//   context: UIContext;
+//
+//   constructor(context: UIContext) {
+//     this.context = context;
+//   }
+// }
+//
+// class Dialog2Param extends BaseParam {
+//   text: string;
+//
+//   constructor(context: UIContext, text: string) {
+//     super(context);
+//     this.text = text;
+//   }
+// }
+//
+// @Builder
+// function dialog2Builder1(params: Dialog2Param) {
+//   Flex({
+//     direction: FlexDirection.Column,
+//     alignContent: FlexAlign.Center,
+//     justifyContent: FlexAlign.Center,
+//     alignItems: ItemAlign.Center,
+//   }) {
+//     Text('dialog2')
+//     Button('页面绑定dialog2关闭').onClick(() => {
+//       let uiContext = params.context;
+//       let promptAction = uiContext.getPromptAction();
+//       promptAction.closeCustomDialog(dialog2);
+//     })
+//   }
+//   .width('100%')
+//   .height('60%')
+//   .backgroundColor(Color.White)
+//   .transition(effect)
+//   .position({ y: 400 })
+//   .mask(ProgressMask.prototype)
+// }
+//
+// let dialog2: ComponentContent<Dialog2Param> | undefined = undefined;
+//
+// @Entry
+// @Component
+// struct OpenCustomDialogPage {
+//   @State message: string = 'Hello World';
+//   @State delayNumber: number = 3000
+//
+//   build() {
+//     RelativeContainer() {
+//       Button('打开dialog2').onClick(() => {
+//         // let uiContext = this.getUIContext();
+//         // let promptAction = uiContext.getPromptAction();
+//         // dialog2 =
+//         //   new ComponentContent(uiContext, wrapBuilder(dialog2Builder1), new Dialog2Param(uiContext, this.message));
+//         // promptAction.openCustomDialog(dialog2,{
+//         //   onWillDismiss: (action) => {
+//         //     animateTo({
+//         //       duration: 200,
+//         //       onFinish: () => {
+//         //         action.dismiss()
+//         //       }
+//         //     }, () => {
+//         //       dialog2.update(true)
+//         //     })
+//         //
+//         //   }
+//         // });
+//         // this.delayNumber = 1 / 0
+//         let uiContext = this.getUIContext()
+//         const promptAction = uiContext.getPromptAction()
+//
+//         let contentNode = new ComponentContent<boolean>(uiContext, wrapBuilder(ActionBuilder), false)
+//         promptAction.openCustomDialog(contentNode, {
+//           autoCancel: true,
+//           alignment: DialogAlignment.Bottom,
+//           transition: TransitionEffect.opacity(0.99).animation({ duration: 200 }),
+//           onWillDismiss: (action) => {
+//             animateTo({
+//               duration: 200,
+//               onFinish: () => {
+//                 action.dismiss()
+//               }
+//             }, () => {
+//               contentNode.update(true)
+//             })
+//
+//           }
+//         })
+//       }).margin({top:100})
+//     }
+//     .height('100%')
+//     .width('100%')
+//   }
+// }
+// let duration = 1000
+// let effect: TransitionEffect =
+//   TransitionEffect.asymmetric(
+//     TransitionEffect.OPACITY.animation({ duration: duration })
+//       .combine(
+//         TransitionEffect.translate({ y: 1000 }).animation({ duration: duration })
+//       )
+//     ,
+//     TransitionEffect.OPACITY.animation({ delay: duration, duration: duration })
+//       .combine(
+//         TransitionEffect.translate({ y: 0 }).animation({ duration: duration })
+//       )
+//   )
+// @Builder
+// export function ActionBuilder(isEnd: boolean) {
+//   Column() {
+//     Row() {
+//       Text('2173781637163')
+//     }.width('100%')
+//     .height(40)
+//
+//     Row() {
+//       Text('2173781637163')
+//     }.width('100%')
+//     .height(59)
+//
+//     Row() {
+//       Text('2173781637163')
+//     }.width('100%')
+//     .height(90)
+//   }
+//   .translate({
+//     y: isEnd ? '100%' : 0
+//   })
+//   .backgroundColor(Color.White)
+//   .transition(TransitionEffect.translate({ y: '100%' }).animation({ duration: 200 }))
+// }

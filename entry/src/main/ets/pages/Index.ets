@@ -214,8 +214,32 @@ struct Index {
               },
             )
           })
-          Button('异步操作').onClick(() => {
+          Button('文字颜色渐变').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/ColorTransitionDemoPage',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+          Button('tabs颜色改变').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/TabsAttrPage',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+          Button('tabs动画效果').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/TabsAnimationPage',
+              },
+              router.RouterMode.Standard,
+            )
+          })
 
+          Button('异步操作').onClick(() => {
             router.pushUrl(
               {
                 url: 'pages/AsynchronyPage',

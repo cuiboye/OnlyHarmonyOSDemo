@@ -46,6 +46,10 @@
     "pages/CameraPage",
     "pages/CeilingPage",
     "pages/OpenCustomDialogPage",
+    "pages/OpenCustomDialogWithAnimatorPage",
+    "pages/ColorTransitionDemoPage",
+    "pages/TabsAttrPage",
+    "pages/TabsAnimationPage",
     "pages/ReadRawFilePage",
     "pages/DBPage"
   ]
