@@ -91,6 +91,15 @@ export struct OpenCustomDialogPage {
               },
             )
           })
+        Button("api19上直接使用系统提供的dialog和背景的动画")
+          .margin({ top: 50 })
+          .onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/OpenCustomDialogWithAnimatorPage2',
+              },
+            )
+          })
       }
       .width('100%')
       .height('100%')

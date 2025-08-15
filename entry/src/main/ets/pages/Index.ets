@@ -214,10 +214,19 @@ struct Index {
               },
             )
           })
+          Button('动画工具类-AnimationUtil')
           Button('文字颜色渐变').onClick(() => {
             router.pushUrl(
               {
                 url: 'pages/ColorTransitionDemoPage',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+          Button('@CustomDialog进入和退出时的动画').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/CustomDialogAnimation',
               },
               router.RouterMode.Standard, //跳转模式 Single/Stantard
             )

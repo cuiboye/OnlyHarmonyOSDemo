@@ -47,10 +47,12 @@
     "pages/CeilingPage",
     "pages/OpenCustomDialogPage",
     "pages/OpenCustomDialogWithAnimatorPage",
+    "pages/OpenCustomDialogWithAnimatorPage2",
     "pages/ColorTransitionDemoPage",
     "pages/TabsAttrPage",
     "pages/TabsAnimationPage",
     "pages/ReadRawFilePage",
-    "pages/DBPage"
+    "pages/DBPage",
+    "pages/CustomDialogAnimation"
   ]
 }
