@@ -1,30 +1,29 @@
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent, promptAction, UIContext } from '@kit.ArkUI';
 
-export class PromptActionClass {
+type CloseOpenCustomDialog = ()=>void
+
+export class OpenCustomDialogUtils {
   static ctx: UIContext;
   static contentNode: ComponentContent<Object>;
   static options: promptAction.BaseDialogOptions;
 
-
   static setContext(context: UIContext) {
-    PromptActionClass.ctx = context;
+    OpenCustomDialogUtils.ctx = context;
   }
-
 
   static setContentNode(node: ComponentContent<Object>) {
-    PromptActionClass.contentNode = node;
+    OpenCustomDialogUtils.contentNode = node;
   }
-
 
   static setOptions(options: promptAction.BaseDialogOptions) {
-    PromptActionClass.options = options;
+    OpenCustomDialogUtils.options = options;
   }
 
-
-  static openDialog() {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
+  static openDialog(dialogContent: ComponentContent<Object>, options?: promptAction.BaseDialogOptions) {
+    if (OpenCustomDialogUtils.contentNode !== null) {
+      OpenCustomDialogUtils.ctx.getPromptAction()
+        .openCustomDialog(dialogContent, options)
         .then(() => {
           console.info('OpenCustomDialog complete.');
         })
@@ -36,11 +35,28 @@ export class PromptActionClass {
     }
   }
 
+  // static closeDialog(closeCallback?:CloseOpenCustomDialog) {
+  //   if (OpenCustomDialogUtils.contentNode !== null) {
+  //     OpenCustomDialogUtils.ctx.getPromptAction()
+  //       .closeCustomDialog(OpenCustomDialogUtils.contentNode)
+  //       .then(() => {
+  //         closeCallback?.()
+  //         console.info('CloseCustomDialog complete.');
+  //       })
+  //       .catch((error: BusinessError) => {
+  //         let message = (error as BusinessError).message;
+  //         let code = (error as BusinessError).code;
+  //         console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
+  //       })
+  //   }
+  // }
 
-  static closeDialog() {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().closeCustomDialog(PromptActionClass.contentNode)
+  static closeDialog(contentNode?: ComponentContent<Object>,closeCallback?:CloseOpenCustomDialog) {
+    if (contentNode !== null) {
+      OpenCustomDialogUtils.ctx.getPromptAction()
+        .closeCustomDialog(contentNode)
         .then(() => {
+          closeCallback?.()
           console.info('CloseCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
@@ -51,10 +67,10 @@ export class PromptActionClass {
     }
   }
 
-
   static updateDialog(options: promptAction.BaseDialogOptions) {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
+    if (OpenCustomDialogUtils.contentNode !== null) {
+      OpenCustomDialogUtils.ctx.getPromptAction()
+        .updateCustomDialog(OpenCustomDialogUtils.contentNode, options)
         .then(() => {
           console.info('UpdateCustomDialog complete.');
         })
