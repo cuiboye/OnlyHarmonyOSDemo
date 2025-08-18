@@ -1,8 +1,9 @@
 import { AnimationUtil } from '../common/utils/AnimationUtil';
 
 let anmDuration: number = 800;
-
-// @CustomDialog弹框由底部进入和消失的动画
+/**
+ * @CustomDialog弹框由底部进入和消失的动画
+ */
 @CustomDialog
 struct CustomDialogExample {
   @State showFlag: Visibility = Visibility.Visible;
@@ -27,7 +28,7 @@ struct CustomDialogExample {
     }
     .justifyContent(FlexAlign.End)
     .width('100%')
-    .height('100%')
+    .height('100%')//这里必须设置为高度为100%，否则this.cancel();将不会执行
 
     .onClick(() => {
       if (this.isAutoCancel) {
@@ -42,7 +43,7 @@ struct CustomDialogExample {
 
   // 延迟关闭弹窗，让自定义的出场动画显示
   cancel() {
-    this.showFlag = Visibility.Hidden //这里
+    this.showFlag = Visibility.None //这里需要是Visibility.Hidden，不能是Visibility.None,否则弹框会直接消失
     setTimeout(() => {
       this.controller.close()
     }, 200) //这个时间是背景色的展示和消失的时间
@@ -69,6 +70,9 @@ struct CustomDialogAnimation {
           this.dialogController.open()
         }).margin({ top: 80 })
 
-    }.width('100%').height('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .margin({ top: 5 })
   }
 }

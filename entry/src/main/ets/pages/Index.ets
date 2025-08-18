@@ -231,6 +231,14 @@ struct Index {
               router.RouterMode.Standard, //跳转模式 Single/Stantard
             )
           })
+          Button('@CustomDialog-输入框+默认值+默认选中内容').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/RenameCustomDialog',
+              },
+              router.RouterMode.Standard,
+            )
+          })
           Button('tabs颜色改变').onClick(() => {
             router.pushUrl(
               {

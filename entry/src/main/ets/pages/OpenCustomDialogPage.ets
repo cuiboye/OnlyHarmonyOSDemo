@@ -1,5 +1,5 @@
 import { ComponentContent, router } from '@kit.ArkUI';
-import { PromptActionClass } from '../widget/PromptActionClass';
+import { OpenCustomDialogUtils } from '../common/utils/OpenCustomDialogUtils';
 
 class Params {
   text: string = "";
@@ -20,7 +20,7 @@ function buildText(params: Params) {
       .margin({ bottom: 36 })
     Button('Close')
       .onClick(() => {
-        PromptActionClass.closeDialog();
+        OpenCustomDialogUtils.closeDialog();
       })
     // Text('aaa')
   }.backgroundColor('#FFF0F0F0')
@@ -48,10 +48,10 @@ export struct OpenCustomDialogPage {
 
 
   aboutToAppear(): void {
-    PromptActionClass.setContext(this.ctx);
-    PromptActionClass.setContentNode(this.contentNode);
+    OpenCustomDialogUtils.setContext(this.ctx);
+    OpenCustomDialogUtils.setContentNode(this.contentNode);
     //isModal:默认为true，有蒙层并且不可点击弹框下的UI组件；false：没有蒙层，可以与弹框下的UI组件交互
-    PromptActionClass.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 },
+    OpenCustomDialogUtils.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 },
     isModal:false});
   }
 
@@ -62,11 +62,11 @@ export struct OpenCustomDialogPage {
         Button("open dialog and update options")
           .margin({ top: 50 })
           .onClick(() => {
-            PromptActionClass.openDialog();
+            OpenCustomDialogUtils.openDialog(this.contentNode);
 
 
             setTimeout(() => {
-              PromptActionClass.updateDialog({
+              OpenCustomDialogUtils.updateDialog({
                 alignment: DialogAlignment.Bottom,
                 offset: { dx: 0, dy: -50 }
               });
@@ -75,7 +75,7 @@ export struct OpenCustomDialogPage {
         Button("open dialog and update content")
           .margin({ top: 50 })
           .onClick(() => {
-            PromptActionClass.openDialog();
+            OpenCustomDialogUtils.openDialog(this.contentNode);
 
 
             setTimeout(() => {

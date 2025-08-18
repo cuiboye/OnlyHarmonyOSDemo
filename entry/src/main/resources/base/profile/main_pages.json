@@ -53,6 +53,7 @@
     "pages/TabsAnimationPage",
     "pages/ReadRawFilePage",
     "pages/DBPage",
-    "pages/CustomDialogAnimation"
+    "pages/CustomDialogAnimation",
+    "pages/RenameCustomDialog"
   ]
 }

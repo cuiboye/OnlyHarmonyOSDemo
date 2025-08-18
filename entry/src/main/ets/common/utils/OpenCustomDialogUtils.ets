@@ -35,22 +35,6 @@ export class OpenCustomDialogUtils {
     }
   }
 
-  // static closeDialog(closeCallback?:CloseOpenCustomDialog) {
-  //   if (OpenCustomDialogUtils.contentNode !== null) {
-  //     OpenCustomDialogUtils.ctx.getPromptAction()
-  //       .closeCustomDialog(OpenCustomDialogUtils.contentNode)
-  //       .then(() => {
-  //         closeCallback?.()
-  //         console.info('CloseCustomDialog complete.');
-  //       })
-  //       .catch((error: BusinessError) => {
-  //         let message = (error as BusinessError).message;
-  //         let code = (error as BusinessError).code;
-  //         console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
-  //       })
-  //   }
-  // }
-
   static closeDialog(contentNode?: ComponentContent<Object>,closeCallback?:CloseOpenCustomDialog) {
     if (contentNode !== null) {
       OpenCustomDialogUtils.ctx.getPromptAction()
