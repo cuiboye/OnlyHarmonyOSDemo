@@ -223,6 +223,14 @@ struct Index {
               router.RouterMode.Standard, //跳转模式 Single/Stantard
             )
           })
+          Button('第三方插件ListView').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/ListViewDemoPage',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
           Button('@CustomDialog进入和退出时的动画').onClick(() => {
             router.pushUrl(
               {

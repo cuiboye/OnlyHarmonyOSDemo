@@ -13,6 +13,10 @@
       {
         "name": "ohos.permission.INTERNET"
       },
+      //connection.hasDefaultNetSync()需要GET_NETWORK_INFO这个权限
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
       {
         "name": "ohos.permission.ACCESS_BIOMETRIC"
       },

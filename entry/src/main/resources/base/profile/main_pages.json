@@ -54,6 +54,7 @@
     "pages/ReadRawFilePage",
     "pages/DBPage",
     "pages/CustomDialogAnimation",
-    "pages/RenameCustomDialog"
+    "pages/RenameCustomDialog",
+    "pages/ListViewDemoPage"
   ]
 }
