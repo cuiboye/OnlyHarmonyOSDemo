@@ -6,23 +6,25 @@ import wantConstant from '@ohos.ability.wantConstant';
 import fileuri from '@ohos.file.fileuri';
 import { BusinessError } from '@kit.BasicServicesKit';
 import Want from '@ohos.app.ability.Want';
+import fileUri from '@ohos.file.fileuri';
+import { filePreview } from '@kit.PreviewKit';
+import LocalFileSelectUtils, { FileSelectLocalFileModel } from './utils/LocalFileSelectUtils';
 
-
-export default class FileUtils{
-  static createFile(context:common.Context){
+export default class FileUtils {
+  static createFile(context: common.Context) {
     //获取应用文件路径
     let filesDir = context.filesDir;
     //新建并打开文件
     //openSync：使用了openSync不需要使用await关键字来获取，可以直接获取file
     //open:调用
-    let file = fs.openSync(filesDir+'/text.txt',fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let file = fs.openSync(filesDir + '/text.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     //写一段内容到文件
-    let writeLen = fs.writeSync(file.fd,'Try to write str')
+    let writeLen = fs.writeSync(file.fd, 'Try to write str')
     console.log('The length str is' + writeLen)
 
     //从文件读取一段内容
     let buf = new ArrayBuffer(1024);
-    let readLen = fs.readSync(file.fd,buf,{offset:0})
+    let readLen = fs.readSync(file.fd, buf, { offset: 0 })
     console.info("the content of file: " + buf.toString());
     //关闭文件
     fs.closeSync(file);
@@ -31,7 +33,7 @@ export default class FileUtils{
   /**
    * 复制文件
    */
-  copyFile(context:common.Context) {
+  copyFile(context: common.Context) {
     // 获取应用文件路径
     let filesDir = context.filesDir;
 
@@ -56,7 +58,7 @@ export default class FileUtils{
   /**
    * 以流的形式读写文件
    */
-  async  readWriteFileWithStream(context:common.Context) {
+  async readWriteFileWithStream(context: common.Context) {
     // 获取应用文件路径
     let filesDir = context.filesDir;
 
@@ -82,19 +84,19 @@ export default class FileUtils{
   /**
    * 查看文件列表
    */
-  static  queryFileList(context:common.Context){
+  static queryFileList(context: common.Context) {
     // 获取应用文件路径
     let filesDir = context.filesDir;
 
     // 查看文件列表
-    let options:OptionsData = {
+    let options: OptionsData = {
       recursion: false,
       listNum: 0,
       filter: {
-        suffix: ['.png', '.jpg', '.txt'],          // 匹配文件后缀名为'.png','.jpg','.txt'
+        suffix: ['.png', '.jpg', '.txt'], // 匹配文件后缀名为'.png','.jpg','.txt'
         // displayName: ['test*'],                    // 匹配文件全名以'test'开头
-        fileSizeOver: 0,                           // 匹配文件大小大于等于0
-        lastModifiedAfter: new Date(0).getTime(),  // 匹配文件最近修改时间在1970年1月1日之后
+        fileSizeOver: 0, // 匹配文件大小大于等于0
+        lastModifiedAfter: new Date(0).getTime(), // 匹配文件最近修改时间在1970年1月1日之后
       },
     }
     let files = fs.listFileSync(filesDir, options);
@@ -106,8 +108,8 @@ export default class FileUtils{
   /**
    * 获取指定文件系统数据剩余空间大小，单位是Byte
    */
-  static getFreeSize(){
-    statvfs.getFreeSize('/data',(error,number)=>{
+  static getFreeSize() {
+    statvfs.getFreeSize('/data', (error, number) => {
       if (error) {
         console.error(`Invoke getFreeSize failed, code is ${error.code}, message is ${error.message}`);
       } else {
@@ -119,8 +121,8 @@ export default class FileUtils{
   /**
    * 获取指定文件系统的总空间大小,，单位是Byte
    */
-  static getTotalSize(){
-    statvfs.getTotalSize('/data',(error,number)=>{
+  static getTotalSize() {
+    statvfs.getTotalSize('/data', (error, number) => {
       if (error) {
         console.error(`Invoke getFreeSize failed, code is ${error.code}, message is ${error.message}`);
       } else {
@@ -128,10 +130,11 @@ export default class FileUtils{
       }
     })
   }
+
   /**
    * 获取当前应用的存储空间大小,，单位是Byte
    */
-  static getTotalAppSize(){
+  static getTotalAppSize() {
     storageStatistics.getCurrentBundleStats((err, bundleStats) => {
       if (err) {
         console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
@@ -164,14 +167,14 @@ export default class FileUtils{
   /**
    * 分享文件
    */
-  static shareFile(context:common.UIAbilityContext){
+  static shareFile(context: common.UIAbilityContext) {
     // 获取文件的沙箱路径
     let pathInSandbox = context.filesDir + "/test.txt";
     // 将沙箱路径转换为uri
     let uri = fileuri.getUriFromPath(pathInSandbox);
     // 获取的uri为"file://com.example.demo/data/storage/el2/base/files/test.txt"
 
-    let want :Want= {
+    let want: Want = {
       // 配置被分享文件的读写权限，例如对被分享应用进行读写授权
       flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION | wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
       // 配置分享应用的隐式拉起规则
@@ -183,20 +186,100 @@ export default class FileUtils{
       .then(() => {
         console.info('Invoke getCurrentBundleStats succeeded.');
       })
-      .catch((err:BusinessError) => {
+      .catch((err: BusinessError) => {
         console.error(`Invoke startAbility failed, code is ${err.code}, message is ${err.message}`);
       });
   }
+
+  /**
+   * 通过URI或路径，获取FileUri
+   * @param uriOrPath URI或路径
+   */
+  static getFileUri(uriOrPath: string): fileUri.FileUri {
+    return new fileUri.FileUri(uriOrPath);
+  }
+
+  /**
+   * 通过URI或路径，获取文件名。
+   * @param uriOrPath URI或路径
+   */
+  static getFileName(uriOrPath: string): string {
+    return FileUtils.getFileUri(uriOrPath).name;
+  }
+
+  /**
+   * 通过URI或路径，获取文件路径
+   * @param uriOrPath URI或路径
+   */
+  static getFilePath(uriOrPath: string): string {
+    return FileUtils.getFileUri(uriOrPath).path;
+  }
+
+  /**
+   * 根据文件名获取文件后缀
+   * @param fileName 例如: test.txt  test.doc
+   */
+  static getFileExtention(fileName: string) {
+    if (fileName != undefined && fileName != null && fileName.length != 0 && fileName.includes(".")) {
+      return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
+    return '';
+  }
+
+  /**
+   * 文件预览
+   * fileName：文件名称
+   * uri：文件路径
+   * mimeType：文件类型
+   */
+  static filePreview(context: common.UIAbilityContext,fileName: string, uri: string, mimeType: string) {
+    let fileInfo: filePreview.PreviewInfo = {
+      title: fileName,
+      uri: uri,
+      mimeType: mimeType, // 文件(夹)的媒体资源类型，如text/plain
+    };
+    filePreview.openPreview(context, fileInfo).then(() => {
+      console.info('openPreview success');
+    }).catch((err: BusinessError) => {
+      console.error('openPreview failed, err = ' + err.message);
+    });
+  }
+
+  static getMimeType(filePath: string): string {
+    let mimeType = filePath.split('.').pop()
+    if (mimeType?.includes('pdf')) {
+      mimeType = 'application/pdf'
+    } else if (mimeType?.includes('doc')) {
+      mimeType = 'application/msword'
+    } else if (mimeType?.includes('docx')) {
+      mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    } else if (mimeType?.includes('txt')) {
+      mimeType = 'text/plain'
+    } else if (mimeType?.includes('ppt')) {
+      mimeType = 'application/vnd.ms-powerpoint'
+    } else if (mimeType?.includes('xls')) {
+      mimeType = 'application/vnd.ms-excel'
+    } else if (mimeType?.includes('xlsx')) {
+      mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    }
+    return mimeType ?? ''
+  }
+
+  static async selectFile(context: common.UIAbilityContext): Promise<Array<FileSelectLocalFileModel>> {
+    const selectedFileList: Array<FileSelectLocalFileModel> = await LocalFileSelectUtils.openLocalFileSelectPageForFrag(context, 1, false, undefined)
+    return selectedFileList
+  }
 }
 
-class OptionsData{
+class OptionsData {
   recursion?: boolean
   listNum?: number
-  filter?:Filter
+  filter?: Filter
 }
-class  Filter{
-  suffix?: string[]          // 匹配文件后缀名为'.png','.jpg','.txt'
+
+class Filter {
+  suffix?: string[] // 匹配文件后缀名为'.png','.jpg','.txt'
   // displayName: ['test*'],                    // 匹配文件全名以'test'开头
-  fileSizeOver?: number                           // 匹配文件大小大于等于0
+  fileSizeOver?: number // 匹配文件大小大于等于0
   lastModifiedAfter?: number
 }

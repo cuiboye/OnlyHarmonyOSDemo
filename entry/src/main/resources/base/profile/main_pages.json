@@ -55,6 +55,10 @@
     "pages/DBPage",
     "pages/CustomDialogAnimation",
     "pages/RenameCustomDialog",
-    "pages/ListViewDemoPage"
+    "pages/ListViewDemoPage",
+    "pages/TimeDemoPage",
+    "pages/DateDemoPage",
+    "pages/OpenCustomDialogWithListPage",
+    "pages/DayinjiDemoPage"
   ]
 }

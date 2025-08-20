@@ -8,7 +8,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { CustomFooterLayoutView } from '../views/CustomFooterLayoutView';
 import { CustomHeaderLayoutView } from '../views/CustomHeaderLayoutView';
 import { systemDateTime } from '@kit.BasicServicesKit';
-import { router } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -16,6 +15,8 @@ struct ListViewDemoPage {
   controller: RefreshController = new RefreshController() // 刷新控制器
   lazyDataSource: RefreshDataSource = new RefreshDataSource() // 懒加载数据
   @State listState: number = ListState.Loading
+  @State enableRefresh: boolean = true
+  @State enableLoadMore: boolean = true
   mPn: number = 1; //当前页数
   @State selectedAll: boolean = false
   @State hasSelectedNumber: number = 0
@@ -53,7 +54,20 @@ struct ListViewDemoPage {
 
 
   aboutToAppear(): void {
-    this.fetchListData(true)
+    if (!NetworkUtils.isNetworkAvailableSync()) {
+      this.listState = ListState.Error
+      this.setRefreshEnable(false)
+    } else {
+      this.listState = ListState.Loading
+      this.setRefreshEnable(true)
+      // this.fetchListData(true)
+      this.controller.autoRefresh(true)//自动刷新
+    }
+  }
+
+  setRefreshEnable(enable: boolean) {
+    this.enableRefresh = enable
+    this.enableLoadMore = enable
   }
 
   @Builder
@@ -148,7 +162,7 @@ struct ListViewDemoPage {
         if (uploadList != null && uploadList.length > 0) {
           this.mPn++;
           this.listState = ListState.Normal
-          // this.setRefreshEnable(true)
+          this.setRefreshEnable(true)
           if (isRefresh) {
             this.lazyDataSource.deleteAll(() => {
               this.lazyDataSource.pushDataArray(uploadList)
@@ -174,7 +188,7 @@ struct ListViewDemoPage {
               this.lazyDataSource.pushDataArray([])
             })
             this.listState = ListState.Empty
-            // this.setRefreshEnable(false)
+            this.setRefreshEnable(false)
             this.controller.finishRefresh()
           } else {
             this.controller.finishLoadMoreFixedBottom(true)
@@ -185,8 +199,7 @@ struct ListViewDemoPage {
         this.isFetching = false;
         if (isRefresh) {
           this.listState = ListState.Error
-          //禁止刷新
-          // this.setRefreshEnable(false)
+          this.setRefreshEnable(false)
         }
         this.controller.finishLoadMore()
       }
@@ -195,8 +208,7 @@ struct ListViewDemoPage {
       this.isFetching = false;
       if (isRefresh) {
         this.listState = ListState.Error
-        //禁止刷新
-        // this.setRefreshEnable(false)
+        this.setRefreshEnable(false)
       }
       this.controller.finishLoadMore()
 
@@ -220,8 +232,8 @@ struct ListViewDemoPage {
       showErrorLayout: this.listState == ListState.Error, //控制错误布局展示
       showLoadingLayout: this.listState == ListState.Loading, //控制loadingLayout
       controller: this.controller,
-      // enableRefresh:this.enableRefresh,
-      // enableLoadMore:this.enableLoadMore,
+      enableRefresh:this.enableRefresh,//是否可以下载刷新
+      enableLoadMore:this.enableLoadMore,//是否可以上拉加载
       itemHeaderLayout:()=>{
         this.headerLayout()
       },

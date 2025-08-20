@@ -7,9 +7,23 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "phone",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "requestPermissions": [
+      {
+        "name": "ohos.permission.PRINT",
+      },
+      {
+        "name": "ohos.permission.ACCESS_BLUETOOTH",
+        "reason": "$string:module_desc",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        }
+      },
       {
         "name": "ohos.permission.INTERNET"
       },

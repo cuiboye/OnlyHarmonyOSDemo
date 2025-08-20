@@ -91,6 +91,7 @@ struct Index {
     this.context.eventHub.on('EventHubonClick',()=>{
       prompt.showToast({message:'EventHubonClick'})
     })
+    console.log(`Date.now()的值为：${Date.now()}`)
   }
 
   myClickHandler(): void {
@@ -231,6 +232,26 @@ struct Index {
               router.RouterMode.Standard, //跳转模式 Single/Stantard
             )
           })
+
+          Button('openCustomDialog中展示List').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/OpenCustomDialogWithListPage',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+
+
+          Button('打印机测试').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/DayinjiDemoPage',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
           Button('@CustomDialog进入和退出时的动画').onClick(() => {
             router.pushUrl(
               {
@@ -268,6 +289,20 @@ struct Index {
             router.pushUrl(
               {
                 url: 'pages/AsynchronyPage',
+              },
+            )
+          })
+          Button('时间相关操作-待实现').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/TimeDemoPage',
+              },
+            )
+          })
+          Button('日期相关操作-待实现').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/DateDemoPage',
               },
             )
           })

@@ -5,11 +5,15 @@ import common from '@ohos.app.ability.common'
 import { CommonHeader } from '../common/common_header'
 import FileUtils from '../common/FileUtils'
 import ReadRawFileUtils, { FileCallBack } from '../common/ReadRawFileUtils'
+import { FileSelectLocalFileModel } from '../common/utils/LocalFileSelectUtils'
 
 @Entry
 @Component
 struct FilePage {
-  private context = getContext(this) as common.UIAbilityContext
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  selectedFilePath:string = ''
+  selectedFileName:string = ''
+  selectedFileExt:string = ''
 
   build() {
     Column() {
@@ -92,6 +96,16 @@ struct FilePage {
             }
           }
           ReadRawFileUtils.readRawFile(getContext(this) as common.UIAbilityContext,callBack)
+        })
+      Button('选择文件')
+        .onClick(async ()=>{
+          const  selectedFileList:Array<FileSelectLocalFileModel> = await FileUtils.selectFile(this.context)
+          this.selectedFileName = selectedFileList[0].fileName??''
+          this.selectedFilePath = selectedFileList[0].filePath??''
+        })
+      Button('预览文件(先选择文件，再预览)')
+        .onClick(()=>{
+          FileUtils.filePreview(this.context,this.selectedFileName,this.selectedFilePath,FileUtils.getMimeType(this.selectedFilePath))
         })
     }
     .height('100%')
