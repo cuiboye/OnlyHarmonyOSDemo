@@ -19,6 +19,14 @@
     {
       "name": "three_router_label",
       "value": "label"
+    },
+    {
+      "name": "news_item_content",
+      "value": "%1$d 应用开发文档用于指导开发者通过HarmonyOS SDK提供的开放能力完成应用开发。"
+    },
+    {
+      "name": "news_item_publish_date",
+      "value": "2025年1月1日"
     }
   ]
 }

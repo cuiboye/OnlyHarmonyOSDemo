@@ -6,6 +6,7 @@ import { CommonHeader } from '../common/common_header'
 import FileUtils from '../common/FileUtils'
 import ReadRawFileUtils, { FileCallBack } from '../common/ReadRawFileUtils'
 import { FileSelectLocalFileModel } from '../common/utils/LocalFileSelectUtils'
+import { promptAction } from '@kit.ArkUI'
 
 @Entry
 @Component
@@ -106,6 +107,11 @@ struct FilePage {
       Button('预览文件(先选择文件，再预览)')
         .onClick(()=>{
           FileUtils.filePreview(this.context,this.selectedFileName,this.selectedFilePath,FileUtils.getMimeType(this.selectedFilePath))
+        })
+      Button('格式化文件大小')
+        .onClick(()=>{
+          let fileSize = FileUtils.getFormatFileSize(7500)
+          promptAction.showToast({message:`文件大小为 ${fileSize}`})
         })
     }
     .height('100%')

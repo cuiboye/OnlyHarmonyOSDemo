@@ -27,24 +27,33 @@
       {
         "name": "ohos.permission.INTERNET"
       },
-      //connection.hasDefaultNetSync()需要GET_NETWORK_INFO这个权限
       {
-        "name": "ohos.permission.GET_NETWORK_INFO"
+        "name": "ohos.permission.GET_NETWORK_INFO" //connection.hasDefaultNetSync()需要GET_NETWORK_INFO这个权限
       },
       {
         "name": "ohos.permission.ACCESS_BIOMETRIC"
       },
       {
-        "name": "ohos.permission.READ_CALENDAR",
+        "name": "ohos.permission.READ_CALENDAR",//日历
         "reason": "$string:app_name",
         "usedScene": {
           "when": "always"
         }
       },
       {
-        "name": "ohos.permission.CAMERA",
+        "name": "ohos.permission.CAMERA",//拍照
         "reason": "$string:app_name",
         "usedScene": {
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",//保存图片
+        "reason": "$string:app_name",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
           "when": "always"
         }
       }

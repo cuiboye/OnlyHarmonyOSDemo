@@ -11,11 +11,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class PermissionUtils {
   permissions: Array<Permissions> = ['ohos.permission.READ_CALENDAR'];
 
-  /**
-   * 检查是否申请了权限
-   * @param permission
-   * @returns
-   */
   static async checkAccessToken(permissions: Array<Permissions>): Promise<abilityAccessCtrl.GrantStatus> {
     let atManager = abilityAccessCtrl.createAtManager();
     let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
@@ -39,7 +34,12 @@ export default class PermissionUtils {
     return grantStatus;
   }
 
-  static async checkPermissions(context:common.UIAbilityContext,permissions: Array<Permissions>): Promise<void> {
+  /**
+   * 检查是否申请了权限
+   * @param permission
+   * @returns
+   */
+  static async checkPermissions(context:common.UIAbilityContext,permissions: Array<Permissions>,callback?:AuthorizationInterface): Promise<void> {
     let grantStatus: abilityAccessCtrl.GrantStatus = await PermissionUtils.checkAccessToken(permissions);
 
     if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
@@ -48,18 +48,18 @@ export default class PermissionUtils {
       prompt.showToast({
         message: '已经授权'
       })
+      callback?.successAuthorization()
     } else {
-      // 申请日历权限
       console.log("未申请授权")
       prompt.showToast({
         message: '未申请授权'
       })
 
-      PermissionUtils.reqPermissionsFromUser(context,permissions)
+      PermissionUtils.reqPermissionsFromUser(context,permissions,callback)
     }
   }
 
-  static reqPermissionsFromUser(context:common.UIAbilityContext,permissions: Array<Permissions>): void {
+  static reqPermissionsFromUser(context:common.UIAbilityContext,permissions: Array<Permissions>,callback?:AuthorizationInterface): void {
     let atManager = abilityAccessCtrl.createAtManager();
     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
@@ -67,17 +67,22 @@ export default class PermissionUtils {
       let length: number = grantStatus.length;
       for (let i = 0; i < length; i++) {
         if (grantStatus[i] === 0) {
-          // 用户授权，可以继续访问目标操作
+          // 用户授权成功，点击了“允许”，可以继续访问目标操作
           console.log('用户已经授权')
           prompt.showToast({
             message: '用户已经授权'
           })
+          callback?.successAuthorization()
         } else {
           // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
           console.log('用户已经拒绝授权，请在设置中打开对应的权限')
           prompt.showToast({
             message: '用户已经拒绝授权，请在设置中打开对应的权限'
           })
+          callback?.successAuthorization()
+
+          //跳转到app信息设置页面
+          // PermissionUtils.openPermissionsInSystemSettings(context)
           return;
         }
       }
@@ -100,7 +105,12 @@ export default class PermissionUtils {
     context.startAbility(wantInfo).then(() => {
      //从设置页面返回的逻辑处理：检查下是否开启了对应的权限
     }).catch((err:BusinessError) => {
-
+      console.log(`${err}}`)
     })
   }
+}
+
+export interface AuthorizationInterface{
+  refuseAuthorization:()=>void
+  successAuthorization:()=>void
 }

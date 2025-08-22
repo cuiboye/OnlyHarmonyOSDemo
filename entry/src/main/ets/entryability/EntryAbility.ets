@@ -68,6 +68,9 @@ export default class EntryAbility extends UIAbility{
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+
+      let uiContext:  UIContext | undefined = windowStage.getMainWindowSync().getUIContext()
+      AppStorage.setOrCreate('uiContext', uiContext);//ListSnapshot类中使用到了ImageUtils，ImageUtils中使用到了uiContext
     });
     windowStage.getMainWindow((err, data) => {
       // 1.获取应用主窗口

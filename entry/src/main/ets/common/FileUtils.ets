@@ -9,7 +9,11 @@ import Want from '@ohos.app.ability.Want';
 import fileUri from '@ohos.file.fileuri';
 import { filePreview } from '@kit.PreviewKit';
 import LocalFileSelectUtils, { FileSelectLocalFileModel } from './utils/LocalFileSelectUtils';
+import fileIo from '@ohos.file.fs';
 
+/**
+ * 文件相关操作
+ */
 export default class FileUtils {
   static createFile(context: common.Context) {
     //获取应用文件路径
@@ -53,6 +57,20 @@ export default class FileUtils {
     // 关闭文件
     fs.closeSync(srcFile);
     fs.closeSync(destFile);
+  }
+
+  /**
+   * 复制文件
+   * @param filePath 源文件所在的路径
+   * @param cachePath 移动到的目标文件所在的路径
+   */
+  static copyFileNew(filePath: string, cachePath: string): string {
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY)
+    let file2 = fileIo.openSync(cachePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE)
+    fileIo.copyFileSync(file.fd, file2.fd)
+    fileIo.closeSync(file);
+    fileIo.closeSync(file2);
+    return cachePath
   }
 
   /**
@@ -268,6 +286,23 @@ export default class FileUtils {
   static async selectFile(context: common.UIAbilityContext): Promise<Array<FileSelectLocalFileModel>> {
     const selectedFileList: Array<FileSelectLocalFileModel> = await LocalFileSelectUtils.openLocalFileSelectPageForFrag(context, 1, false, undefined)
     return selectedFileList
+  }
+
+  /**
+   * 格式化文件大小
+   */
+  static getFormatFileSize(fileSize: number): string {
+    if (fileSize < 1024) {
+      return fileSize + "B";
+    } else if (fileSize < 1024 * 1024) {
+      return (fileSize / 1024).toFixed(1) + "KB";
+    } else if (fileSize < 1024 * 1024 * 1024) {
+      return (fileSize / (1024 * 1024)).toFixed(1) + "MB";
+    } else if (fileSize < 1024 * 1024 * 1024 * 1024) {
+      return (fileSize / (1024 * 1024 * 1024)).toFixed(1) + "GB";
+    } else {
+      return (fileSize / (1024 * 1024 * 1024 * 1024)).toFixed(1) + "TB";
+    }
   }
 }
 

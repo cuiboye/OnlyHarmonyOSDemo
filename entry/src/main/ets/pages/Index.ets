@@ -242,6 +242,31 @@ struct Index {
             )
           })
 
+          Button('滚动截图').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/longscreenshot/ListSnapshot',
+              },
+              router.RouterMode.Standard,
+            )
+          }).width('calc(100% - 24vp)')
+
+          Button('保存图片到相册').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/SaveImagePage',
+              },
+            )
+          })
+
+          Button('WebView长截图').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/longscreenshot/WebLongScreenShot',
+              },
+              router.RouterMode.Standard,
+            )
+          })
 
           Button('打印机测试').onClick(() => {
             router.pushUrl(

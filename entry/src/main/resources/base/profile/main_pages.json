@@ -59,6 +59,9 @@
     "pages/TimeDemoPage",
     "pages/DateDemoPage",
     "pages/OpenCustomDialogWithListPage",
-    "pages/DayinjiDemoPage"
+    "pages/DayinjiDemoPage",
+    "pages/longscreenshot/WebLongScreenShot",
+    "pages/longscreenshot/ListSnapshot",
+    "pages/SaveImagePage"
   ]
 }
