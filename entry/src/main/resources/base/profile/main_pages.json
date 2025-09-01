@@ -62,6 +62,7 @@
     "pages/DayinjiDemoPage",
     "pages/longscreenshot/WebLongScreenShot",
     "pages/longscreenshot/ListSnapshot",
-    "pages/SaveImagePage"
+    "pages/SaveImagePage",
+    "pages/DownloadFilePage"
   ]
 }

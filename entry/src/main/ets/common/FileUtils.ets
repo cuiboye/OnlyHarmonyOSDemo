@@ -34,6 +34,32 @@ export default class FileUtils {
     fs.closeSync(file);
   }
 
+  static getFileSize(filePath: string): number {
+    if (fs.accessSync(filePath)) {
+      return fs.statSync(filePath).size;
+    }
+    return 0;
+  }
+
+  /**
+   * 移除文件
+   */
+  static cleanFile(filePath: string): void {
+    if (fs.accessSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+  }
+
+  /**
+   * 判断路径是否存在，没有就创建
+   */
+  static async directoryExists(filePath: string): Promise<void> {
+    const dirPath = filePath.substring(0, filePath.lastIndexOf('/'));
+    if (!fs.accessSync(dirPath)) {
+      fs.mkdirSync(dirPath);
+    }
+  }
+
   /**
    * 复制文件
    */
@@ -250,7 +276,7 @@ export default class FileUtils {
    * uri：文件路径
    * mimeType：文件类型
    */
-  static filePreview(context: common.UIAbilityContext,fileName: string, uri: string, mimeType: string) {
+  static filePreview(context: common.UIAbilityContext, fileName: string, uri: string, mimeType: string) {
     let fileInfo: filePreview.PreviewInfo = {
       title: fileName,
       uri: uri,
@@ -284,7 +310,8 @@ export default class FileUtils {
   }
 
   static async selectFile(context: common.UIAbilityContext): Promise<Array<FileSelectLocalFileModel>> {
-    const selectedFileList: Array<FileSelectLocalFileModel> = await LocalFileSelectUtils.openLocalFileSelectPageForFrag(context, 1, false, undefined)
+    const selectedFileList: Array<FileSelectLocalFileModel> =
+      await LocalFileSelectUtils.openLocalFileSelectPageForFrag(context, 1, false, undefined)
     return selectedFileList
   }
 

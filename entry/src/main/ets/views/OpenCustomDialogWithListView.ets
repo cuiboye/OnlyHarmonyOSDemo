@@ -14,7 +14,7 @@ interface IMoveFileParamsOptions {
   isEditing?:boolean
   folderList?: DataList[]
   onMoveListener?:OnMoveListener
-  mutilFileMoveOneFolder?:boolean//多个文件
+  mutilFileMoveOneFolder?:boolean//true：只能选一个文件夹，false：可以选多个文件夹
 }
 
 export class CollectionMoveFileParams {
@@ -91,6 +91,7 @@ struct MoveFileContent{
             },(item: string) => JSON.stringify(item))
           }
           .onAppear(()=>{
+            //这里是定位到已经选中的item的位置
             let firstSelectedIndex: number = 0
             let hasIndex: boolean = false
             this.folderInfoList.filter((item: DataList, index: number) => {

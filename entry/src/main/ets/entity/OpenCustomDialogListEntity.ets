@@ -19,8 +19,8 @@ export class DataEntity {
 }
 
 export class DataList {
-  inFolder?: string
-  canClick?: boolean = true
+  inFolder?: string //1:已选中 0:未选中
+  canClick?: boolean = true  //是否可以点击
   folderName?: string
   docNum?: string
 }
