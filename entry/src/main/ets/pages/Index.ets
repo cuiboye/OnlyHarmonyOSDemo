@@ -14,6 +14,8 @@ import data from '@ohos.telephony.data';
 import worker from '@ohos.worker';
 import {ResManager} from 'sharelibrary'
 import { BusinessError } from '@kit.BasicServicesKit';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -47,10 +49,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let wk = new worker.ThreadWorker("entry/ets/workers/worker.ts");
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.INDEX_PAGE })
 @Component
-struct Index {
-
+export struct Index {//使用 HMRouter 必须 export 这个类
   @State showImmersiveStatusBar: boolean = false;
   @State titleBarPadding: number = 0;
   array: Array<String> = ['a', 'b', 'c'];
@@ -254,6 +255,21 @@ struct Index {
             router.pushUrl(
               {
                 url: "pages/BindSheetPage",
+              },
+            )
+          })
+
+          Button('带有动画的Tabs').onClick(() => {
+            router.pushUrl(
+              {
+                url: "pages/CustomAnimatorMainPage",
+              },
+            )
+          })
+          Button('横向滚动的List定位到中间的位置').onClick(() => {
+            router.pushUrl(
+              {
+                url: "pages/HorizontalListWithCenterScollPage",
               },
             )
           })

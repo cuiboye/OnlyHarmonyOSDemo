@@ -1,14 +1,16 @@
 import router from '@ohos.router';
 import common from '@ohos.app.ability.common';
 import window from '@ohos.window';
+import { HMRouter, HMRouterMgr } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * 闪屏页面
  * 注意：闪屏页启动的时候会有白屏问题，暂时无法解决
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.SPLASH_PAGE })
 @Component
-struct Splash {
+export struct Splash {
   private swiperController: SwiperController = new SwiperController();
   private data: Resource[] = [];
   @State showSwiper: boolean = false;
@@ -31,11 +33,12 @@ struct Splash {
   }
 
   gotoMainPage() {
-    router.replaceUrl(
-      {
-        url: 'pages/Index',
-      },
-    )
+    // router.replaceUrl(
+    //   {
+    //     url: 'pages/Index',
+    //   },
+    // )
+    HMRouterMgr.push({ pageUrl: NavigationConstants.INDEX_PAGE})
   }
 
   clearTiming() {

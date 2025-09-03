@@ -6,7 +6,9 @@ import PreferencesUtil from '../common/utils/PreferencesUtil';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 
-import { router } from '@kit.ArkUI';
+import { display, router } from '@kit.ArkUI';
+import { HMRouterMgr } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 export default class EntryAbility extends UIAbility{
   //读取日历的权限
@@ -23,16 +25,23 @@ export default class EntryAbility extends UIAbility{
       //订阅事件 eventHub.on
       // eventHub.on('eventTest',this.eventTest)
       //事件回调还可以使用匿名方法的形式：
-      eventHub.on('eventTest',()=>{
-        console.info('eventHub','eventTest');
-      })
-      //带参数的事件
-      // eventHub.on('eventTestWithParams',(...data)=>{
-      //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data)}`);
-      //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data[0])}`);
-      // })
-      //带参数的事件，这样写也可以
-      eventHub.on('eventTestWithParams',this.eventTestWithParams);
+    eventHub.on('eventTest', () => {
+      console.info('eventHub', 'eventTest');
+    })
+    //带参数的事件
+    // eventHub.on('eventTestWithParams',(...data)=>{
+    //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data)}`);
+    //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data[0])}`);
+    // })
+    //带参数的事件，这样写也可以
+    eventHub.on('eventTestWithParams', this.eventTestWithParams);
+
+    //初始化HMRouter
+    //日志开启需在init之前调用，否则会丢失初始化日志
+    HMRouterMgr.openLog("INFO")
+    HMRouterMgr.init({
+      context: this.context
+    })
   }
 
   eventTestWithParams(...data:Object[]){
@@ -62,7 +71,7 @@ export default class EntryAbility extends UIAbility{
     let record:Record<string,number> = {'localStorageShare':99}
     let storage: LocalStorage = new LocalStorage(record);
     //通过 windowStage.loadContent 加载LocalStorage
-    windowStage.loadContent('pages/Splash', storage,(err, data) => {
+    windowStage.loadContent(NavigationConstants.INIT_PAGE, storage,(err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -103,6 +112,24 @@ export default class EntryAbility extends UIAbility{
 
       this.requestPermission();
     })
+
+    this.monitorScreenDisplay();
+  }
+
+  private monitorScreenDisplay() {
+    let displayClass: display.Display | null = null;
+    displayClass = display.getDefaultDisplaySync();
+    // 获取屏幕宽度
+    console.info(`The screen width is ${px2vp(displayClass.width)}.`);
+    AppStorage.setOrCreate('displayWidth', px2vp(displayClass.width));
+    AppStorage.setOrCreate('displayHeight', px2vp(displayClass.height));
+
+    display.on("change", () => {
+      const displayInstance = display.getDefaultDisplaySync();
+      AppStorage.setOrCreate('displayWidth', px2vp(displayInstance.width));
+      AppStorage.setOrCreate('displayHeight', px2vp(displayInstance.height));
+
+    });
   }
 
   /**

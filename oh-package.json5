@@ -11,11 +11,12 @@
   "version": "1.0.0",
   "dependencies": {
     "@ohos/axios": "^2.2.4",
-    "@abner/refresh_v2": "^1.0.1",//listview上下加载下拉刷新
+    "@abner/refresh_v2": "^1.0.1",
     "class-transformer": "^0.5.1",
-    "@ohos/lottie": "^2.0.22"//lottie动画
+    "@ohos/lottie": "^2.0.22",//动画库
+    "@hadss/hmrouter": "^1.2.0-rc.0",//hmrouter库
+    "@hadss/hmrouter-transitions": "^1.2.0-rc.0"//hmrouter高级转场动画，安装转场动画库
   },
-  "overrides": {
-  },
+  "overrides": {},
   "dynamicDependencies": {}
 }
