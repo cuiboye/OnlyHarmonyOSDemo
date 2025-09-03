@@ -63,6 +63,8 @@
     "pages/longscreenshot/WebLongScreenShot",
     "pages/longscreenshot/ListSnapshot",
     "pages/SaveImagePage",
-    "pages/DownloadFilePage"
+    "pages/DownloadFilePage",
+    "pages/StaggeredGridPage",
+    "pages/BindSheetPage"
   ]
 }

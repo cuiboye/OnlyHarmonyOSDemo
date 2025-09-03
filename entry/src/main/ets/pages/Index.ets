@@ -242,14 +242,21 @@ struct Index {
             )
           })
 
-          // Button('使用ShareKit进行系统分享').onClick(() => {
-          //   router.pushUrl(
-          //     {
-          //       url: 'pages/OpenCustomDialogWithListPage',
-          //     },
-          //     router.RouterMode.Standard, //跳转模式 Single/Stantard
-          //   )
-          // })
+          Button('瀑布流').onClick(() => {
+            router.pushUrl(
+              {
+                url: "pages/StaggeredGridPage",
+              },
+            )
+          })
+
+          Button('bindSheet的使用').onClick(() => {
+            router.pushUrl(
+              {
+                url: "pages/BindSheetPage",
+              },
+            )
+          })
 
           Button('使用axios下载文件').onClick(() => {
             router.pushUrl(

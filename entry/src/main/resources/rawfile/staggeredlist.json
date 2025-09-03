@@ -1,0 +1,225 @@
+{
+  "status": {
+    "code": 0,
+    "msg": "success",
+    "sLogid": "0751350763"
+  },
+  "data": {
+    "list": [{
+
+      "title": "美丽的月球",
+      "images": [{
+        "url": "https://wenku-ai-doc.cdn.bcebos.com/wkapp/handcopy/bd96e7150f22590102020740be1e650e53eacf3d/1.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_30\u0026authorization=bce-auth-v1%2F46dc8cc346744dad800651823a96d9cd%2F2025-09-01T03%3A12%3A31Z%2F7200%2Fhost%2Ffad7f013a93786a4ef79ca512bd54b4e431982ac21e08c4e7347ed45bae896c4",
+        "width": "1440",
+        "height": "1080"
+      }, {
+        "url": "https://wenku-ai-doc.cdn.bcebos.com/wkapp/handcopy/bd96e7150f22590102020740be1e650e53eacf3d/3.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_30\u0026authorization=bce-auth-v1%2F46dc8cc346744dad800651823a96d9cd%2F2025-09-01T03%3A12%3A31Z%2F7200%2Fhost%2Fef92b52378352cd47fd29f9b930444ec665b4ea64c5555648162bae6077f46b0",
+        "width": "1440",
+        "height": "1080"
+      }, {
+        "url": "https://wenku-ai-doc.cdn.bcebos.com/wkapp/handcopy/bd96e7150f22590102020740be1e650e53eacf3d/2.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_30\u0026authorization=bce-auth-v1%2F46dc8cc346744dad800651823a96d9cd%2F2025-09-01T03%3A12%3A31Z%2F7200%2Fhost%2F6ff0c8f63728d4b2a873d394213d23560704e369f427e1ed59aa706f3bb51830",
+        "width": "1440",
+        "height": "1080"
+      }, {
+        "url": "https://wenku-ai-doc.cdn.bcebos.com/wkapp/handcopy/bd96e7150f22590102020740be1e650e53eacf3d/4.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_30\u0026authorization=bce-auth-v1%2F46dc8cc346744dad800651823a96d9cd%2F2025-09-01T03%3A12%3A31Z%2F7200%2Fhost%2F2ebccecf99b0dedecd2f73930d116d74d12eccca694c9324dc3cdd8bffa1cd0f",
+        "width": "1440",
+        "height": "1080"
+      }],
+      "type": 4,
+      "videos": []
+    }, {
+      "title": "一键生成招聘广告",
+      "content": "好用",
+      "images": [{
+        "url": "https://wenku-mmdata.cdn.bcebos.com/poster/e97a71cc856fb84ae45c3b3567ec102de2bddfba/v1/cover.png?auth_key=2072056351-fileparams_12621380-Ojo6Og%3D%3D-a492c7488e757540044a1797db790983\u0026x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_50",
+        "width": "1242",
+        "height": "2208"
+      }],
+      "type": 3
+    }, {
+      "title": "",
+      "images": [{
+        "url": "https://wenku-mmdata.cdn.bcebos.com/poster/e371a32b4593daef5ef7ba0d4a7302768f996fe2/v1/cover.png?auth_key=2072056351-fileparams_14352094-Ojo6Og%3D%3D-f8b250f9ab205515873edcff589a6ba4\u0026x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_50",
+        "width": "1080",
+        "height": "1920"
+      }],
+      "type": 3
+    }, {
+
+      "title": "asdf",
+      "images": [{
+        "url": "https://irag-image.cdn.bcebos.com/visirag/ea7e50fd8bd63186bcebbcf1/12e4b474849ca7533dbac07cdc426a4e.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_50",
+        "width": "1024",
+        "height": "1024"
+      }],
+      "type": 7
+    }, {
+
+      "title": "教学设计模板",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/b0b3a94acec789eb172ded630b1c59eef9c79a42?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=bffe0e3ec082c4ab9ed3e1bc06db25a5\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=e7e5002f91",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/b0b3a94acec789eb172ded630b1c59eef9c79a42?aimh=0\u0026aimw=0\u0026jpg=156955-287105\u0026md5sum=bffe0e3ec082c4ab9ed3e1bc06db25a5\u0026o=jpg_6\u0026pn=2\u0026png=156955-287105\u0026sign=e7e5002f91",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/b0b3a94acec789eb172ded630b1c59eef9c79a42?aimh=0\u0026aimw=0\u0026jpg=287106-452028\u0026md5sum=bffe0e3ec082c4ab9ed3e1bc06db25a5\u0026o=jpg_6\u0026pn=3\u0026png=287106-452028\u0026sign=e7e5002f91",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/b0b3a94acec789eb172ded630b1c59eef9c79a42?aimh=0\u0026aimw=0\u0026jpg=452029-506402\u0026md5sum=bffe0e3ec082c4ab9ed3e1bc06db25a5\u0026o=jpg_6\u0026pn=4\u0026png=452029-506402\u0026sign=e7e5002f91",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "红色硕士研究生复试答辩毕业答辩论文答辩PPT",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/36b3502811a6f524ccbff121dd36a32d7375c7d8?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=f549e78c3bfd894aa6bc7f0b98b1bc98\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=b434ec6adf",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/36b3502811a6f524ccbff121dd36a32d7375c7d8?aimh=0\u0026aimw=0\u0026jpg=37800-70333\u0026md5sum=f549e78c3bfd894aa6bc7f0b98b1bc98\u0026o=jpg_6\u0026pn=2\u0026png=37800-70333\u0026sign=b434ec6adf",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "中医养生PPT模板中国风中药草药医学医疗医院医生传统文化课件ppt (56)",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/dea2e727336c1eb91b375d33?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=9a2ab8c829710d15f28890c54d7e3b3e\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=7c2ba031f3",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "卡通圣诞节派礼啦圣诞节营销活动策划圣诞节节日由来PPT模板课件",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/98d47653854769eae009581b6bd97f192279bf36?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=6cc0cf5977769e227fae8e1ed23058dd\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=e4b58bdcf0",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/98d47653854769eae009581b6bd97f192279bf36?aimh=0\u0026aimw=0\u0026jpg=57612-106471\u0026md5sum=6cc0cf5977769e227fae8e1ed23058dd\u0026o=jpg_6\u0026pn=2\u0026png=57612-106471\u0026sign=e4b58bdcf0",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/98d47653854769eae009581b6bd97f192279bf36?aimh=0\u0026aimw=0\u0026jpg=106472-160237\u0026md5sum=6cc0cf5977769e227fae8e1ed23058dd\u0026o=jpg_6\u0026pn=3\u0026png=106472-160237\u0026sign=e4b58bdcf0",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "小学说课公开课教学课件模板ppt(2)(卡通风)",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/afc6fbb34bfe04a1b0717fd5360cba1aa8118cb8?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=cd2e677d2b42be2e49e9a87372277116\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=591c6331d0",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "中小学开学第一课 (158)",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/6d6d6c8bb9f67c1cfad6195f312b3169a451eabb?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=2a2258db8736fd78e7bdc783e5537bfa\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=9afad631c2",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/6d6d6c8bb9f67c1cfad6195f312b3169a451eabb?aimh=0\u0026aimw=0\u0026jpg=109380-216105\u0026md5sum=2a2258db8736fd78e7bdc783e5537bfa\u0026o=jpg_6\u0026pn=2\u0026png=109380-216105\u0026sign=9afad631c2",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+
+      "title": "个人竞聘简历简历竞聘PPT",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/82283454af1ffc4ffe47ac4a?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=82d86c6d563df75f6a0e9e7cb189336f\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=680e44a5b8",
+        "width": "1440",
+        "height": "810"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/82283454af1ffc4ffe47ac4a?aimh=0\u0026aimw=0\u0026jpg=94771-175441\u0026md5sum=82d86c6d563df75f6a0e9e7cb189336f\u0026o=jpg_6\u0026pn=2\u0026png=178366-211042\u0026sign=680e44a5b8",
+        "width": "1440",
+        "height": "810"
+      }],
+      "type": 5
+    }, {
+      "title": "3D立体小狗萌化心🐶，大眼睛超治愈！",
+      "images": [{
+        "url": "https://irag-image.cdn.bcebos.com/visirag/130054c0f18583d04864590d/cb8d7fcbebd0d52ab40a6c701be9ccb0.png?x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_50",
+        "width": "880",
+        "height": "1168"
+      }],
+      "type": 7
+    }, {
+
+      "title": "医院年终工作总结汇报PPT模板(超清)",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/35d05c17f12d2af90242e64d?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=c67199a615a82e4e432cb8445957de93\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=316fc4e8f9",
+        "width": "1080",
+        "height": "608"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/35d05c17f12d2af90242e64d?aimh=0\u0026aimw=0\u0026jpg=87302-179147\u0026md5sum=c67199a615a82e4e432cb8445957de93\u0026o=jpg_6\u0026pn=2\u0026png=72074-158370\u0026sign=316fc4e8f9",
+        "width": "1080",
+        "height": "608"
+      }],
+      "type": 5
+    }, {
+
+      "title": "幼儿园膳食伙委会PPT",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/4bc4057b11a6f524ccbff121dd36a32d7375c7c0?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=55ee29afbd83c154fdad9343a1cdb521\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=f223fc7bdd",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+
+      "title": "工笔画主题中国风模板A18",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/ce0d5041bdd126fff705cc1755270722192e59b4?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=27e14b23c38ceb74fba2c4cb471a37ff\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=c240a6bd00",
+        "width": "960",
+        "height": "540"
+      }, {
+        "url": "https://wkretype.bdimg.com/retype/zoom/ce0d5041bdd126fff705cc1755270722192e59b4?aimh=0\u0026aimw=0\u0026jpg=295500-552782\u0026md5sum=27e14b23c38ceb74fba2c4cb471a37ff\u0026o=jpg_6\u0026pn=2\u0026png=295500-552782\u0026sign=c240a6bd00",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+
+      "title": "1320【板岩暗蓝灰主题】山东第一医科大学开题报告毕业答辩PPT模版",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/5114cb06767f5acfa1c7cd4e?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=6ca3f07086696ad6446dbeed5f1c4a3d\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=29b9dcf430",
+        "width": "1440",
+        "height": "810"
+      }],
+      "type": 5
+    }, {
+      "title": "风险管理与合规经营在医疗美容行业",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/a08bc422bf1e650e52ea551810a6f524ccbfcbbd?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=e4667abb012f05726ea24f0d61fc7d16\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=489062153f",
+        "width": "960",
+        "height": "540"
+      }],
+      "type": 5
+    }, {
+      "title": "可爱卡通风小学生家长会主题班会PPT模板",
+      "images": [{
+        "url": "https://wkretype.bdimg.com/retype/zoom/d18940cc76eeaeaad1f33096?aimh=0\u0026aimw=0\u0026jpg=0-\u0026md5sum=016700209d158f2ccdad8951e82e4ce8\u0026o=jpg_6\u0026pn=1\u0026png=0-\u0026sign=1e8dab83e0",
+        "width": "1440",
+        "height": "810"
+      }],
+      "type": 5
+    }, {
+      "title": "立春节气主题海报",
+      "images": [{
+        "url": "https://wenku-mmdata.cdn.bcebos.com/poster/94fe5d732b4ac850ad02de80d4d8d15abf23005a/v1/cover.png?auth_key=2072056351-fileparams_5586231-Ojo6Og%3D%3D-5ea770982bfab3c9845dd20298ec36df\u0026x-bce-process=image%2Fformat%2Cf_webp%2Fquality%2Cq_50",
+        "width": "1242",
+        "height": "2208"
+      }],
+      "type": 3
+    }],
+    "hasMore": true
+  }
+}

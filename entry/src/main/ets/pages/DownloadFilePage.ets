@@ -2,19 +2,39 @@ import axios from '@ohos/axios';
 import { CommonHeader } from '../common/common_header'
 import FileUtils from '../common/FileUtils';
 import { common } from '@kit.AbilityKit';
+import { SystemShareUtils } from '../common/utils/SystemShareUtils';
 
 @Entry
 @Component
 struct DownloadFilePage {
   context = getContext(this) as common.UIAbilityContext
   @State progress: number = 0
+  shareFilePath: string = ""
 
   build() {
     Column() {
       CommonHeader()
       Button('下载文件')
-        .onClick(() => {
-          this.downloadFile("")
+        .onClick(async () => {
+          //判断文件是否存在
+          let applicationContext = this.context.getApplicationContext();
+          const targetPath = `${applicationContext.filesDir}/app/wajiu.apk`;
+          let fileExists = FileUtils.fileExists(targetPath)
+          if(fileExists){
+            const uri = 'file://' + getContext().applicationInfo.name + targetPath;
+            const uniformDataType = SystemShareUtils.getUniformDataType(FileUtils.getFileExtention(this.shareFilePath))
+            SystemShareUtils.share(this.getUIContext(), uri,uniformDataType)
+
+            return
+          }
+          //不存在先下载文件
+          let downloadSuccess = await this.downloadFile("https://cos3.pgyer.com/637012afb53cc81401afec0d9d24e596.apk?sign=320b6fd324ad1f1ad2e10bd09a76d2d7&sign2=35deeae6367753036b882fd4f91649db&t=1756711574&response-content-disposition=attachment%3Bfilename%3D%22%E6%8C%96%E9%85%92%E7%BD%91_3.81.5-debug.apk%22")
+          if(downloadSuccess){
+            const uri = 'file://' + getContext().applicationInfo.name + this.shareFilePath;
+
+            const uniformDataType = SystemShareUtils.getUniformDataType(FileUtils.getFileExtention(this.shareFilePath))
+            SystemShareUtils.share(this.getUIContext(), uri,uniformDataType)
+          }
         })
       Text(`当前下载进度为：${this.progress}`)
     }
@@ -26,7 +46,7 @@ struct DownloadFilePage {
     // 1. 创建路径
     let applicationContext = this.context.getApplicationContext();
     const targetPath = `${applicationContext.filesDir}/app/wajiu.apk`;
-
+    this.shareFilePath = targetPath
     try {
       await FileUtils.directoryExists(targetPath);
       // 2. 开始下载文件

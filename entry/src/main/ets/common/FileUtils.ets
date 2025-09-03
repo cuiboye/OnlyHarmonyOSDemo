@@ -51,6 +51,17 @@ export default class FileUtils {
   }
 
   /**
+   * 判断文件是否存在
+   */
+  static fileExists(filePath: string): boolean {
+    try {
+      return fs.accessSync(filePath);
+    } catch {
+      return false;
+    }
+  }
+
+  /**
    * 判断路径是否存在，没有就创建
    */
   static async directoryExists(filePath: string): Promise<void> {
@@ -209,7 +220,7 @@ export default class FileUtils {
   }
 
   /**
-   * 分享文件
+   * 使用Want分享文件
    */
   static shareFile(context: common.UIAbilityContext) {
     // 获取文件的沙箱路径
