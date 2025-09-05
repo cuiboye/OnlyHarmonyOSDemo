@@ -14,7 +14,7 @@ import data from '@ohos.telephony.data';
 import worker from '@ohos.worker';
 import {ResManager} from 'sharelibrary'
 import { BusinessError } from '@kit.BasicServicesKit';
-import { HMRouter } from '@hadss/hmrouter';
+import { HMRouter, HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
@@ -300,13 +300,12 @@ export struct Index {//使用 HMRouter 必须 export 这个类
             )
           })
 
+          Button('使用Controller实现子组件监听父组件中的方法').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CHILDLISTENERFATHERFUNCTION_PAGE})
+          })
+
           Button('WebView长截图').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/longscreenshot/WebLongScreenShot',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WEBLONGSCREENSHOT_PAGE})
           })
 
           Button('打印机测试').onClick(() => {

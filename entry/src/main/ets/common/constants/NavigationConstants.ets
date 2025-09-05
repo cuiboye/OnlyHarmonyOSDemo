@@ -9,4 +9,6 @@ export class NavigationConstants {
   static readonly INIT_PAGE: string = 'pages/InitPage';
   static readonly SPLASH_PAGE: string = 'SPLASH_PAGE';
   static readonly INDEX_PAGE: string = 'INDEX_PAGE';
+  static readonly WEBLONGSCREENSHOT_PAGE: string = 'WEBLONGSCREENSHOT_PAGE';
+  static readonly CHILDLISTENERFATHERFUNCTION_PAGE: string = 'CHILDLISTENERFATHERFUNCTION_PAGE';
 }
