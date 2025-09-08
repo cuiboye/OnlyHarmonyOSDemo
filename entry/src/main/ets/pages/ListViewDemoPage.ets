@@ -8,10 +8,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { CustomFooterLayoutView } from '../views/CustomFooterLayoutView';
 import { CustomHeaderLayoutView } from '../views/CustomHeaderLayoutView';
 import { systemDateTime } from '@kit.BasicServicesKit';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
 @Component
-struct ListViewDemoPage {
+export struct ListViewDemoPage {
   controller: RefreshController = new RefreshController() // 刷新控制器
   lazyDataSource: RefreshDataSource = new RefreshDataSource() // 懒加载数据
   @State listState: number = ListState.Loading

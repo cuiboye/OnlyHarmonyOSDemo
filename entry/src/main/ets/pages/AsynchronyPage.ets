@@ -1,12 +1,14 @@
 /**
  * 异步操作
  */
+import { HMRouter } from '@hadss/hmrouter'
 import { BusinessError } from '@kit.BasicServicesKit'
 import { CommonHeader } from '../common/common_header'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.ASYNCHRONY_PAGE })
 @Component
-struct AsynchronyPage {
+export struct AsynchronyPage {
   @State message: string = 'Hello World'
 
   build() {

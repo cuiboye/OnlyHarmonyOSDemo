@@ -5,13 +5,15 @@ import LocalFileSelectUtils, { FileSelectLocalFileModel } from '../common/utils/
 import { CommonHeader } from '../common/common_header';
 import { common } from '@kit.AbilityKit';
 import FileUtils from '../common/FileUtils';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { HMRouter } from '@hadss/hmrouter';
 
 /**
  * 测试打印机功能
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.DAYINJIDEMO_PAGE })
 @Component
-struct DayinjiDemoPage {
+export struct DayinjiDemoPage {
 
 
   //文件预览功能，使用的是Preview Kit：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/preview-api

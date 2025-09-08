@@ -1,6 +1,6 @@
 import mediaQuery from '@ohos.mediaquery';
 /**
- * 多屏幕适配工具类
+ * 多屏幕适配工具类   使用折叠屏已经验证成功
  */
 interface MediaQueryResult {
   matches: boolean
@@ -21,6 +21,8 @@ export default class BreakpointSystem {
 
   private isBreakpointSM = (mediaQueryResult: MediaQueryResult) => {
     if (mediaQueryResult.matches) {
+      //当屏幕尺寸发生变化时，执行这里
+      console.log('isBreakpointSM')
       this.updateCurrentBreakpoint('sm')
       AppStorage.Set<number>('fontSize', 14)
       AppStorage.Set<number>('coverMargin', 10)
@@ -28,6 +30,8 @@ export default class BreakpointSystem {
   }
   private isBreakpointMD = (mediaQueryResult: MediaQueryResult) => {
     if (mediaQueryResult.matches) {
+      //当屏幕尺寸发生变化时，执行这里
+      console.log('isBreakpointMD')
       this.updateCurrentBreakpoint('md')
       AppStorage.Set<number>('fontSize', 16)
       AppStorage.Set<number>('coverMargin', 30)
@@ -35,6 +39,8 @@ export default class BreakpointSystem {
   }
   private isBreakpointLG = (mediaQueryResult: MediaQueryResult) => {
     if (mediaQueryResult.matches) {
+      //当屏幕尺寸发生变化时，执行这里
+      console.log('isBreakpointLG')
       this.updateCurrentBreakpoint('lg')
       AppStorage.Set<number>('fontSize', 18)
       AppStorage.Set<number>('coverMargin', 40)

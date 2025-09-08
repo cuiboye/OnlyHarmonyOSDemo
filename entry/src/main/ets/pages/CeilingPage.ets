@@ -1,13 +1,15 @@
 /**
  * 吸顶效果
  */
+import { HMRouter } from '@hadss/hmrouter'
 import { common } from '@kit.AbilityKit'
 import { window } from '@kit.ArkUI'
 import { CommonStatusBar } from '../common/common_top_statusbar'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.CEILING_PAGE })
 @Component
-struct CeilingPage {
+export struct CeilingPage {
   @State list: number[] = []
   private context = getContext(this) as common.UIAbilityContext
 

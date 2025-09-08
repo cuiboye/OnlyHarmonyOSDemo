@@ -3,6 +3,7 @@ import { CommonHeader } from "../../common/common_header";
 import { NavigationConstants } from "../../common/constants/NavigationConstants";
 import { ChildComponent } from "./ChildComponent";
 import { MyController } from "./MyController";
+import { promptAction } from "@kit.ArkUI";
 
 /**
  * 1）子组件监听父组件中的方法操作：使用controller
@@ -12,7 +13,6 @@ import { MyController } from "./MyController";
 @Component
 export struct ChildListenerFatherFunctionPage {
   controller: MyController = new MyController()
-
   build() {
     Column() {
       CommonHeader()
@@ -21,7 +21,9 @@ export struct ChildListenerFatherFunctionPage {
           this.controller.onClickFatherFunction('父组件执行了方法')
         })
 
-      ChildComponent({controller:this.controller})
+      ChildComponent({controller:this.controller,onChildComponentClick:(value:string)=>{
+        promptAction.showToast({message:`接收到的子组件的值为：${value}`})
+      }})
     }
   }
 }

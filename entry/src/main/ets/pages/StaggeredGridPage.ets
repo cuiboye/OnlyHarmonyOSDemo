@@ -4,11 +4,13 @@ import { StaggeredGridItemView } from '../views/StaggeredGridItemView';
 import { common } from '@kit.AbilityKit';
 import { util } from '@kit.ArkTS';
 import { CommonHeader } from '../common/common_header';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { HMRouter } from '@hadss/hmrouter';
 
 /**
  * 瀑布流
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.STAGGEREDGRID_PAGE })
 @Component
 export struct StaggeredGridPage {
   controller: RefreshController = new RefreshController() // 刷新控制器

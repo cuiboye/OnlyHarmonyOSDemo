@@ -6,10 +6,12 @@ import image from '@ohos.multimedia.image';
 import { CommonHeader } from '../common/common_header'
 import CarameUtils from '../common/utils/CarameUtils';
 import { common } from '@kit.AbilityKit';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.CAMERA_PAGE })
 @Component
-struct CameraPage {
+export struct CameraPage {
   //拍照的权限
   private permissions: Array<Permissions> = ['ohos.permission.CAMERA'];
   private  context = getContext(this) as common.UIAbilityContext

@@ -10,13 +10,15 @@ import PermissionUtils from '../common/utils/PermissionUtils'
 import axios from '@ohos/axios'
 import fs from '@ohos.file.fs';
 import { promptAction } from '@kit.ArkUI'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+import { HMRouter } from '@hadss/hmrouter'
 
 /**
  * 保存图片到相册
  */
-@Entry
+@HMRouter({pageUrl:NavigationConstants.SAVEIMAGE_PAGE})
 @Component
-struct SaveImagePage {
+export struct SaveImagePage {
   private context = getContext(this) as common.UIAbilityContext
   private permissions: Array<Permissions> = ['ohos.permission.WRITE_MEDIA'];
   build() {

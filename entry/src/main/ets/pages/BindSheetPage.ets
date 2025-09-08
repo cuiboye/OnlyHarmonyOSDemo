@@ -1,11 +1,13 @@
+import { HMRouter } from '@hadss/hmrouter';
 import { CommonHeader } from '../common/common_header';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * bindSheet的使用
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.BINDSHEET_PAGE })
 @Component
-struct BindSheetPage {
+export struct BindSheetPage {
   @State showDialog: boolean = false
 
   build() {

@@ -1,15 +1,15 @@
 import { CommonHeader } from '../common/common_header';
 import { TimeUtils } from '../common/utils/TimeUtils';
 import { promptAction } from '@kit.ArkUI';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * 时间相关操作
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.TIMEDEMO_PAGE })
 @Component
-struct TimeDemoPage {
-  @State message: string = 'Hello World';
-
+export struct TimeDemoPage {
   build() {
     Column(){
       CommonHeader()

@@ -1,12 +1,14 @@
+import { HMRouter } from "@hadss/hmrouter"
 import { drawing } from "@kit.ArkGraphics2D"
 import { CommonHeader } from "../common/common_header"
+import { NavigationConstants } from "../common/constants/NavigationConstants"
 
 /**
  * 横向滚动的List-定位到中间，设置开始和结束位置的偏移量
  */
-@Entry
+@HMRouter({pageUrl:NavigationConstants.HORIZONTALLISTWITHCENTERSCOLL_PAGE})
 @Component
-struct HorizontalListWithCenterScollPage {
+export struct HorizontalListWithCenterScollPage {
   private firstLevelListScroller: Scroller = new Scroller()
   @State selectFirstLevelIndex: number = 0 //一级类别选中项
   @StorageProp('displayWidth') displayWidth: number = 0

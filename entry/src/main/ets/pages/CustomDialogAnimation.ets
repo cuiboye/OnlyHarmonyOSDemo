@@ -1,3 +1,5 @@
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 import { AnimationUtil } from '../common/utils/AnimationUtil';
 
 let anmDuration: number = 800;
@@ -43,16 +45,16 @@ struct CustomDialogExample {
 
   // 延迟关闭弹窗，让自定义的出场动画显示
   cancel() {
-    this.showFlag = Visibility.None //这里需要是Visibility.Hidden，不能是Visibility.None,否则弹框会直接消失
+    this.showFlag = Visibility.Hidden //这里需要是Visibility.Hidden，不能是Visibility.None,否则弹框会直接消失
     setTimeout(() => {
       this.controller.close()
     }, 200) //这个时间是背景色的展示和消失的时间
   }
 }
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.CUSTOMDIALOGANIMATION_PAGE })
 @Component
-struct CustomDialogAnimation {
+export struct CustomDialogAnimation {
   // 是否允许点击遮障层退出
   @State isAutoCancel: boolean = true;
   dialogController: CustomDialogController = new CustomDialogController({

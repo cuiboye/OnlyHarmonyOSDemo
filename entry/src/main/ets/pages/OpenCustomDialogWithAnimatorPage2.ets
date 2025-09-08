@@ -1,13 +1,15 @@
+import { HMRouter } from '@hadss/hmrouter';
 import { ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * openCustomDialog-进入退出动画,直接使用系统提供的dialog和背景的动画
  * api19之上才能生效，19之下测试了没有生效
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHANIMATOR_PAGE2 })
 @Component
-struct OpenCustomDialogWithAnimatorPage2 {
+export struct OpenCustomDialogWithAnimatorPage2 {
   private customDialogComponentId: number = 0
   @Builder
   customDialogComponent() {

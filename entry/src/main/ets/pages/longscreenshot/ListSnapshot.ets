@@ -22,6 +22,8 @@ import { PopupUtils } from './PopupUtils';
 import { ImageUtils } from './ImageUtils';
 import { CommonUtils } from './CommonUtils';
 import { Logger } from './Logger';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../../common/constants/NavigationConstants';
 
 const LIST_ID = 'LIST_ID';
 
@@ -29,7 +31,7 @@ const LIST_ID = 'LIST_ID';
 // [Start component]
 // [Start context]
 // src/main/ets/view/ScrollSnapshot.ets
-@Entry
+@HMRouter({pageUrl:NavigationConstants.LONGLISTSCREENSHOT_PAGE})
 @Component
 export struct ListSnapshot {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;

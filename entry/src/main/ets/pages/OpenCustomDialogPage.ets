@@ -1,4 +1,6 @@
+import { HMRouter, HMRouterMgr } from '@hadss/hmrouter';
 import { ComponentContent, router } from '@kit.ArkUI';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 import { OpenCustomDialogUtils } from '../common/utils/OpenCustomDialogUtils';
 
 class Params {
@@ -34,7 +36,7 @@ function buildText2(result: string) {
 }
 
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.OPENCUSTOMDIALOG_PAGE })
 @Component
 export struct OpenCustomDialogPage {
   @State message: string = "hello";
@@ -85,20 +87,12 @@ export struct OpenCustomDialogPage {
         Button("阴影+进入退出的动画")
           .margin({ top: 50 })
           .onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/OpenCustomDialogWithAnimatorPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHANIMATOR_PAGE})
           })
         Button("api19上直接使用系统提供的dialog和背景的动画")
           .margin({ top: 50 })
           .onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/OpenCustomDialogWithAnimatorPage2',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHANIMATOR_PAGE2})
           })
       }
       .width('100%')

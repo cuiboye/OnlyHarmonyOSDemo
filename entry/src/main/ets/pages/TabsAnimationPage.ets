@@ -1,8 +1,10 @@
+import { HMRouter } from '@hadss/hmrouter';
 import { display } from '@kit.ArkUI';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.TABSANIMATION_PAGE })
 @Component
-struct TabsAnimationPage{
+export struct TabsAnimationPage{
   tabsController: TabsController = new TabsController();
   pageInfos: NavPathStack = new NavPathStack()
   beginMoveTime :number = 0;

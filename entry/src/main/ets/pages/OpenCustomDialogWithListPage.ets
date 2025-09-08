@@ -5,10 +5,15 @@ import { DataList, OpenCustomDialogListEntity } from '../entity/OpenCustomDialog
 import { CollectionMoveFileParams, moveFileBuilder, OnMoveListener } from '../views/OpenCustomDialogWithListView';
 import { ComponentContent, promptAction } from '@kit.ArkUI';
 import { OpenCustomDialogUtils } from '../common/utils/OpenCustomDialogUtils';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+/**
+ * openCustomDialog中展示List
+ */
+@HMRouter({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHLIST_PAGE })
 @Component
-struct OpenCustomDialogWithListPage {
+export struct OpenCustomDialogWithListPage {
   @State folderInfoList: DataList[] = []
   private ctx: UIContext = this.getUIContext();
   mutilFileMoveOneFolder:boolean = false//true：可以选择一个  false：可以选择多个

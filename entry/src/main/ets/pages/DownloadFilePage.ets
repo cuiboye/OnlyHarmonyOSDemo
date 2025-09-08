@@ -3,10 +3,12 @@ import { CommonHeader } from '../common/common_header'
 import FileUtils from '../common/FileUtils';
 import { common } from '@kit.AbilityKit';
 import { SystemShareUtils } from '../common/utils/SystemShareUtils';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+@HMRouter({pageUrl:NavigationConstants.DOWNLOADFILE_PAGE})
 @Component
-struct DownloadFilePage {
+export struct DownloadFilePage {
   context = getContext(this) as common.UIAbilityContext
   @State progress: number = 0
   shareFilePath: string = ""

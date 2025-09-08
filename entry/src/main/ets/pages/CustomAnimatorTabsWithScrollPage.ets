@@ -1,4 +1,6 @@
+import { HMRouter } from "@hadss/hmrouter";
 import { CommonHeader } from "../common/common_header";
+import { NavigationConstants } from "../common/constants/NavigationConstants";
 import { ComponentFactory } from "../tabs_animator/ComponentFactory";
 import { TabsBean } from "../tabs_animator/TabItemBean";
 import { CustomAnimatorTabs } from "../views/CustomAnimatorTabs";
@@ -7,7 +9,7 @@ import { CustomAnimatorWithScrollTabs } from "../views/CustomAnimatorWithScrollT
 /**
  * 带有动画的tabs-可滚动
  */
-@Entry
+@HMRouter({pageUrl:NavigationConstants.CUSTOMANIMATORTABSWITHSCROLL_PAGE})
 @Component
 export struct CustomAnimatorTabsWithScrollPage {
   private ctx: UIContext = this.getUIContext();

@@ -1,6 +1,9 @@
-@Entry
+import { HMRouter } from "@hadss/hmrouter"
+import { NavigationConstants } from "../common/constants/NavigationConstants"
+
+@HMRouter({ pageUrl: NavigationConstants.COLORTRANSITIONDEMO_PAGE })
 @Component
-struct ColorTransitionDemoPage {
+export struct ColorTransitionDemoPage {
   @State colorValue: string = '#00a0e9' // 初始颜色
   @State offsetX: number = 0 // 滑动距离
 

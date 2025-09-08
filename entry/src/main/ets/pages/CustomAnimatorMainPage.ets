@@ -1,27 +1,20 @@
-import { router } from '@kit.ArkUI'
+import { HMRouter, HMRouterMgr } from '@hadss/hmrouter'
 import { CommonHeader } from '../common/common_header'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.CUSTOMANIMATORMAIN_PAGE })
 @Component
-struct CustomAnimatorMainPage {
+export struct CustomAnimatorMainPage {
   build() {
     Column() {
       CommonHeader()
       Button('非滚动的tabs带有动画')
-        .onClick(()=>{
-          router.pushUrl(
-            {
-              url: "pages/CustomAnimatorTabsPage",
-            },
-          )
+        .onClick(() => {
+          HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMANIMATORTABS_PAGE })
         })
       Button('滚动的tabs带有动画')
-        .onClick(()=>{
-          router.pushUrl(
-            {
-              url: "pages/CustomAnimatorTabsWithScrollPage",
-            },
-          )
+        .onClick(() => {
+          HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMANIMATORTABSWITHSCROLL_PAGE })
         })
     }
     .height('100%')

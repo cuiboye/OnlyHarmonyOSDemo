@@ -1,3 +1,6 @@
+import { HMRouter } from "@hadss/hmrouter"
+import { NavigationConstants } from "../common/constants/NavigationConstants"
+
 class Task {
   static id: number = 1
   name: string = '任务名称' + Task.id++
@@ -10,7 +13,7 @@ class TaskChild{
   childName:string = ''
 }
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.PROGRESS_TASK })
 @Component
 export struct ProgressTask {
   //总的任务数

@@ -1,11 +1,13 @@
+import { HMRouter } from '@hadss/hmrouter';
 import { ComponentContent } from '@kit.ArkUI';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * openCustomDialog-进入退出动画
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHANIMATOR_PAGE })
 @Component
-struct OpenCustomDialogPage {
+export struct OpenCustomDialogWithAnimatorPage {
   @State message: string = 'Hello World';
   @State delayNumber: number = 3000
 

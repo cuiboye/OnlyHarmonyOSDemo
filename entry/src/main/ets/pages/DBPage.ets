@@ -1,12 +1,14 @@
-/**
- * 数据库
- */
 import KvManagerUtils from '../common/KvManagerUtils'
 import { common } from '@kit.AbilityKit'
 import { CommonHeader } from '../common/common_header'
-type Success = (str:string)=>void
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+import { HMRouter } from '@hadss/hmrouter'
 
-@Entry
+type Success = (str:string)=>void
+/**
+ * 数据库
+ */
+@HMRouter({ pageUrl: NavigationConstants.DB_PAGE })
 @Component
 export default struct DBPage{
   build() {

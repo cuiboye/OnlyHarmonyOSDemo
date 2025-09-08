@@ -1,13 +1,15 @@
 import { RenameCustomDialogView } from '../views/RenameCustomDialogView'
 import { LengthMetrics, promptAction } from '@kit.ArkUI'
 import { CommonHeader } from '../common/common_header'
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
 /**
  * @CustomDialog包含输入框
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.RENAMECUSTOMDIALOG_PAGE })
 @Component
-struct RenameCustomDialog {
+export struct RenameCustomDialog {
   //输入框默认内容
   @State initInputContent: ResourceStr = '新建文件夹'
   folderDialogController: CustomDialogController | null = new CustomDialogController({
@@ -43,6 +45,10 @@ struct RenameCustomDialog {
       Button('弹框Dialog')
         .onClick(() => {
           this.folderDialogController?.open()
+        })
+      Button('修改输入框的默认值')
+        .onClick(() => {
+          this.initInputContent = "新建文件夹111"
         })
     }
     .height('100%')

@@ -202,102 +202,53 @@ export struct Index {//使用 HMRouter 必须 export 这个类
             FirstWidget()
           }
           Button('媒体查询-多屏幕适配').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/media_page',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.MEDIA_PAGE })
           })
+
           Button('数据库').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/DBPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.DB_PAGE })
           })
+
           Button('动画工具类-AnimationUtil')
+
           Button('文字颜色渐变').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/ColorTransitionDemoPage',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.COLORTRANSITIONDEMO_PAGE })
           })
+
           Button('第三方插件ListView').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/ListViewDemoPage',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
           })
 
           Button('openCustomDialog中展示List').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/OpenCustomDialogWithListPage',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHLIST_PAGE })
           })
 
           Button('瀑布流').onClick(() => {
-            router.pushUrl(
-              {
-                url: "pages/StaggeredGridPage",
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.STAGGEREDGRID_PAGE })
           })
 
           Button('bindSheet的使用').onClick(() => {
-            router.pushUrl(
-              {
-                url: "pages/BindSheetPage",
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.BINDSHEET_PAGE })
           })
 
           Button('带有动画的Tabs').onClick(() => {
-            router.pushUrl(
-              {
-                url: "pages/CustomAnimatorMainPage",
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMANIMATORMAIN_PAGE })
           })
+
           Button('横向滚动的List定位到中间的位置').onClick(() => {
-            router.pushUrl(
-              {
-                url: "pages/HorizontalListWithCenterScollPage",
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.HORIZONTALLISTWITHCENTERSCOLL_PAGE })
           })
 
           Button('使用axios下载文件').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/DownloadFilePage',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.DOWNLOADFILE_PAGE })
           })
 
           Button('滚动截图').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/longscreenshot/ListSnapshot',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.LONGLISTSCREENSHOT_PAGE })
           }).width('calc(100% - 24vp)')
 
           Button('保存图片到相册').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/SaveImagePage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SAVEIMAGE_PAGE })
           })
 
           Button('使用Controller实现子组件监听父组件中的方法').onClick(() => {
@@ -309,96 +260,44 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
 
           Button('打印机测试').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/DayinjiDemoPage',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.DAYINJIDEMO_PAGE})
           })
 
           Button('@CustomDialog进入和退出时的动画').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/CustomDialogAnimation',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMDIALOGANIMATION_PAGE})
           })
+
           Button('@CustomDialog-输入框+默认值+默认选中内容').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/RenameCustomDialog',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.RENAMECUSTOMDIALOG_PAGE})
           })
+
           Button('tabs颜色改变').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/TabsAttrPage',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.TABSATTR_PAGE})
           })
-          Button('tabs动画效果').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/TabsAnimationPage',
-              },
-              router.RouterMode.Standard,
-            )
+          Button('tabs渐变动画效果').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.TABSANIMATION_PAGE})
           })
 
           Button('异步操作').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/AsynchronyPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.ASYNCHRONY_PAGE})
           })
           Button('时间相关操作-待实现').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/TimeDemoPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.TIMEDEMO_PAGE})
           })
           Button('日期相关操作-待实现').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/DateDemoPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.DATEDEMO_PAGE})
           })
           Button('openCustomDialog的使用').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/OpenCustomDialogPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.OPENCUSTOMDIALOG_PAGE})
           })
           Button('吸顶效果').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/CeilingPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CEILING_PAGE})
           })
           Button('拍照').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/CameraPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CAMERA_PAGE})
           })
           Button('@State @Prop @Link的Demo').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/prop_link_demo',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.PROGRESS_TASK})
           })
 
           //=========== singleton模式 start ===========

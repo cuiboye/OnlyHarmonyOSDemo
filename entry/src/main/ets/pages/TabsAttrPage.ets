@@ -1,6 +1,9 @@
-@Entry
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
+@HMRouter({ pageUrl: NavigationConstants.TABSATTR_PAGE })
 @Component
-struct TabsAttrPage {
+export struct TabsAttrPage {
   build() {
     Column({ space: 5 }) {
       Text('子页签样式')

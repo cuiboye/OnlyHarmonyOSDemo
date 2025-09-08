@@ -1,9 +1,12 @@
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
+
 /**
  * 日期相关操作
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.DATEDEMO_PAGE })
 @Component
-struct DateDemoPage {
+export struct DateDemoPage {
   @State message: string = 'Hello World';
 
   build() {
