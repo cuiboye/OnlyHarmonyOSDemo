@@ -1,9 +1,12 @@
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
 /**
  * 布局学习
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.LAYOUTDEMO_PAGE })
 @Component
-struct LayoutDemo {
+export struct LayoutDemo {
   @State message: string = 'Hello World'
 
   build() {

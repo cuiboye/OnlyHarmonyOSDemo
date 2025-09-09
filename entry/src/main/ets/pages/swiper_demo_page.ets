@@ -1,6 +1,9 @@
-@Entry
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
+@HMRouter({ pageUrl: NavigationConstants.SWIPERDEEMO_PAGE })
 @Component
-struct SwiperDeemoPage {
+export struct SwiperDeemoPage {
   //loop:是否循环播放
   //autoPlay:是否自动轮播(注意：如果设置了loop为false，那么播放到最后一个的时候会暂停)
   //interval:自动播放的间隔

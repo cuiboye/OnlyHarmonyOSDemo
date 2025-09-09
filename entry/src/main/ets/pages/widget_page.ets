@@ -1,9 +1,12 @@
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
 /**
  * 各种组件
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.WIDGET_PAGE })
 @Component
-struct WidgetPage {
+export struct WidgetPage {
   @State message: string = 'Hello World'
 
   build() {

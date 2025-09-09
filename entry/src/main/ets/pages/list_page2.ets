@@ -1,9 +1,12 @@
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
 /**
  * List的分组列表
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.LIST_PAGE2 })
 @Component
-struct ListPage2 {
+export struct ListPage2 {
   contactsGroups: ContactsGroups[] = [
     {
       title: 'A',

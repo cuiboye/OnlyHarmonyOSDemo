@@ -1,4 +1,6 @@
+import { HMRouter } from '@hadss/hmrouter';
 import { CommonHeader } from '../../../common/common_header'
+import { NavigationConstants } from '../../../common/constants/NavigationConstants';
 import { HomePage } from './home/home_page';
 import HomeSearch from './home/home_search';
 import { ShopCarPage } from './ShopCarPage';
@@ -6,9 +8,9 @@ import { ShopCarPage } from './ShopCarPage';
 /**
  * 挖酒主页
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.WAJIUMAIN_PAGE })
 @Component
-struct WajiuMainPage {
+export struct WajiuMainPage {
   @State titleBarPadding: number = 0;
   private tabsController: TabsController = new TabsController()
   @State currentIndex: number = 0

@@ -1,8 +1,11 @@
+import { HMRouter } from '@hadss/hmrouter'
 import router from '@ohos.router'
 import { CommonHeader } from '../../common/common_header'
-@Entry
+import { NavigationConstants } from '../../common/constants/NavigationConstants'
+
+@HMRouter({ pageUrl: NavigationConstants.ANIMATEMAIN_PAGE })
 @Component
-struct AnimateMainPage {
+export struct AnimateMainPage {
   @State message: string = 'Hello World'
   @State message2: string = 'Hello World'
 

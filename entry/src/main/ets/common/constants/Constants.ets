@@ -1,6 +1,6 @@
 import ShopInfo, { Data, ProductInfoListEntity } from '../../pages/wajiu/TaskEntity';
 
-export const APP_EXIT_INTERVAL: number = 4500;
+export const APP_EXIT_INTERVAL: number = 1000;
 
 export const TIME = 1000;
 

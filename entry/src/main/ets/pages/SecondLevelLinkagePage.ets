@@ -1,14 +1,16 @@
 /**
  * 二级联动+MVVM模式
  */
+import { HMRouter } from '@hadss/hmrouter';
 import hilog from '@ohos.hilog';
 import { CommonHeader } from '../common/common_header';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 import ClassifyItem from './wajiu/adapter/ClassifyItem';
 import { ClassifyBean, RankingProduct, RankList } from './wajiu/entity/ClassifyBean';
 import classifyViewModel, { classifyData } from './wajiu/viewmodel/ClassifyViewModel'
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.SECONDLEVELLINKAGE_PAGE })
 @Component
-struct SecondLevelLinkagePage {
+export struct SecondLevelLinkagePage {
   @State  rankList?: Array<RankList> = []
   private classifyScroll:Scroller = new Scroller()
   private productScroll:Scroller = new Scroller()

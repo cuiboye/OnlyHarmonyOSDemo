@@ -1,11 +1,15 @@
 /**
  * 多态样式 stateStyles
  */
+import { HMRouter } from '@hadss/hmrouter';
 import matrix4 from '@ohos.matrix4'
 import prompt from '@ohos.prompt';
-@Entry
+import { CommonHeader } from '../../common/common_header';
+import { NavigationConstants } from '../../common/constants/NavigationConstants';
+
+@HMRouter({ pageUrl: NavigationConstants.MUTILSTYLE_PAGE })
 @Component
-struct MutilStylePage {
+export struct MutilStylePage {
   @State message: string = 'Hello World'
   @State isEnable: boolean = true
 
@@ -59,6 +63,7 @@ struct MutilStylePage {
 
   build() {
     Column() {
+      CommonHeader({title:'多态样式'})
       Button('click')
         .stateStyles({
           normal: this.normalStyles,

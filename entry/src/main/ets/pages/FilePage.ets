@@ -7,10 +7,12 @@ import FileUtils from '../common/FileUtils'
 import ReadRawFileUtils, { FileCallBack } from '../common/ReadRawFileUtils'
 import { FileSelectLocalFileModel } from '../common/utils/LocalFileSelectUtils'
 import { promptAction } from '@kit.ArkUI'
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.FILE_PAGE })
 @Component
-struct FilePage {
+export struct FilePage {
   context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   selectedFilePath:string = ''
   selectedFileName:string = ''

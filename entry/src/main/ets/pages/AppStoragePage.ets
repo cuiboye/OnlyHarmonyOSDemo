@@ -1,9 +1,12 @@
+import { HMRouter } from "@hadss/hmrouter"
+import { NavigationConstants } from "../common/constants/NavigationConstants"
+
 /**
  * AppStorage Demo
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.APPSTORAGE_PAGE })
 @Component
-struct AppStoragePage {
+export struct AppStoragePage {
   @State message: string = 'Hello World'
 
   build() {

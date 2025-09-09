@@ -1,13 +1,15 @@
+import { HMRouter } from '@hadss/hmrouter'
 import prompt from '@ohos.prompt'
+import { NavigationConstants } from '../../common/constants/NavigationConstants'
 import preferencesUtil from '../../common/utils/PreferencesUtil'
 
 /**
  * 持久化数据
  * 1）Preferences
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.SAVEDATADEMO_PAGE })
 @Component
-struct SaveDataDemo {
+export struct SaveDataDemo {
   @State message: string = 'Hello World'
 
   build() {

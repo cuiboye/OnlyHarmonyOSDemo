@@ -1,5 +1,7 @@
 import web_webview from '@ohos.web.webview'
 import hilog from '@ohos.hilog'
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
 
 /**
  * Webview demo
@@ -9,9 +11,9 @@ class TestObj{
   toString?: ()=>void
 }
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.WEBVIEW_PAGE })
 @Component
-struct WebviewPage {
+export struct WebviewPage {
   @State message: string = 'Hello World'
   controller:web_webview.WebviewController = new web_webview.WebviewController()
   @State mode: MixedMode = MixedMode.All//加载http和https

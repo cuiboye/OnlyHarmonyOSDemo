@@ -1,3 +1,6 @@
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
+
 @Observed class ClassAAA {
   public numA: number
   public classB: ClassBBB
@@ -17,9 +20,9 @@ class ClassBBB {
   }
 }
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.OBSERVER_PAGE })
 @Component
-struct ObserverPage {
+export struct ObserverPage {
   @State classA: ClassAAA = new ClassAAA(new ClassBBB());
 
   build() {

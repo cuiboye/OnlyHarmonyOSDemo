@@ -1,10 +1,12 @@
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
  * List的简单使用
  */
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.LIST_PAGE })
 @Component
-struct ListPage {
+export struct ListPage {
   //初始化Scroller，Scroller目前只支持绑定到Scroll和List 。
   private scroller:Scroller = new Scroller()
 

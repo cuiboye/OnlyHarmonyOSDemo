@@ -39,4 +39,22 @@ export class NavigationConstants {
   static readonly CAMERA_PAGE: string = 'CAMERA_PAGE';
   static readonly DAYINJIDEMO_PAGE: string = 'DAYINJIDEMO_PAGE';
   static readonly PROGRESS_TASK: string = 'PROGRESS_TASK';
+  static readonly APPSTORAGE_PAGE: string = 'APPSTORAGE_PAGE';
+  static readonly PERMISSIONS_PAGE: string = 'PERMISSIONS_PAGE';
+  static readonly OBSERVER_PAGE: string = 'OBSERVER_PAGE';
+  static readonly LAYOUTDEMO_PAGE: string = 'LAYOUTDEMO_PAGE';
+  static readonly LIST_PAGE: string = 'LIST_PAGE';
+  static readonly CUSTOMDIALOG_PAGE: string = 'CUSTOMDIALOG_PAGE';
+  static readonly GRIDDEMO_PAGE: string = 'GRIDDEMO_PAGE';
+  static readonly LIST_PAGE2: string = 'LIST_PAGE2';
+  static readonly SCROLL_PAGE: string = 'SCROLL_PAGE';
+  static readonly SWIPERDEEMO_PAGE: string = 'SWIPERDEEMO_PAGE';
+  static readonly WIDGET_PAGE: string = 'WIDGET_PAGE';
+  static readonly FILE_PAGE: string = 'FILE_PAGE';
+  static readonly SAVEDATADEMO_PAGE: string = 'SAVEDATADEMO_PAGE';
+  static readonly MUTILSTYLE_PAGE: string = 'MUTILSTYLE_PAGE';
+  static readonly ANIMATEMAIN_PAGE: string = 'ANIMATEMAIN_PAGE';
+  static readonly WAJIUMAIN_PAGE: string = 'WAJIUMAIN_PAGE';
+  static readonly SECONDLEVELLINKAGE_PAGE: string = 'SECONDLEVELLINKAGE_PAGE';
+  static readonly WEBVIEW_PAGE: string = 'WEBVIEW_PAGE';
 }

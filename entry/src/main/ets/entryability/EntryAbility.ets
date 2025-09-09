@@ -9,6 +9,7 @@ import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import { display, router } from '@kit.ArkUI';
 import { HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { ApplicationContext } from '../common/ApplicationContext';
 
 export default class EntryAbility extends UIAbility{
   //读取日历的权限
@@ -42,6 +43,8 @@ export default class EntryAbility extends UIAbility{
     HMRouterMgr.init({
       context: this.context
     })
+
+    ApplicationContext.setContext(this.context)
   }
 
   eventTestWithParams(...data:Object[]){

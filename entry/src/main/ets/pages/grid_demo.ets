@@ -1,6 +1,9 @@
-@Entry
+import { HMRouter } from '@hadss/hmrouter'
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
+@HMRouter({ pageUrl: NavigationConstants.GRIDDEMO_PAGE })
 @Component
-struct GridDemo {
+export struct GridDemo {
   @State message: string = 'Hello World'
 
   build() {

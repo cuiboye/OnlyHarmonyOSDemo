@@ -14,8 +14,10 @@ import data from '@ohos.telephony.data';
 import worker from '@ohos.worker';
 import {ResManager} from 'sharelibrary'
 import { BusinessError } from '@kit.BasicServicesKit';
-import { HMRouter, HMRouterMgr } from '@hadss/hmrouter';
+import { HMLifecycleState, HMRouter, HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { ApplicationContext } from '../common/ApplicationContext';
+import { AppUtils } from '../common/AppUtils';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -69,6 +71,8 @@ export struct Index {//使用 HMRouter 必须 export 这个类
   @StorageProp('navigationHeight') navigationHeight: number = 0
 
   private context = getContext(this) as common.UIAbilityContext
+  uiContext: common.UIAbilityContext | undefined = AppStorage.get('uiContext');
+  backTimeStamp: number = 0
 
   onPageShow(){
     //   //这是个全局设置，其他页面如果想显示状态栏，在显示其他页面的时候需要设置显示
@@ -93,6 +97,11 @@ export struct Index {//使用 HMRouter 必须 export 这个类
       prompt.showToast({message:'EventHubonClick'})
     })
     console.log(`Date.now()的值为：${Date.now()}`)
+
+    HMRouterMgr.getCurrentLifecycleOwner()?.addObserver(HMLifecycleState.onBackPressed, () => {
+      //使用HMRouterMgr的时候，处理返回的时候需要在HMRouterMgr的这个监听中处理返回事件，@Entry中的onBackPress事件是失效的
+      return this.onBackPressed()
+    })
   }
 
   myClickHandler(): void {
@@ -118,9 +127,9 @@ export struct Index {//使用 HMRouter 必须 export 这个类
   }
 
   /**
-   * onBackPress:物理返回键监听
+   * 实现再按一次退出
    */
-  onBackPress(){
+  onBackPressed(): boolean{
     if (this.isShowToast()) {
       prompt.showToast({
         message: '再按一次退出程序',
@@ -129,8 +138,26 @@ export struct Index {//使用 HMRouter 必须 export 这个类
       this.clickBackTimeRecord = new Date().getTime();
       return true;
     }
-    return false;
+    AppUtils.exit()
+    return true;
   }
+
+  /**
+   * 实现有确认弹框的退出效果用这个
+   */
+  // onBackPressed(): boolean {
+  //   let now = Date.now()
+  //   if (now - this.backTimeStamp < 1000) {
+  //     AppUtils.exit()
+  //   } else {
+  //     this.backTimeStamp = now
+  //     // 退出弹窗
+  //     // DialogUtils.showSureCancelDialog({content:'确定退出吗？',leftBtnStr:'取消',rightBtnStr:'确定'},()=>{
+  //     //   AppUtils.exit()
+  //     // })
+  //   }
+  //   return true
+  // }
 
   isShowToast(): boolean {
     return new Date().getTime() - this.clickBackTimeRecord > APP_EXIT_INTERVAL;
@@ -470,19 +497,11 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
 
           Button(`AppStorage`).onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/AppStoragePage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.APPSTORAGE_PAGE})
           })
 
           Button(`访问控制申请`).onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/PermissionsPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.PERMISSIONS_PAGE})
           })
 
           //=========== EventHub start ===========
@@ -500,106 +519,46 @@ export struct Index {//使用 HMRouter 必须 export 这个类
 
 
           Button('@Observed和@ObjectLink的Demo').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/boseved_page',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-              err => {
-                if (err) {
-                  console.log('路由失败')
-                  console.log(err.code + '')
-                  console.log(err.message)
-                  console.log(err.name)
-                }
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.OBSERVER_PAGE})
           })
 
           Button('布局学习').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/layout_demo',
-              },
-              router.RouterMode.Standard, //跳转模式 Single/Stantard
-              err => {
-                if (err) {
-                  console.log('路由失败')
-                  console.log(err.code + '')
-                  console.log(err.message)
-                  console.log(err.name)
-                }
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.LAYOUTDEMO_PAGE})
           })
 
           //List
           Button('List列表').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/list_page',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.LIST_PAGE})
           })
-
 
           Button('自定义弹框')
             .onClick(()=>{
-              router.pushUrl(
-                {
-                  url: 'pages/CustomDialogPage',
-                },
-              )
+              HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMDIALOG_PAGE})
             })
 
           //Grid
           Button('Grid列表').onClick(() => {
-            router.pushUrl(
-              {
-                url:'pages/grid_demo'
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.GRIDDEMO_PAGE})
           })
 
           //List的分组列表
           Button('List的分组列表').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/list_page2',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.LIST_PAGE2})
           })
 
           //滚动列表
           Button('滚动列表').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/scroll_page',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SCROLL_PAGE})
           })
 
           //Swiper轮播图
           Button('Swiper轮播图').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/swiper_demo_page',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SWIPERDEEMO_PAGE})
           })
 
           //各种组件
           Button('各种组件').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/widget_page',
-              },
-              router.RouterMode.Standard,
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WIDGET_PAGE})
           })
 
           //路由操作
@@ -613,37 +572,21 @@ export struct Index {//使用 HMRouter 必须 export 这个类
 
           //路由操作
           Button('文件相关').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/FilePage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.FILE_PAGE })
           })
 
           //持久化数据
           Button('持久化数据').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/savedata/save_data_demo',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SAVEDATADEMO_PAGE })
           })
 
           //stateStyles-多态样式
           Button('stateStyles-多态样式').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/wajiu/MutilStylePage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.MUTILSTYLE_PAGE })
           })
 
           Button('动画').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/animate/animate_main_page',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.ANIMATEMAIN_PAGE })
           })
           Button('通过LocalStorage.GetShared()在页面之间更新值').onClick(() => {
             router.pushUrl(
@@ -654,33 +597,13 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
 
           Button('挖酒项目').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/wajiu/page/wajiu_main_page',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WAJIUMAIN_PAGE })
           })
           Button('二级联动+MVVM模式').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/SecondLevelLinkagePage',
-              },
-              err => {
-                if (err) {
-                  console.log('路由失败')
-                  console.log(err.code + '')
-                  console.log(err.message)
-                  console.log(err.name)
-                }
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SECONDLEVELLINKAGE_PAGE })
           })
           Button('Webview Demo').onClick(() => {
-            router.pushUrl(
-              {
-                url: 'pages/WebviewPage',
-              },
-            )
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WEBVIEW_PAGE })
           })
 
           //引入HSP动态共享包

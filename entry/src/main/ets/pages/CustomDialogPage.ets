@@ -1,8 +1,11 @@
 //  * 自定义弹框
 //  */
+import { HMRouter } from '@hadss/hmrouter'
 import prompt from '@ohos.prompt'
 import { CommonHeader } from '../common/common_header'
-@Entry
+import { NavigationConstants } from '../common/constants/NavigationConstants'
+
+@HMRouter({ pageUrl: NavigationConstants.CUSTOMDIALOG_PAGE })
 @Component
 export  struct CustomDialogPage {
   @State buttonPosition:number = 0

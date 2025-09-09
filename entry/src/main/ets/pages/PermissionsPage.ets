@@ -6,10 +6,12 @@ import { CommonHeader } from '../common/common_header';
 import PermissionUtils from '../common/utils/PermissionUtils';
 import userIAM_userAuth from '@ohos.userIAM.userAuth';
 import { Permissions } from '@ohos.abilityAccessCtrl';
+import { HMRouter } from '@hadss/hmrouter';
+import { NavigationConstants } from '../common/constants/NavigationConstants';
 
-@Entry
+@HMRouter({ pageUrl: NavigationConstants.PERMISSIONS_PAGE })
 @Component
-struct PermissionsPage {
+export struct PermissionsPage {
   private context = getContext(this) as common.UIAbilityContext
 
   @State message: string = 'Hello World'

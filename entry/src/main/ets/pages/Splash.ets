@@ -38,7 +38,8 @@ export struct Splash {
     //     url: 'pages/Index',
     //   },
     // )
-    HMRouterMgr.push({ pageUrl: NavigationConstants.INDEX_PAGE})
+    //替换掉当前页面
+    HMRouterMgr.replace({ pageUrl: NavigationConstants.INDEX_PAGE})
   }
 
   clearTiming() {
