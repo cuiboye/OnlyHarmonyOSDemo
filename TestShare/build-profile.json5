@@ -1,0 +1,57 @@
+{
+  "app": {
+    "signingConfigs": [
+      //分享的证书需要配置成调试证书，自动签名不行。否则会报“第三方应用信息校验失败,identifier错误”
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/cuiboye/.ohos/config/default_TestShare_GiDu22vLEugsDlPgBfqgOx-yu4146Vg5mfMqct31w4U=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001AB05FF5CA0F70C2133CC340254FE40937E05E643E4A8039CC7516C8C027B783B7810EF57A021E",
+          "profile": "/Users/cuiboye/.ohos/config/default_TestShare_GiDu22vLEugsDlPgBfqgOx-yu4146Vg5mfMqct31w4U=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/cuiboye/.ohos/config/default_TestShare_GiDu22vLEugsDlPgBfqgOx-yu4146Vg5mfMqct31w4U=.p12",
+          "storePassword": "0000001AB42CD05E2FAFF713137A75611F1E6857669827EFC001D1059AE8ED25FDB3D1D51BC4C3AC3063"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.1.1(19)",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

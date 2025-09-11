@@ -5,6 +5,7 @@ import { common } from '@kit.AbilityKit';
 import { SystemShareUtils } from '../common/utils/SystemShareUtils';
 import { HMRouter } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { fileUri } from '@kit.CoreFileKit';
 
 @HMRouter({pageUrl:NavigationConstants.DOWNLOADFILE_PAGE})
 @Component
@@ -20,20 +21,24 @@ export struct DownloadFilePage {
         .onClick(async () => {
           //判断文件是否存在
           let applicationContext = this.context.getApplicationContext();
-          const targetPath = `${applicationContext.filesDir}/app/wajiu.apk`;
+          const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
+          // const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
           let fileExists = FileUtils.fileExists(targetPath)
           if(fileExists){
             const uri = 'file://' + getContext().applicationInfo.name + targetPath;
+            //也可以使用下面的方式 fileUri.getUriFromPath(targetPath) 来获取 uri
+            // let uri = fileUri.getUriFromPath(targetPath) ?? ''
             const uniformDataType = SystemShareUtils.getUniformDataType(FileUtils.getFileExtention(this.shareFilePath))
             SystemShareUtils.share(this.getUIContext(), uri,uniformDataType)
 
             return
           }
           //不存在先下载文件
-          let downloadSuccess = await this.downloadFile("https://cos3.pgyer.com/637012afb53cc81401afec0d9d24e596.apk?sign=320b6fd324ad1f1ad2e10bd09a76d2d7&sign2=35deeae6367753036b882fd4f91649db&t=1756711574&response-content-disposition=attachment%3Bfilename%3D%22%E6%8C%96%E9%85%92%E7%BD%91_3.81.5-debug.apk%22")
+          let downloadSuccess = await this.downloadFile("https://cos3.pgyer.com/b71562f81505c3e24017e4db012961d2.apk?sign=1eff388777dfecda13a78516ab2ed6e4&sign2=35deeae6367753036b882fd4f91649db&t=1757418942&response-content-disposition=attachment%3Bfilename%3D%22%E9%85%92%E9%97%AA%E9%97%AA_1.2.3.apk%22")
           if(downloadSuccess){
             const uri = 'file://' + getContext().applicationInfo.name + this.shareFilePath;
-
+            //也可以使用下面的方式 fileUri.getUriFromPath(targetPath) 来获取 uri
+            // let uri = fileUri.getUriFromPath(targetPath) ?? ''
             const uniformDataType = SystemShareUtils.getUniformDataType(FileUtils.getFileExtention(this.shareFilePath))
             SystemShareUtils.share(this.getUIContext(), uri,uniformDataType)
           }
@@ -47,7 +52,7 @@ export struct DownloadFilePage {
   private async downloadFile(url: string): Promise<boolean> {
     // 1. 创建路径
     let applicationContext = this.context.getApplicationContext();
-    const targetPath = `${applicationContext.filesDir}/app/wajiu.apk`;
+    const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
     this.shareFilePath = targetPath
     try {
       await FileUtils.directoryExists(targetPath);

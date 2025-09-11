@@ -1,0 +1,79 @@
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "querySchemes": [
+      "alipays",
+      "weixin",
+      // 支持直接打开微信的协议
+      "sinaweibo",
+      "wxopensdk",
+      "uppaysdk",
+      "uppaywallet",
+      "xhsdiscover",
+      "https",
+      "qqopenapi"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home",
+              // WeChat 回调配置
+              "wxentity.action.open",
+
+              "action.system.home",
+              'ohos.want.action.sendToData',
+              "action.uppay.open",
+              "ohos.want.action.viewData",
+            ],
+            "uris": [
+             {
+                "scheme": "qqopenapi",
+                "host": "101461422",
+                "pathRegex": "\\b(auth|share)\\b",
+                "linkFeature": "Login",
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "extensionAbilities": [
+      {
+        "name": "EntryBackupAbility",
+        "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+        "type": "backup",
+        "exported": false,
+        "metadata": [
+          {
+            "name": "ohos.extension.backup",
+            "resource": "$profile:backup_config"
+          }
+        ],
+      }
+    ]
+  }
+}
