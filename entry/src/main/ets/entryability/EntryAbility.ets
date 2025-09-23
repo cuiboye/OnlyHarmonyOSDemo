@@ -119,6 +119,9 @@ export default class EntryAbility extends UIAbility{
     this.monitorScreenDisplay();
   }
 
+  /**
+   * 获取屏幕宽高
+   */
   private monitorScreenDisplay() {
     let displayClass: display.Display | null = null;
     displayClass = display.getDefaultDisplaySync();

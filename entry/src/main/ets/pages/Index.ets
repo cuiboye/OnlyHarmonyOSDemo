@@ -261,7 +261,18 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('带有动画的Tabs').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMANIMATORMAIN_PAGE })
           })
-
+          Button('自定义tabs').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMTABS_PAGE })
+          })
+          Button('@BuilderParam的使用').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.BUILDERPARAM_PAGE })
+          })
+          Button('@EventHub工具的使用').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.EVENTHUB_PAGE })
+          })
+          Button('@HMRouter相关操作').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.HMROUTER_PAGE })
+          })
           Button('横向滚动的List定位到中间的位置').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.HORIZONTALLISTWITHCENTERSCOLL_PAGE })
           })
@@ -277,7 +288,6 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('保存图片到相册').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.SAVEIMAGE_PAGE })
           })
-
           Button('使用Controller实现子组件监听父组件中的方法').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CHILDLISTENERFATHERFUNCTION_PAGE})
           })

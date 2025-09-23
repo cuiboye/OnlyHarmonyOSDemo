@@ -5,20 +5,23 @@ import { DataList, OpenCustomDialogListEntity } from '../entity/OpenCustomDialog
 import { CollectionMoveFileParams, moveFileBuilder, OnMoveListener } from '../views/OpenCustomDialogWithListView';
 import { ComponentContent, promptAction } from '@kit.ArkUI';
 import { OpenCustomDialogUtils } from '../common/utils/OpenCustomDialogUtils';
-import { HMRouter } from '@hadss/hmrouter';
+import { HMRouter, HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
 
 /**
- * openCustomDialog中展示List
+ * 1）openCustomDialog中展示List
+ * 2）点击物理返回键使openCustomDialog消失并同时返回上一个页面
+ * 3）使List定位到某一个index位置上
  */
 @HMRouter({ pageUrl: NavigationConstants.OPENCUSTOMDIALOGWITHLIST_PAGE })
 @Component
 export struct OpenCustomDialogWithListPage {
   @State folderInfoList: DataList[] = []
   private ctx: UIContext = this.getUIContext();
-  mutilFileMoveOneFolder:boolean = false//true：可以选择一个  false：可以选择多个
+  @State mutilFileMoveOneFolder:boolean = false//true：单选  false：多选
   moveFileContentNode?: ComponentContent<Object>
 
+  //传给openCustomDialog的回调
   onMoveListener: OnMoveListener = {
     onClickItem: (list: DataList[], index: number): void => {
       //选中/取消选中item，更新数据
@@ -69,11 +72,15 @@ export struct OpenCustomDialogWithListPage {
   build() {
     Column() {
       CommonHeader()
+      Button(`切换成${this.mutilFileMoveOneFolder?'多选':'单选'}`)
+        .onClick(()=>{
+          this.mutilFileMoveOneFolder = !this.mutilFileMoveOneFolder
+        })
       Button('打开弹框')
         .onClick(async () => {
 
           this.folderInfoList = await this.getDialogListData()
-          if (this.mutilFileMoveOneFolder) {
+          if (this.mutilFileMoveOneFolder) {//单选
             //这个时候folderInfoList中只能有一个inFolder===‘1’的数据
             this.folderInfoList.forEach((item: DataList, index: number) => {
               if(item.inFolder === '1'){
@@ -113,7 +120,13 @@ export struct OpenCustomDialogWithListPage {
     let context = getContext(this) as common.UIAbilityContext;
     //这里有个坑，resourceManager在预览模式不支持
     const rm = context.resourceManager;
-    let response = await rm.getRawFileContent("opencustomdialog_list_entity.json")
+
+    let response:Uint8Array
+    if(this.mutilFileMoveOneFolder){
+      response = await rm.getRawFileContent("opencustomdialog_list_single_entity.json")//单选
+    }else {
+      response = await rm.getRawFileContent("opencustomdialog_list_entity.json")//多选
+    }
     let rawFile = response;
     let textdecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true })
     let retStr = textdecoder.decodeWithStream(rawFile, { stream: false });
@@ -129,8 +142,9 @@ export struct OpenCustomDialogWithListPage {
       transition: TransitionEffect.opacity(0.99).animation({ duration: 200 }),
       onWillDismiss: (action) => {
         if (action.reason == DismissReason.PRESS_BACK) {
+          //不加下面这两句的话，按物理返回键只会使OpenCustomDialog消失，如果想让OpenCustomDialog消失同时退出当前页面的话需要如下处理：
           OpenCustomDialogUtils.closeDialog(contentNode)
-          // HMRouterMgr.pop();
+          HMRouterMgr.pop();
         }
         animateTo({
           duration: 200,

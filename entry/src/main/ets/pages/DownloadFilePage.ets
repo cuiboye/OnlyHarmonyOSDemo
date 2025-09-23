@@ -21,7 +21,7 @@ export struct DownloadFilePage {
         .onClick(async () => {
           //判断文件是否存在
           let applicationContext = this.context.getApplicationContext();
-          const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
+          const targetPath = `${applicationContext.filesDir}/app/hahaha9.ppt`;
           // const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
           let fileExists = FileUtils.fileExists(targetPath)
           if(fileExists){
@@ -34,7 +34,8 @@ export struct DownloadFilePage {
             return
           }
           //不存在先下载文件
-          let downloadSuccess = await this.downloadFile("https://cos3.pgyer.com/b71562f81505c3e24017e4db012961d2.apk?sign=1eff388777dfecda13a78516ab2ed6e4&sign2=35deeae6367753036b882fd4f91649db&t=1757418942&response-content-disposition=attachment%3Bfilename%3D%22%E9%85%92%E9%97%AA%E9%97%AA_1.2.3.apk%22")
+          // let downloadSuccess = await this.downloadFile("https://cos3.pgyer.com/b71562f81505c3e24017e4db012961d2.apk?sign=1eff388777dfecda13a78516ab2ed6e4&sign2=35deeae6367753036b882fd4f91649db&t=1757418942&response-content-disposition=attachment%3Bfilename%3D%22%E9%85%92%E9%97%AA%E9%97%AA_1.2.3.apk%22")
+          let downloadSuccess = await this.downloadFile("http://wkbjcloudbos.bdimg.com/v1/wenku10//77207907140c7d2855aaf8cec64e85c2?responseContentDisposition=attachment%3B%20filename%3D%22%25E5%2585%258D%25E8%25B4%25B9ppt%25E6%25A8%25A1%25E6%259D%25BF.ppt%22%3B%20filename%2A%3Dutf-8%27%27%25E5%2585%258D%25E8%25B4%25B9ppt%25E6%25A8%25A1%25E6%259D%25BF.ppt&responseContentType=application%2Foctet-stream&responseCacheControl=no-cache&authorization=bce-auth-v1%2Ffa1126e91489401fa7cc85045ce7179e%2F2025-09-23T08%3A18%3A53Z%2F3600%2Fhost%2F5277d230bc98c5b32a709fcb5adb236dbe8c5c2414afd26ab87df0d8c673a6db&token=eyJ0eXAiOiJKSVQiLCJ2ZXIiOiIxLjAiLCJhbGciOiJIUzI1NiIsImV4cCI6MTc1ODYxOTEzMywidXJpIjp0cnVlLCJwYXJhbXMiOlsicmVzcG9uc2VDb250ZW50RGlzcG9zaXRpb24iLCJyZXNwb25zZUNvbnRlbnRUeXBlIiwicmVzcG9uc2VDYWNoZUNvbnRyb2wiXX0%3D.Y6EzgJWSEUqH%2BPg4YGAjtNwTXDDjDhw%2Bg%2FX%2FW%2B6uFEI%3D.1758619133")
           if(downloadSuccess){
             const uri = 'file://' + getContext().applicationInfo.name + this.shareFilePath;
             //也可以使用下面的方式 fileUri.getUriFromPath(targetPath) 来获取 uri
@@ -52,7 +53,7 @@ export struct DownloadFilePage {
   private async downloadFile(url: string): Promise<boolean> {
     // 1. 创建路径
     let applicationContext = this.context.getApplicationContext();
-    const targetPath = `${applicationContext.filesDir}/app/hahaha1.apk`;
+    const targetPath = `${applicationContext.filesDir}/app/hahaha9.ppt`;
     this.shareFilePath = targetPath
     try {
       await FileUtils.directoryExists(targetPath);

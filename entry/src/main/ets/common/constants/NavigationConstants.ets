@@ -57,4 +57,9 @@ export class NavigationConstants {
   static readonly WAJIUMAIN_PAGE: string = 'WAJIUMAIN_PAGE';
   static readonly SECONDLEVELLINKAGE_PAGE: string = 'SECONDLEVELLINKAGE_PAGE';
   static readonly WEBVIEW_PAGE: string = 'WEBVIEW_PAGE';
+  static readonly CUSTOMTABS_PAGE: string = 'CUSTOMTABS_PAGE';
+  static readonly BUILDERPARAM_PAGE: string = 'BUILDERPARAM_PAGE';
+  static readonly EVENTHUB_PAGE: string = 'EVENTHUB_PAGE';
+  static readonly HMROUTER_PAGE: string = 'HMROUTER_PAGE';
+  static readonly HMROUTERSECOND_PAGE: string = 'HMROUTERSECOND_PAGE';
 }

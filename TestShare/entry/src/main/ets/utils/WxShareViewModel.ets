@@ -86,11 +86,12 @@ export class WxShareViewModel {
     //生成缩略图，缩略图需要下载到本地，分享的时候使用本地的地址
     if (shareImageDownloadLocalPath != null && shareImageDownloadLocalPath!="") {
       const thumbPixel = image.createImageSource(shareImageDownloadLocalPath).createPixelMapSync()
-      const thumbPixel1 = await this.packingDetail(thumbPixel, 150, 150)
-      const thumbBuffer = await image.createImagePacker().packToData(thumbPixel1, { format: "image/png", quality: 0 })
-      mediaMessage.thumbData = new Uint8Array(thumbBuffer)
+      const thumbBuffer = await this.compressImage(thumbPixel, 64, 100)
+      if (thumbBuffer) {
+        mediaMessage.thumbData = new Uint8Array(thumbBuffer)
+      }
     } else {
-      //使用默认的封面图
+      //默认的封面
       const thumbData = await context.resourceManager.getMediaContent($r("app.media.startIcon"))
       const thumbPixel = image.createImageSource(thumbData.buffer).createPixelMapSync()
       const thumbBuffer = await image.createImagePacker().packToData(thumbPixel, { format: "image/png", quality: 100 })
@@ -102,6 +103,17 @@ export class WxShareViewModel {
     req.message = mediaMessage
 
     wxApi.sendReq(context, req)
+  }
+
+  async compressImage(sourcePixelMap: image.PixelMap, maxCompressedImageSize: number, imageQuality: number) {
+    let packOpts: image.PackingOption = { format: "image/jpeg", quality: imageQuality }
+    let compressedImageData = await image.createImagePacker().packToData(sourcePixelMap, packOpts)
+    const maxCompressedImageByte = maxCompressedImageSize * 1024
+    while (maxCompressedImageByte < compressedImageData.byteLength) {
+      compressedImageData =
+        await this.compressImage(sourcePixelMap, maxCompressedImageSize, imageQuality - 10)
+    }
+    return compressedImageData
   }
 
   //图片设置宽高
