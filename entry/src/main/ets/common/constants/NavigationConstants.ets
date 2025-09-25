@@ -62,4 +62,7 @@ export class NavigationConstants {
   static readonly EVENTHUB_PAGE: string = 'EVENTHUB_PAGE';
   static readonly HMROUTER_PAGE: string = 'HMROUTER_PAGE';
   static readonly HMROUTERSECOND_PAGE: string = 'HMROUTERSECOND_PAGE';
+  static readonly SELECT_PHOTO_PAGE: string = 'SELECT_PHOTO_PAGE';
+  static readonly PICKER_DEMO_PAGE: string = 'PICKER_DEMO_PAGE';
+  static readonly RECENT_PHOTO_COMPONENT_PAGE: string = 'RECENT_PHOTO_COMPONENT_PAGE';
 }

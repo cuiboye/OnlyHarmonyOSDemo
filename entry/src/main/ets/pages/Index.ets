@@ -330,8 +330,17 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('吸顶效果').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CEILING_PAGE})
           })
-          Button('拍照').onClick(() => {
+          Button('使用系统相机拍照和录像').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CAMERA_PAGE})
+          })
+          Button('从相册选择照片').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SELECT_PHOTO_PAGE})
+          })
+          Button('相册操作Demo').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.PICKER_DEMO_PAGE})
+          })
+          Button('最近图片组件').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.RECENT_PHOTO_COMPONENT_PAGE})
           })
           Button('@State @Prop @Link的Demo').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.PROGRESS_TASK})

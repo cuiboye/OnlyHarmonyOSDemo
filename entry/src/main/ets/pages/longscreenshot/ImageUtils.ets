@@ -14,7 +14,8 @@
  */
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import fs from '@ohos.file.fs';
 //uiContext需要在EntryAbility中通过AppStorage存储下，否则在这个类中使用会有问题
 const uiContext: UIContext | undefined = AppStorage.get('uiContext');
 
@@ -131,4 +132,57 @@ export class ImageUtils {
   }
 
   // [End merge_image]
+
+
+  /**
+   * 从相册选择图片
+   * @param selectNumber 选择图片的最大数量
+   */
+  static async selectPicture(selectNumber: number): Promise<string[]> {
+    // async selectPicture(selectNumber: number) {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    // 设置要选择的媒体文件类型
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    // 设置选择文件最大数量
+    photoSelectOptions.maxSelectNumber = selectNumber;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    // await photoPicker.select(photoSelectOptions)
+    let result: photoAccessHelper.PhotoSelectResult = await photoPicker.select(photoSelectOptions)
+    let pathDir = getContext().cacheDir;
+
+    console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' +
+    JSON.stringify(result));
+
+    let filePathList: string[] = []
+
+    let photoUris: Array<string> = result.photoUris
+    photoUris.forEach(photoUri => {
+      let file = fs.openSync(photoUri)
+      fs.copyFileSync(file.fd, pathDir + `/${file.name}`)
+      let file2 = fs.openSync(pathDir + `/${file.name}`, fs.OpenMode.READ_WRITE)
+      console.log(`file fd ==> ${file2.fd} | file path ==> ${file2.path}`)
+
+      filePathList.push(file2.path)
+    })
+    return filePathList
+  }
+
+  /**
+   * 图片压缩
+   * @param pictureUri 图片uri
+   * @param format 压缩后的目标格式，支持jpg、webp和png
+   * @param quality 压缩质量，取值范围0-100，压缩质量数字越大，图片越大
+   */
+  static async compressPicture(pictureUri: string, format: string, quality: number): Promise<ArrayBuffer> {
+    let file = fs.openSync(pictureUri, fs.OpenMode.READ_ONLY);
+    let size = fs.statSync(file.fd).size;
+    let buf = new ArrayBuffer(size);
+    fs.readSync(file.fd, buf);
+    fs.closeSync(file);
+    let imageSource = image.createImageSource(buf);
+
+    const imagePackerApi: image.ImagePacker = image.createImagePacker();
+    let packOpts: image.PackingOption = { format: format, quality: quality };
+    return await imagePackerApi.packing(imageSource, packOpts)
+  }
 }

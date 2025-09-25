@@ -71,6 +71,45 @@ export class WxShareViewModel {
     wxApi.sendReq(context, req)
   }
 
+  async shareFile(context: common.UIAbilityContext, shareFilePath: string,title:string,desc?:string) {
+    //可以判断下文件是否存在
+
+    let shareTitle: string = title ?? '来自文库的文件';
+
+    // 处理文件后缀
+    let suffix = '';
+    const dotIndex = shareFilePath.lastIndexOf('.');
+    if (dotIndex !== -1) {
+      suffix = shareFilePath.substring(dotIndex);
+      // LogUtils.d("--shareLog----微信分享文件---path中计算的扩展名：" + suffix)
+      // 更新标题后缀
+      const titleDotIndex = shareTitle.lastIndexOf('.');
+      // LogUtils.d("----shareLog--微信分享文件---shareTitle中计算的扩展名：" + titleDotIndex)
+      if (titleDotIndex === -1) {
+        shareTitle += suffix;
+      } else {
+        const orgSuffix = shareTitle.substring(titleDotIndex);
+        if (orgSuffix.length < suffix.length) {
+          shareTitle = shareTitle.substring(0, titleDotIndex) + suffix;
+        }
+      }
+    }
+
+    const fileObj = new wxOpenSdk.WXFileObject();
+    fileObj.fileUri = fileUri.getUriFromPath(shareFilePath)
+
+    const mediaMsg = new wxOpenSdk.WXMediaMessage();
+    mediaMsg.mediaObject = fileObj;
+    mediaMsg.title = shareTitle
+    mediaMsg.description = desc ?? ''
+
+    const req = new wxOpenSdk.SendMessageToWXReq();
+    req.scene = wxOpenSdk.SendMessageToWXReq.WXSceneSession;
+    req.message = mediaMsg;
+
+    wxApi.sendReq(context, req);
+  }
+
   //shareImageDownloadLocalPath：封面需要下载到本地，使用下载到本地的image路径
   async shareMiniProgram(context: common.UIAbilityContext,shareImageDownloadLocalPath:string) {
     const miniProgramObject = new wxOpenSdk.WXMiniProgramObject()

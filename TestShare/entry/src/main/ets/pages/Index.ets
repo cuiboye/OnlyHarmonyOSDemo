@@ -40,7 +40,10 @@ struct Index {
 
           QQShareInstance.shareToQQFriend(shareBean,this.context)
         })
-
+      Button('分享文件到微信好友')
+        .onClick(()=>{
+          this.downloadFileShareToWX("myfile","http://wkbjcloudbos.bdimg.com/v1/wenku10//77207907140c7d2855aaf8cec64e85c2?responseContentDisposition=attachment%3B%20filename%3D%22%25E5%2585%258D%25E8%25B4%25B9ppt%25E6%25A8%25A1%25E6%259D%25BF.ppt%22%3B%20filename%2A%3Dutf-8%27%27%25E5%2585%258D%25E8%25B4%25B9ppt%25E6%25A8%25A1%25E6%259D%25BF.ppt&responseContentType=application%2Foctet-stream&responseCacheControl=no-cache&authorization=bce-auth-v1%2Ffa1126e91489401fa7cc85045ce7179e%2F2025-09-24T01%3A45%3A10Z%2F3600%2Fhost%2F1642e884e2e043f4023f96c65cc58c61976ec77323b6f3b4aef4fd88829fc89b&token=eyJ0eXAiOiJKSVQiLCJ2ZXIiOiIxLjAiLCJhbGciOiJIUzI1NiIsImV4cCI6MTc1ODY4MTkxMCwidXJpIjp0cnVlLCJwYXJhbXMiOlsicmVzcG9uc2VDb250ZW50RGlzcG9zaXRpb24iLCJyZXNwb25zZUNvbnRlbnRUeXBlIiwicmVzcG9uc2VDYWNoZUNvbnRyb2wiXX0%3D.%2BR1qQSgZBBxHM7LTWu2PT8lVGf5jPXXhtQlA5Mdv%2B7g%3D.1758681910")
+        })
       Button('分享到微博')
         .onClick(()=>{
           this.downloadImageToWeibo("shareimage","https://inews.gtimg.com/news_bt/OBkbmPLeWLy4IM4oUDGvOIqSDSZ9lYOtW3qSXCYh78KXcAA/1000")
@@ -64,6 +67,30 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+
+  public async downloadFileShareToWX(fileName: string, url: string) {
+    let applicationContext = this.context.getApplicationContext();
+    const targetPath = `${applicationContext.filesDir}/downloads/${fileName}.ppt`
+    try {
+      //验证路径是否存在
+      await this.directoryExists(targetPath);
+      // 2. 开始下载文件
+      await axios({
+        url,
+        method: 'GET',
+        filePath: targetPath,
+        responseType: 'ARRAY_BUFFER',
+        onDownloadProgress: (progressEvent) => {
+          const progress = progressEvent.total ? (progressEvent.loaded / progressEvent.total * 100) : 0;
+          console.log('当前进度---', progress)
+        }
+      });
+      // context: common.UIAbilityContext, shareFilePath: string,title:string,desc?:string
+      WxShareViewModel.getInstance().shareFile(this.context, targetPath,"测试发送文件")
+    } catch (error) {
+      promptAction.showToast({ message: '下载失败' })
+    }
   }
 
   async directoryExists(filePath: string): Promise<void> {
