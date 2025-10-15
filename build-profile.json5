@@ -20,11 +20,11 @@
         "material": {
           "certpath": "/Users/cuiboye/.ohos/config/default_OnlyHarmonyOSDemo_fZgVbENwwOXhpnc-T-wjmLCCvJtrhiZY86Jr-1bW27k=.cer",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BBB4E3984F1C67E7C9FF227E0E805FFE40959671F7E3EC86CB7EAF63B701DB7DB263D67EA165368",
+          "keyPassword": "0000001B9CC8FBA37FA5306269A0117E46E1ACC2C1FC15285E67F0EF045764B331C6CF6DF2061517674025",
           "profile": "/Users/cuiboye/.ohos/config/default_OnlyHarmonyOSDemo_fZgVbENwwOXhpnc-T-wjmLCCvJtrhiZY86Jr-1bW27k=.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "/Users/cuiboye/.ohos/config/default_OnlyHarmonyOSDemo_fZgVbENwwOXhpnc-T-wjmLCCvJtrhiZY86Jr-1bW27k=.p12",
-          "storePassword": "0000001BF92AB1DDC4FC597D7B5A7D6F90BE42B498EE2AEB606BF954801A76E17BCE489BBA171C02D49791"
+          "storePassword": "0000001BBDA04C059666C77C2263AC6441AB3966B1BA571560F835DC52290CD529AC87BEE56C62424E1A0D"
         }
       }
     ],

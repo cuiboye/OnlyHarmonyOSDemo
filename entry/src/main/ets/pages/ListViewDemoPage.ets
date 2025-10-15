@@ -222,6 +222,8 @@ export struct ListViewDemoPage {
   @Builder
   ListViewWidget() {
     ListView({
+      // enableScrollInteraction: true,//处理ListView和Scroll的滑动冲突
+      // isAdaptiveHeight:true,//是否自适应高度，默认是充满整个高度的
       lazyDataSource: this.lazyDataSource,
       itemLayout: (item: UploadItemEntity, index: number) => this.itemWidget(item, index),
       emptyLayout: ()=>{

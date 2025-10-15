@@ -81,8 +81,11 @@ export default class EntryAbility extends UIAbility{
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
 
+      //注意：windowStage.getMainWindowSync().getUIContext()只能在loadContent中使用
       let uiContext:  UIContext | undefined = windowStage.getMainWindowSync().getUIContext()
       AppStorage.setOrCreate('uiContext', uiContext);//ListSnapshot类中使用到了ImageUtils，ImageUtils中使用到了uiContext
+
+      this.monitorScreenDisplay(windowStage);
     });
     windowStage.getMainWindow((err, data) => {
       // 1.获取应用主窗口
@@ -115,25 +118,25 @@ export default class EntryAbility extends UIAbility{
 
       this.requestPermission();
     })
-
-    this.monitorScreenDisplay();
   }
 
   /**
    * 获取屏幕宽高
    */
-  private monitorScreenDisplay() {
+  private monitorScreenDisplay(windowStage: window.WindowStage) {
     let displayClass: display.Display | null = null;
     displayClass = display.getDefaultDisplaySync();
     // 获取屏幕宽度
-    console.info(`The screen width is ${px2vp(displayClass.width)}.`);
-    AppStorage.setOrCreate('displayWidth', px2vp(displayClass.width));
-    AppStorage.setOrCreate('displayHeight', px2vp(displayClass.height));
+    console.info(`The screen width is ${windowStage.getMainWindowSync().getUIContext().px2vp(displayClass.width)}.`);
+    //注意：windowStage.getMainWindowSync().getUIContext()只能在loadContent中使用，其他地方使用会报错
+    AppStorage.setOrCreate('displayWidth', windowStage.getMainWindowSync().getUIContext().px2vp(displayClass.width));
+    AppStorage.setOrCreate('displayHeight', windowStage.getMainWindowSync().getUIContext().px2vp(displayClass.height));
 
     display.on("change", () => {
       const displayInstance = display.getDefaultDisplaySync();
-      AppStorage.setOrCreate('displayWidth', px2vp(displayInstance.width));
-      AppStorage.setOrCreate('displayHeight', px2vp(displayInstance.height));
+      //不要直接使用px2vp，
+      AppStorage.setOrCreate('displayWidth', windowStage.getMainWindowSync().getUIContext().px2vp(displayInstance.width));
+      AppStorage.setOrCreate('displayHeight', windowStage.getMainWindowSync().getUIContext().px2vp(displayInstance.height));
 
     });
   }

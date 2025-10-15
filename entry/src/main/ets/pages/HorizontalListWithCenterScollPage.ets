@@ -2,6 +2,7 @@ import { HMRouter } from "@hadss/hmrouter"
 import { drawing } from "@kit.ArkGraphics2D"
 import { CommonHeader } from "../common/common_header"
 import { NavigationConstants } from "../common/constants/NavigationConstants"
+import { promptAction } from "@kit.ArkUI"
 
 /**
  * 横向滚动的List-定位到中间，设置开始和结束位置的偏移量
@@ -11,11 +12,19 @@ import { NavigationConstants } from "../common/constants/NavigationConstants"
 export struct HorizontalListWithCenterScollPage {
   private firstLevelListScroller: Scroller = new Scroller()
   @State selectFirstLevelIndex: number = 0 //一级类别选中项
-  @StorageProp('displayWidth') displayWidth: number = 0
+  @StorageProp('displayWidth') @Watch("testWatch") displayWidth: number = 0
   private isUserScroll: boolean = false
   list: Array<string> =
     ['牡丹花', '菊花', '玫瑰花', '栀子花', '金银花', '仙人掌', '梨花', '西瓜', 'aa', 'bb', 'aa', 'bb', 'aa', 'bb',]
 
+  /**
+   * 测试@Watch
+   */
+  testWatch(propName:string){
+    console.log(`propName is ${propName}`)
+    promptAction.showToast({message:'屏幕状态发生了变化'})
+  }
+ 
   build() {
     Column() {
       CommonHeader()

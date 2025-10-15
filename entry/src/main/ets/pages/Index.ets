@@ -18,6 +18,8 @@ import { HMLifecycleState, HMRouter, HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
 import { ApplicationContext } from '../common/ApplicationContext';
 import { AppUtils } from '../common/AppUtils';
+import { DialogUtils } from '../common/utils/DialogUtils';
+import promptAction from '@ohos.promptAction';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -345,7 +347,9 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('@State @Prop @Link的Demo').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.PROGRESS_TASK})
           })
-
+          Button('使用邮箱发送文件').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SENDFILEWITHEMAIL_PAGE})
+          })
           //=========== singleton模式 start ===========
           //需要将MultitonabilityEntryAbility的launchType设置为 singleton
           Button('singletonability').onClick(() => {
@@ -607,6 +611,15 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('动画').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.ANIMATEMAIN_PAGE })
           })
+
+          Button('确定取消弹框').onClick(() => {
+            DialogUtils.showSureCancelDialog({
+              content: `确定要删除吗?`,
+            }, () => {
+              promptAction.showToast({ message: '点击了删除！' })
+            })
+          })
+
           Button('通过LocalStorage.GetShared()在页面之间更新值').onClick(() => {
             router.pushUrl(
               {

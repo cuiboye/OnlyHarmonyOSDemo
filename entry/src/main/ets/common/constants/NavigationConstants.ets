@@ -65,4 +65,5 @@ export class NavigationConstants {
   static readonly SELECT_PHOTO_PAGE: string = 'SELECT_PHOTO_PAGE';
   static readonly PICKER_DEMO_PAGE: string = 'PICKER_DEMO_PAGE';
   static readonly RECENT_PHOTO_COMPONENT_PAGE: string = 'RECENT_PHOTO_COMPONENT_PAGE';
+  static readonly SENDFILEWITHEMAIL_PAGE: string = 'SENDFILEWITHEMAIL_PAGE';
 }

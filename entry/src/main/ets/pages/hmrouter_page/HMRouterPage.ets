@@ -1,4 +1,4 @@
-import { HMLifecycleState, HMPopInfo, HMRouter, HMRouterMgr } from '@hadss/hmrouter';
+import { HMAnimator, HMLifecycleState, HMPopInfo, HMRouter, HMRouterMgr, IHMAnimator } from '@hadss/hmrouter';
 import { CommonHeader } from '../../common/common_header';
 import { NavigationConstants } from '../../common/constants/NavigationConstants';
 
