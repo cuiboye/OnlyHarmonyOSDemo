@@ -1,4 +1,9 @@
-import { ListView, LoadMoreLayoutStatusModel, RefreshController, RefreshDataSource,
+import {
+  ListAttr,
+  ListView,
+  LoadMoreFooterAttr,
+  LoadMoreLayoutStatusModel, RefreshController, RefreshDataSource,
+  RefreshLayout,
   RefreshLayoutStatusModel } from '@abner/refresh_v2';
 import { CommonHeader } from '../common/common_header';
 import { UploadEntity, UploadItemEntity } from '../entity/UploadEntity';
@@ -10,6 +15,8 @@ import { CustomHeaderLayoutView } from '../views/CustomHeaderLayoutView';
 import { systemDateTime } from '@kit.BasicServicesKit';
 import { HMRouter } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
+
+import { RefreshPositionEnum } from '@abner/refresh_v2'
 
 @HMRouter({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
 @Component
@@ -24,6 +31,8 @@ export struct ListViewDemoPage {
   @State hasSelectedNumber: number = 0
   // 是否正在拉取列表数据
   private isFetching: boolean = false;
+
+  scroller: Scroller = new Scroller()
 
   build() {
     Column() {
@@ -222,6 +231,7 @@ export struct ListViewDemoPage {
   @Builder
   ListViewWidget() {
     ListView({
+      scroller:this.scroller,
       // enableScrollInteraction: true,//处理ListView和Scroll的滑动冲突
       // isAdaptiveHeight:true,//是否自适应高度，默认是充满整个高度的
       lazyDataSource: this.lazyDataSource,
@@ -255,7 +265,12 @@ export struct ListViewDemoPage {
       onLoadMore: () => {
         // 上拉加载
         this.fetchListData(false)
-      }
+      },
+      listAttribute:(attribute: ListAttr) =>{
+        attribute.onReachEnd = ()=>{
+          console.log(`this onReachEnd 666`)
+        }
+      },
     })
   }
 }

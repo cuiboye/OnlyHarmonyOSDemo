@@ -104,6 +104,13 @@ export struct Index {//使用 HMRouter 必须 export 这个类
       //使用HMRouterMgr的时候，处理返回的时候需要在HMRouterMgr的这个监听中处理返回事件，@Entry中的onBackPress事件是失效的
       return this.onBackPressed()
     })
+
+    //延迟3秒执行某个事件，“张三”和20是传递给toPlay方法的参数
+    setTimeout(this.toPlay,3000,"张三",20)
+  }
+
+  toPlay(name:string,age:number){
+    console.log(`name is ${name},age is ${age}`)
   }
 
   myClickHandler(): void {
@@ -274,6 +281,9 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
           Button('@HMRouter相关操作').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.HMROUTER_PAGE })
+          })
+          Button('应用间跳转和拉起指定应用').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.JUMPAPP_PAGE })
           })
           Button('横向滚动的List定位到中间的位置').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.HORIZONTALLISTWITHCENTERSCOLL_PAGE })

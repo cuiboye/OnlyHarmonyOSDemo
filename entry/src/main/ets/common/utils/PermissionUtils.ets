@@ -11,6 +11,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class PermissionUtils {
   permissions: Array<Permissions> = ['ohos.permission.READ_CALENDAR'];
 
+  private static readonly uri_info: string = 'application_info_entry'; // 应用设置页面的URI
+
   static async checkAccessToken(permissions: Array<Permissions>): Promise<abilityAccessCtrl.GrantStatus> {
     let atManager = abilityAccessCtrl.createAtManager();
     let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
@@ -94,6 +96,7 @@ export default class PermissionUtils {
 
   /**
    * 打开设置页面，手动开启权限
+   * 这个方法不能跳转到应用的设置页面了
    */
   static openPermissionsInSystemSettings(context:common.UIAbilityContext): void {
     let wantInfo:Want = {
@@ -107,6 +110,26 @@ export default class PermissionUtils {
     }).catch((err:BusinessError) => {
       console.log(`${err}}`)
     })
+  }
+
+  /**
+   * 跳转应用设置页面（调用此方法到设置，手动开启权限）
+   * @param uri 设置页面的URI，默认为应用设置页面的URI
+   * @returns 返回一个Promise，该Promise解析为void
+   */
+  static async toAppSetting(context:common.UIAbilityContext): Promise<void> {
+    // 创建Want对象，用于描述跳转意图
+    let want: Want = {
+      bundleName: 'com.huawei.hmos.settings', // 设置应用bundleName
+      abilityName: 'com.huawei.hmos.settings.MainAbility', // 设置应用abilityName
+      uri: PermissionUtils.uri_info, // 目标页面URI
+      parameters: {
+        bundleName: context.abilityInfo.bundleName, // 拉起方应用包名
+        pushParams: context.abilityInfo.bundleName, // 拉起方应用包名
+      }
+    }
+    // 使用上下文信息启动设置应用
+    return await context.startAbility(want);
   }
 }
 
