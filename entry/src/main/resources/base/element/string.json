@@ -27,6 +27,29 @@
     {
       "name": "news_item_publish_date",
       "value": "2025年1月1日"
+    },
+    {
+      "name": "h5_url_1",
+      "value": "https://developer.huawei.com/consumer/cn/forum/topic/0201164055842970001?fid=0109140870620153026"
+    },
+    {
+      "name": "h5_url_2",
+      "value": "https://developer.huawei.com/consumer/cn/forum/topic/0212162230984762938?fid=0109140870620153026"
+    },
+    {
+      "name": "h5_url_3",
+      "value": "https://developer.huawei.com/consumer/cn/forum/topic/0203162230595861169?fid=0109140870620153026"
+    },
+    {
+      "name": "h5_url_4",
+      "value": "https://developer.huawei.com/consumer/cn/forum/topic/0201162229621817598?fid=0109140870620153026"
+    },
+    {
+      "name": "h5_url_5",
+      "value": "https://developer.huawei.com/consumer/cn/forum/topic/0201162227549580593?fid=0109140870620153026"
+    },{
+      "name": "layout_case1_title",
+      "value": "一多案例"
     }
   ]
 }

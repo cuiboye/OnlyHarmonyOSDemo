@@ -67,4 +67,8 @@ export class NavigationConstants {
   static readonly RECENT_PHOTO_COMPONENT_PAGE: string = 'RECENT_PHOTO_COMPONENT_PAGE';
   static readonly SENDFILEWITHEMAIL_PAGE: string = 'SENDFILEWITHEMAIL_PAGE';
   static readonly JUMPAPP_PAGE: string = 'JUMPAPP_PAGE';
+  static readonly AUTO_LOADMORE_LIST_PAGE: string = 'AUTO_LOADMORE_LIST_PAGE';
+  static readonly SCREENADAPTATION_PAGE: string = 'SCREENADAPTATION_PAGE';
+  static readonly DARK_MODE_ADAPTATE_PAGE: string = 'DARK_MODE_ADAPTATE_PAGE';
+  static readonly COLUMN_DIVISION_PAGE: string = 'COLUMN_DIVISION_PAGE';//分栏测试
 }

@@ -392,7 +392,8 @@ export class AppUtils {
   }
 
   /**
-   * 获取当前页面ID
+   * 获取当前页面ID-HMRouter
+   * 可以
    */
   static getCurrentPage() {
     const navStack = AppUtils.getPathStack()

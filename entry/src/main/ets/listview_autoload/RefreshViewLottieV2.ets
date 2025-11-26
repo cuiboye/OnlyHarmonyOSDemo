@@ -34,6 +34,7 @@ export struct RefreshViewLottieV2 {
         dis = 0.9
       }
       let time = this.lottieAnimateItem?.getDuration() as number
+      //控制动画画面停止在某一帧或某个时刻
       this.lottieAnimateItem?.goToAndStop(Number(dis * time) * 1000, false)
     }
   }

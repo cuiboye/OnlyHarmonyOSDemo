@@ -31,6 +31,10 @@
     {
       "name": "00a0e9",
       "value": "#00a0e9"
+    },
+    {
+      "name": "text_color",
+      "value": "#333333"
     }
   ]
 }

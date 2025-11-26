@@ -10,6 +10,8 @@ import { display, router } from '@kit.ArkUI';
 import { HMRouterMgr } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
 import { ApplicationContext } from '../common/ApplicationContext';
+import { BreakpointType } from '../common/utils/breakPoint/BreakpointType';
+import { Configuration, ConfigurationConstant } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility{
   //读取日历的权限
@@ -45,6 +47,9 @@ export default class EntryAbility extends UIAbility{
     })
 
     ApplicationContext.setContext(this.context)
+
+    //深色模式适配
+    AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode)
   }
 
   eventTestWithParams(...data:Object[]){
@@ -86,6 +91,13 @@ export default class EntryAbility extends UIAbility{
       AppStorage.setOrCreate('uiContext', uiContext);//ListSnapshot类中使用到了ImageUtils，ImageUtils中使用到了uiContext
 
       this.monitorScreenDisplay(windowStage);
+
+      //深色模式适配
+      try {
+        this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+      } catch (err) {
+        console.error(`------------模式设定错误: ${err.code} ${err.message}`);
+      }
     });
     windowStage.getMainWindow((err, data) => {
       // 1.获取应用主窗口
@@ -113,11 +125,23 @@ export default class EntryAbility extends UIAbility{
       // 4.获取底部导航栏高度，此时的高度单位是px
       let navigationHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).bottomRect.height//底部
       let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height//顶部
-      AppStorage.SetOrCreate<number>('topStatusHeight', topStatusHeight)
-      AppStorage.SetOrCreate<number>('navigationHeight', navigationHeight)
+      AppStorage.setOrCreate<number>('topStatusHeight', topStatusHeight)
+      AppStorage.setOrCreate<number>('navigationHeight', navigationHeight)
 
       this.requestPermission();
+
+      // 获取窗口尺寸，用于屏幕适配
+      const width = windowClass.getWindowProperties().windowRect.width
+      BreakpointType.updateBreakpoint(width);
+      // 监听窗口尺寸变化，用于屏幕适配
+      windowClass.on('windowSizeChange', (windowSize) => {
+        BreakpointType.updateBreakpoint(windowSize.width);
+      });
     })
+  }
+
+  onConfigurationUpdate(newConfig: Configuration): void {
+    AppStorage.setOrCreate('currentColorMode', newConfig.colorMode)
   }
 
   /**

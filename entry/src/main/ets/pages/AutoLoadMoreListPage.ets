@@ -1,8 +1,7 @@
 import {
   ListAttr,
-  ListView,
   LoadMoreFooterAttr,
-  LoadMoreLayoutStatusModel, RefreshController, RefreshDataSource,
+  LoadMoreLayoutStatusModel,
   RefreshLayout,
   RefreshLayoutStatusModel } from '@abner/refresh_v2';
 import { CommonHeader } from '../common/common_header';
@@ -15,12 +14,12 @@ import { CustomHeaderLayoutView } from '../views/CustomHeaderLayoutView';
 import { systemDateTime } from '@kit.BasicServicesKit';
 import { HMRouter } from '@hadss/hmrouter';
 import { NavigationConstants } from '../common/constants/NavigationConstants';
+import { ListView, RefreshController, RefreshDataSource  } from '../listview_autoload/ListView';
 
-import { RefreshPositionEnum } from '@abner/refresh_v2'
 
-@HMRouter({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
+@HMRouter({ pageUrl: NavigationConstants.AUTO_LOADMORE_LIST_PAGE })
 @Component
-export struct ListViewDemoPage {
+export struct AutoLoadMoreListPage {
   controller: RefreshController = new RefreshController() // 刷新控制器
   lazyDataSource: RefreshDataSource = new RefreshDataSource() // 懒加载数据
   @State listState: number = ListState.Loading
@@ -31,38 +30,16 @@ export struct ListViewDemoPage {
   @State hasSelectedNumber: number = 0
   // 是否正在拉取列表数据
   private isFetching: boolean = false;
-
-  scroller: Scroller = new Scroller()
+  @State hasNoMoreDataStatus: boolean = false
 
   build() {
     Column() {
-      CommonHeader()
-      Button(this.selectedAll ? '取消全选' : '全选')
-        .onClick(()=>{
-          if (this.selectedAll) {
-            this.selectedAll = false
-            this.changeSelectAllStatus(false)
-          } else {
-            this.selectedAll = true
-            this.changeSelectAllStatus(true)
-          }
-        })
-      Text(`当前选中的数量为：${this.hasSelectedNumber}`)
+      CommonHeader({title:'自动加载更多数据的列表'})
       this.ListViewWidget()
     }
     .height('100%')
     .width('100%')
   }
-
-  changeSelectAllStatus(isSelect: boolean){
-    const allList: UploadItemEntity[] = this.lazyDataSource.getDataAll()
-    allList.map(item => {
-      item.selected = isSelect
-    });
-    this.lazyDataSource.notifyDataReload()//这句是要刷新页面上的UI
-    this.hasSelectedNumber = allList.filter(item => item.selected).length
-  }
-
 
   aboutToAppear(): void {
     if (!NetworkUtils.isNetworkAvailableSync()) {
@@ -71,8 +48,8 @@ export struct ListViewDemoPage {
     } else {
       this.listState = ListState.Loading
       this.setRefreshEnable(true)
-      // this.fetchListData(true)
-      this.controller.autoRefresh(true)//自动刷新
+      this.fetchListData(true)
+      // this.controller.autoRefresh(true)//自动刷新
     }
   }
 
@@ -87,62 +64,23 @@ export struct ListViewDemoPage {
   }
 
   @Builder
-  headerLayout() {
-    if (this.listState !== ListState.Empty && this.listState !== ListState.Error) {
-      Text('我是ListView的header')
-    }
-  }
-
-  @Builder
   errorView(){
     Text('我是错误布局')
   }
 
   @Builder
-  footerLoadLayout(status: LoadMoreLayoutStatusModel) {
-    CustomFooterLayoutView({ status: status })
-  }
-
-  @Builder
-  RefreshHeaderBuilder() {
-    CustomHeaderLayoutView({ animateName: systemDateTime.getTime(true).toString() })
-  }
-
-  @Builder
-  itemWidget(item: UploadItemEntity, index: number) {
+  itemWidget(item: UploadItemEntity, index: number):void {
     Row(){
       Text(`${item.title ?? ''}`)
-        .layoutWeight(1)
         .maxLines(1)// 单行显示
         .textOverflow({
           overflow: TextOverflow.Ellipsis
         })
-      Stack() {
-        Image(item.selected ? $r("app.media.selected_icon") : $r("app.media.unselect_icon"))
-          .width(17)
-          .height(17)
-      }
-      .padding({
-        top: 20,
-        bottom: 20,
-        left: 20,
-        right: 20
-      })
-      .onClick(() => {
-        this.updateSelected(index, item)
-      })
-    }.width('100%')
+
+    }.width('100%').height(190)
   }
 
-  updateSelected(index: number,item: UploadItemEntity) {
-    item.selected = !item.selected;
-    this.lazyDataSource.notifyDataChange(index);//刷新页面上某个item的UI
-    let allList: UploadItemEntity[] = this.lazyDataSource.getDataAll()
-    allList[index].selected = item.selected
 
-    this.selectedAll = allList.every(item => item.selected)//every为每一个都符合条件
-    this.hasSelectedNumber = allList.filter(item => item.selected).length //filter为筛选符合条件的数据
-  }
 
   async fetchListData(isRefresh: boolean) {
     if (this.isFetching) {
@@ -180,22 +118,23 @@ export struct ListViewDemoPage {
             })
             this.controller.isNothingFixedBottom = false
             this.controller.finishRefresh()
-            // if (this.lazyDataSource.totalCount() < entity.total) {
-            if (uploadList.length < 20) {//接口中没有返回总的数据数量的时候通过使用判断是否小于每页的数量来处理逻辑
+
+            // if (uploadList.length < 20) {//接口中没有返回总的数据数量的时候通过使用判断是否小于每页的数量来处理逻辑
+            if (this.lazyDataSource.totalCount() < (entity?.total ?? 0)) {
               this.controller.finishLoadMoreFixedBottom(true)
-              // this.controller.finishLoadMore()
+              this.hasNoMoreDataStatus = true
             } else {
-              // this.controller.finishLoadMoreFixedBottom(true)
+              this.hasNoMoreDataStatus = false
               this.controller.finishLoadMore()
             }
           } else {
             this.lazyDataSource.pushDataArray(uploadList)
-            // if (this.lazyDataSource.totalCount() < (entity?.total ?? 0)) {
-            if (uploadList.length < 20) {//接口中没有返回总的数据数量的时候通过使用判断是否小于每页的数量来处理逻辑
+            // if (uploadList.length < 20) {//接口中没有返回总的数据数量的时候通过使用判断是否小于每页的数量来处理逻辑
+            if (this.lazyDataSource.totalCount() < (entity?.total ?? 0)) {
               this.controller.finishLoadMoreFixedBottom(true)
-              // this.controller.finishLoadMore()
+              this.hasNoMoreDataStatus = true
             } else {
-              // this.controller.finishLoadMoreFixedBottom(true)
+              this.hasNoMoreDataStatus = false
               this.controller.finishLoadMore()
             }
           }
@@ -237,46 +176,36 @@ export struct ListViewDemoPage {
   @Builder
   ListViewWidget() {
     ListView({
-      scroller:this.scroller,
-      // enableScrollInteraction: true,//处理ListView和Scroll的滑动冲突
-      // isAdaptiveHeight:true,//是否自适应高度，默认是充满整个高度的
+      //新增参数，其他业务场景可不传
+      // wknSwitch_isMultiSelect: this.configModel.wknSwitch_isMultiSelect,
+      // theListHeight: this.theListHeight,
+      // paddingBottom: this.paddingBottom,
+      hasNoMoreDataStatus: this.hasNoMoreDataStatus,
+      errorActionBlock: () => {
+        this.fetchListData(true)
+      },
+      //原ListView参数
       lazyDataSource: this.lazyDataSource,
+      isLazyData: false,
       itemLayout: (item: UploadItemEntity, index: number) => this.itemWidget(item, index),
-      emptyLayout: ()=>{
-        this.emptyView()
-      },
-      errorLayout: ()=>{
-        this.errorView()
-      },
+      emptyLayout: this.emptyView, //空布局
+      errorLayout: this.errorView.bind(this), //错误布局
+      // loadingLayout: this.loadingView, //loading布局
       showEmptyLayout: this.listState == ListState.Empty, //控制空布局展示
       showErrorLayout: this.listState == ListState.Error, //控制错误布局展示
       showLoadingLayout: this.listState == ListState.Loading, //控制loadingLayout
       controller: this.controller,
-      enableRefresh:this.enableRefresh,//是否可以下载刷新
-      enableLoadMore:this.enableLoadMore,//是否可以上拉加载
-      itemHeaderLayout:()=>{
-        this.headerLayout()
-      },
-      headerRefreshLayout: (status: RefreshLayoutStatusModel) => {
-        this.RefreshHeaderBuilder()
-      },
-      footerLoadLayout:(status: LoadMoreLayoutStatusModel)=>{
-        this.footerLoadLayout(status)
-      },
       slideDisplayLoadData: true, //设置此参数，可以让上拉完成后，不回弹，直接显示数据
+      isScrollSpring: true, //设置阻尼为false
       onRefresh: () => {
-        // 下拉刷新
         this.fetchListData(true)
       },
       onLoadMore: () => {
-        // 上拉加载
         this.fetchListData(false)
       },
-      listAttribute:(attribute: ListAttr) =>{
-        attribute.onReachEnd = ()=>{
-          console.log(`this onReachEnd 666`)
-        }
-      },
+      refreshOnScroll: (off, state) => {
+        // LogUtils.d('')
+      }
     })
   }
 }

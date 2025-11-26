@@ -57,12 +57,16 @@ export default class PermissionUtils {
         message: '未申请授权'
       })
 
-      PermissionUtils.reqPermissionsFromUser(context,permissions,callback)
+      PermissionUtils.reqPermissionsFromUser(permissions,callback)
     }
   }
 
-  static reqPermissionsFromUser(context:common.UIAbilityContext,permissions: Array<Permissions>,callback?:AuthorizationInterface): void {
+  /**
+   * 监听允许和不允许权限，requestPermissionsFromUser会弹出一个弹框
+   */
+  static reqPermissionsFromUser(permissions: Array<Permissions>,callback?:AuthorizationInterface): void {
     let atManager = abilityAccessCtrl.createAtManager();
+    let context: Context = getContext() as common.UIAbilityContext
     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
       let grantStatus: Array<number> = data.authResults;
@@ -70,21 +74,11 @@ export default class PermissionUtils {
       for (let i = 0; i < length; i++) {
         if (grantStatus[i] === 0) {
           // 用户授权成功，点击了“允许”，可以继续访问目标操作
-          console.log('用户已经授权')
-          prompt.showToast({
-            message: '用户已经授权'
-          })
           callback?.successAuthorization()
         } else {
+          //注意：这个回调方法会执行两次
           // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
-          console.log('用户已经拒绝授权，请在设置中打开对应的权限')
-          prompt.showToast({
-            message: '用户已经拒绝授权，请在设置中打开对应的权限'
-          })
-          callback?.successAuthorization()
-
-          //跳转到app信息设置页面
-          // PermissionUtils.openPermissionsInSystemSettings(context)
+          callback?.refuseAuthorization()
           return;
         }
       }
@@ -130,6 +124,19 @@ export default class PermissionUtils {
     }
     // 使用上下文信息启动设置应用
     return await context.startAbility(want);
+  }
+
+  /**
+   * 是否开启了权限，纯判断没有弹框
+   */
+  static checkPermissionEnable(permissionName: Permissions): boolean {
+    const BundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+    const bundleInfo = bundleManager.getBundleInfoForSelfSync(BundleFlag)
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    let tokenID: number = bundleInfo.appInfo.accessTokenId;
+    let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
+    console.log(`data->${JSON.stringify(data)}`);
+    return data == abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;
   }
 }
 

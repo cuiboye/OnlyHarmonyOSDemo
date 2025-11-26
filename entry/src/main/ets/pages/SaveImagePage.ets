@@ -24,7 +24,7 @@ export struct SaveImagePage {
   build() {
     Column() {
       CommonHeader()
-      Button('选择文件')
+      Button('选择本地文件（需要有对文件操作的权限）')
         .onClick(async () => {
           PermissionUtils.checkPermissions(this.context, this.permissions, {
             successAuthorization: async (): Promise<void> => {
@@ -38,7 +38,7 @@ export struct SaveImagePage {
         })
       SaveButton({
         //使用SaveButton不需要手动去写申请权限的代码
-        icon: SaveIconStyle.FULL_FILLED,
+        // icon: SaveIconStyle.FULL_FILLED,//这里是设置图标
         text: SaveDescription.SAVE_IMAGE,
         buttonType: ButtonType.Capsule
       })
@@ -49,11 +49,12 @@ export struct SaveImagePage {
         .height(40)
         .fontSize(16)
         .onClick(async (event, result) => {
+          //下面这两句是将图片先
           const selectedFileList: Array<FileSelectLocalFileModel> = await FileUtils.selectFile(this.context)
           this.saveImageWithSaveButton(selectedFileList[0].filePath ?? '', result)
         })
 
-      Button('通过复制文件的方式保存图片到相册')
+      Button('将网络图片先下载到沙箱，然后通过复制文件的方式保存图片到相册')
         .onClick(async () => {
           let url = "https://inews.gtimg.com/news_bt/OBkbmPLeWLy4IM4oUDGvOIqSDSZ9lYOtW3qSXCYh78KXcAA/1000"
           this.saveImageWithCopy('hello',url)
@@ -64,7 +65,7 @@ export struct SaveImagePage {
   }
 
   /**
-   * 使用axios从网络上下载图片保存到相册：先保存到沙箱，然后移动到相册，每次保存图片都会弹出申请授权保存图片的弹框
+   * 使用axios从网络上下载图片保存到相册：需要先保存到沙箱，然后移动到相册，每次保存图片都会弹出申请授权保存图片的弹框
    */
   public async saveImageWithCopy(docName: string, url: string){
     const docExt: string = 'png'
@@ -177,6 +178,8 @@ export struct SaveImagePage {
 
         const helper = photoAccessHelper.getPhotoAccessHelper(this.context);
         const uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
+
+        //注意：fileIo.open方法需要文件操作权限（偶现的遇到过一次需要权限）
         const file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
         const imagePackerApi: image.ImagePacker = image.createImagePacker();
         const packOpts: image.PackingOption = {

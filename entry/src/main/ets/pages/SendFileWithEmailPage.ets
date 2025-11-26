@@ -75,7 +75,7 @@ export struct SendFileWithEmailPage {
       'body': encodeURI(body ?? ''),
       // 附件uri，多值以逗号分隔，对数组内容使用encodeURI()方法进行url编码
       'ability.params.stream': [encodeURI(uri)],
-      'ability.want.params.uriPermissionFlag': wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION
+      'ability.want.params.uriPermissionFlag': wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION //给邮件附件赋予至少读权限。邮件附件参数存在时，该参数也必须要传。
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {

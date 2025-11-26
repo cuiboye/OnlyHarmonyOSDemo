@@ -241,6 +241,10 @@ export struct Index {//使用 HMRouter 必须 export 这个类
             HMRouterMgr.push({ pageUrl: NavigationConstants.MEDIA_PAGE })
           })
 
+          Button('屏幕适配-新').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.SCREENADAPTATION_PAGE })
+          })
+
           Button('数据库').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.DB_PAGE })
           })
@@ -253,6 +257,14 @@ export struct Index {//使用 HMRouter 必须 export 这个类
 
           Button('第三方插件ListView').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
+          })
+
+          Button('自动加载更多数据的插件').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.AUTO_LOADMORE_LIST_PAGE })
+          })
+
+          Button('深色模式适配').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.DARK_MODE_ADAPTATE_PAGE })
           })
 
           Button('openCustomDialog中展示List').onClick(() => {
@@ -272,6 +284,9 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
           Button('自定义tabs').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CUSTOMTABS_PAGE })
+          })
+          Button('分栏测试').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.COLUMN_DIVISION_PAGE })
           })
           Button('@BuilderParam的使用').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.BUILDERPARAM_PAGE })
