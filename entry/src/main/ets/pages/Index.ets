@@ -20,6 +20,7 @@ import { ApplicationContext } from '../common/ApplicationContext';
 import { AppUtils } from '../common/AppUtils';
 import { DialogUtils } from '../common/utils/DialogUtils';
 import promptAction from '@ohos.promptAction';
+import { ImageKnifeView } from '../views/ImageKnifeView';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -179,6 +180,15 @@ export struct Index {//使用 HMRouter 必须 export 这个类
       CommonHeader()
       Scroll(){
         Column() {
+          ImageKnifeView({
+            config: {
+              loadSrc: "https://wkimg.bdimg.com/img/a131d13da300a6c30c229f7e?new=1&w=500&p=1",
+              objectFit: ImageFit.Cover,
+              placeholderSrc: $r('app.media.ic_community_placehold_ver'),
+              errorholderSrc: $r('app.media.ic_community_placehold_ver')
+            }
+          })
+            .height(60).width(50)
 
           // PropPage({totalNumber:this.totalNumber})
 
@@ -291,7 +301,7 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('@BuilderParam的使用').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.BUILDERPARAM_PAGE })
           })
-          Button('@EventHub工具的使用').onClick(() => {
+          Button('EventHub和Emitter的使用').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.EVENTHUB_PAGE })
           })
           Button('@HMRouter相关操作').onClick(() => {
@@ -359,9 +369,6 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           })
           Button('使用系统相机拍照和录像').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.CAMERA_PAGE})
-          })
-          Button('从相册选择照片').onClick(() => {
-            HMRouterMgr.push({ pageUrl: NavigationConstants.SELECT_PHOTO_PAGE})
           })
           Button('相册操作Demo').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.PICKER_DEMO_PAGE})

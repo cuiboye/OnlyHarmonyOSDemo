@@ -154,7 +154,7 @@ export class ImageUtils {
     JSON.stringify(result));
 
     let filePathList: string[] = []
-
+    //select返回的uri权限是只读权限，注意不能在picker的回调里直接使用此uri进行打开文件操作，需要定义一个全局变量保存uri(如下面的photoUris)
     let photoUris: Array<string> = result.photoUris
     photoUris.forEach(photoUri => {
       let file = fs.openSync(photoUri)
@@ -184,5 +184,30 @@ export class ImageUtils {
     const imagePackerApi: image.ImagePacker = image.createImagePacker();
     let packOpts: image.PackingOption = { format: format, quality: quality };
     return await imagePackerApi.packing(imageSource, packOpts)
+  }
+
+  /**
+   * 获取支持的图片或者视频格式
+   * 参数为1表示获取支持的图片类型格式，参数为2表示获取支持的视频类型格式。
+   */
+  static async getSupportImageType(context: Context,type: number): Promise<string> {
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    try {
+      let outputText = '支持的类型为：\n';
+      let imageFormat = await phAccessHelper.getSupportedPhotoFormats(type);
+      let result = "";
+      for (let i = 0; i < imageFormat.length; i++) {
+        result += imageFormat[i];
+        if (i !== imageFormat.length - 1) {
+          result += ', ';
+        }
+      }
+      outputText += result;
+      console.info('getSupportedPhotoFormats success, data is ' + outputText);
+      return outputText
+    } catch (error) {
+      console.error('getSupportedPhotoFormats failed, errCode is', error);
+    }
+    return ''
   }
 }

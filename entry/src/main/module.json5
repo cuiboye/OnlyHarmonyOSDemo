@@ -45,7 +45,7 @@
       },
       {
         "name": "ohos.permission.CAMERA",//拍照
-        "reason": "$string:app_name",
+        "reason": "$string:request_camera_permission_reason",
         "usedScene": {
           "when": "always"
         }

@@ -12,6 +12,7 @@ import fs from '@ohos.file.fs';
 import { promptAction } from '@kit.ArkUI'
 import { NavigationConstants } from '../common/constants/NavigationConstants'
 import { HMRouter } from '@hadss/hmrouter'
+import { ImageUtils } from './longscreenshot/ImageUtils'
 
 /**
  * 保存图片到相册
@@ -58,6 +59,19 @@ export struct SaveImagePage {
         .onClick(async () => {
           let url = "https://inews.gtimg.com/news_bt/OBkbmPLeWLy4IM4oUDGvOIqSDSZ9lYOtW3qSXCYh78KXcAA/1000"
           this.saveImageWithCopy('hello',url)
+        })
+
+      Button('从相册选择照片')
+        .onClick(async () => {
+          // this.selectPicture(5)
+          let pictureList: string[] = await ImageUtils.selectPicture(5)
+          console.log(JSON.stringify(`pictureList is ${pictureList}`));
+          promptAction.showToast({message:JSON.stringify(`${pictureList}`)})
+        })
+
+      Button('获取支持保存的图片类型资源格式')
+        .onClick(async () => {
+          let types = ImageUtils.getSupportImageType(this.context,1)
         })
     }
     .height('100%')

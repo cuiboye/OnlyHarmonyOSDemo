@@ -78,11 +78,12 @@ export struct PermissionsPage {
 
   /**
    * 用户拒绝权限后，再次申请权限
+   * 注意：如果权限没有被拒绝，则不会弹框；操作不相同的权限也不会弹框，比如前面拒绝的是日历的权限，在这个方法中操作的是相机的权限也不会弹框
    */
   againApplyPermission(){
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    atManager.requestPermissionOnSetting(context, ['ohos.permission.READ_CALENDAR']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
+    atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
       console.info(`requestPermissionOnSetting success, result: ${data}`);
 
       if(data[0] == abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED){

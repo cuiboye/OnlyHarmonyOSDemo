@@ -15,6 +15,7 @@
     "class-transformer": "^0.5.1",
     "@ohos/lottie": "^2.0.22",//动画库
     "@hadss/hmrouter": "^1.2.0-rc.0",//hmrouter库
+    "@ohos/imageknife": "3.2.6",
     "@hadss/hmrouter-transitions": "^1.2.0-rc.0"//hmrouter高级转场动画，安装转场动画库
   },
   "overrides": {},

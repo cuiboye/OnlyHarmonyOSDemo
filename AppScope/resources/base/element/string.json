@@ -3,6 +3,9 @@
     {
       "name": "app_name",
       "value": "挖酒网"
+    },{
+      "name": "request_camera_permission_reason",
+      "value": "为了正常使用扫一扫，拍照等功能，请允许某某APP使用摄像头。您可以通过系统“设置”进行权限管理。"
     }
   ]
 }
