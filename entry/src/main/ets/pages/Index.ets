@@ -250,7 +250,9 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('媒体查询-多屏幕适配').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.MEDIA_PAGE })
           })
-
+          Button('Visible监听').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.VISIBLE_MONITOR_PAGE })
+          })
           Button('屏幕适配-新').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.SCREENADAPTATION_PAGE })
           })
@@ -258,13 +260,20 @@ export struct Index {//使用 HMRouter 必须 export 这个类
           Button('数据库').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.DB_PAGE })
           })
-
           Button('动画工具类-AnimationUtil')
 
           Button('文字颜色渐变').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.COLORTRANSITIONDEMO_PAGE })
           })
-
+          Button('wrapBuilder的使用').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WRAPBUILDER_PAGE })
+          })
+          Button('printFile(使用系统的print打印文件)').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.PRINTFILE_PAGE })
+          })
+          Button('wrapBuilder的使用-更新UI').onClick(() => {
+            HMRouterMgr.push({ pageUrl: NavigationConstants.WRAPBUILDER_CHANGEUI_PAGE })
+          })
           Button('第三方插件ListView').onClick(() => {
             HMRouterMgr.push({ pageUrl: NavigationConstants.LISTVIEWDEMO_PAGE })
           })

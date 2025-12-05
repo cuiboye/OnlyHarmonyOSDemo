@@ -1,5 +1,5 @@
 import common from '@ohos.app.ability.common';
-import fs from '@ohos.file.fs';
+import fs, { ReadOptions } from '@ohos.file.fs';
 import statvfs from '@ohos.file.statvfs';
 import storageStatistics from "@ohos.file.storageStatistics";
 import wantConstant from '@ohos.ability.wantConstant';
@@ -10,6 +10,7 @@ import fileUri from '@ohos.file.fileuri';
 import { filePreview } from '@kit.PreviewKit';
 import LocalFileSelectUtils, { FileSelectLocalFileModel } from './utils/LocalFileSelectUtils';
 import fileIo from '@ohos.file.fs';
+import { ToastUtils } from './utils/ToastUtils';
 
 /**
  * 文件相关操作
@@ -42,7 +43,7 @@ export default class FileUtils {
   }
 
   /**
-   * 移除文件
+   * 移除/删除文件
    */
   static cleanFile(filePath: string): void {
     if (fs.accessSync(filePath)) {
@@ -52,6 +53,7 @@ export default class FileUtils {
 
   /**
    * 判断文件是否存在
+   * 注意：accessSync只能判断沙箱路径
    */
   static fileExists(filePath: string): boolean {
     try {
@@ -74,7 +76,7 @@ export default class FileUtils {
   /**
    * 复制文件
    */
-  copyFile(context: common.Context) {
+  static copyFile(context: common.Context) {
     // 获取应用文件路径
     let filesDir = context.filesDir;
 
@@ -94,6 +96,42 @@ export default class FileUtils {
     // 关闭文件
     fs.closeSync(srcFile);
     fs.closeSync(destFile);
+  }
+
+  /**
+   * 以流的形式读写文件
+   */
+  static async copyFileWithStream(fromFilePath: string, toFilePath: string) {
+    if (!fs.accessSync(fromFilePath)) {
+      ToastUtils.show('文件不存在')
+      return
+    }
+
+    // // 创建并打开输入文件流
+    let inputStream = fs.createStreamSync(fromFilePath, 'r+');
+    // 创建并打开输出文件流
+    let outputStream = fs.createStreamSync(toFilePath, "w+");
+
+    let bufSize = 4096;
+    let readSize = 0;
+    let buf = new ArrayBuffer(bufSize);
+    let readOptions: ReadOptions = {
+      offset: readSize,
+      length: bufSize
+    };
+    // 以流的形式读取源文件内容并写入到目标文件
+    let readLen = await inputStream.read(buf, readOptions);
+    readSize += readLen;
+    while (readLen > 0) {
+      const writeBuf = readLen < bufSize ? buf.slice(0, readLen) : buf;
+      await outputStream.write(writeBuf);
+      readOptions.offset = readSize;
+      readLen = await inputStream.read(buf, readOptions);
+      readSize += readLen;
+    }
+    // 关闭文件流
+    inputStream.closeSync();
+    outputStream.closeSync();
   }
 
   /**
@@ -260,6 +298,15 @@ export default class FileUtils {
    */
   static getFileName(uriOrPath: string): string {
     return FileUtils.getFileUri(uriOrPath).name;
+  }
+
+  /**
+   * 重命名文件/文件夹
+   * oldPath:原来文件的路径
+   * newPath：新文件的路径
+   */
+  static renameFileOrFolder(oldPath: string, newPath: string) {
+    return fileIo.renameSync(oldPath, newPath)
   }
 
   /**

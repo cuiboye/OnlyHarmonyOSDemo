@@ -69,5 +69,9 @@ export class NavigationConstants {
   static readonly AUTO_LOADMORE_LIST_PAGE: string = 'AUTO_LOADMORE_LIST_PAGE';
   static readonly SCREENADAPTATION_PAGE: string = 'SCREENADAPTATION_PAGE';
   static readonly DARK_MODE_ADAPTATE_PAGE: string = 'DARK_MODE_ADAPTATE_PAGE';
-  static readonly COLUMN_DIVISION_PAGE: string = 'COLUMN_DIVISION_PAGE';//分栏测试
+  static readonly COLUMN_DIVISION_PAGE: string = 'COLUMN_DIVISION_PAGE';
+  static readonly VISIBLE_MONITOR_PAGE: string = 'VISIBLE_MONITOR_PAGE';
+  static readonly WRAPBUILDER_PAGE: string = 'WRAPBUILDER_PAGE';
+  static readonly WRAPBUILDER_CHANGEUI_PAGE: string = 'WRAPBUILDER_CHANGEUI_PAGE';
+  static readonly PRINTFILE_PAGE: string = 'PRINTFILE_PAGE';
 }

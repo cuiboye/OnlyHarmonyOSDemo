@@ -57,22 +57,28 @@ export struct FilePage {
 
       Button('获取其它应用或Module的文件路径')
         .onClick(()=>{
-          let context = getContext().createModuleContext('sharelibrary')
+          let context = this.context.createModuleContext('sharelibrary')
           let cacheDir = context.cacheDir;
           console.log(`sharelibrary中的cacheDir路径为：${cacheDir}`)
           //输出结果：/data/storage/el2/base/cache
         })
       Button('新建并读写文件')
         .onClick(()=>{
-          FileUtils.createFile(getContext(this) as common.UIAbilityContext)
+          FileUtils.createFile(this.context)
         })
-      Button('复制文件')
+      Button('复制文件(读写文件)')
         .onClick(()=>{
-          FileUtils.createFile(getContext(this) as common.UIAbilityContext)
+          FileUtils.copyFile(this.context)
+        })
+      Button('复制文件(以流的形式读写文件)')
+        .onClick(()=>{
+          let fromFilePath = this.context.getApplicationContext().filesDir + "a.doc"
+          let toFilePath = this.context.getApplicationContext().filesDir + "b.doc"
+          FileUtils.copyFileWithStream(fromFilePath, toFilePath)
         })
       Button('查询文件列表')
         .onClick(()=>{
-          FileUtils.queryFileList(getContext(this) as common.UIAbilityContext)
+          FileUtils.queryFileList(this.context)
         })
       Button('获取指定文件系统的剩余空间大小')
         .onClick(()=>{
@@ -89,7 +95,7 @@ export struct FilePage {
       Button('分享文件')
         .onClick(()=>{
           //没有分享成功，还需要再研究下
-          FileUtils.shareFile(getContext(this) as common.UIAbilityContext)
+          FileUtils.shareFile(this.context)
         })
       Button('读取rawfile下的文件内容')
         .onClick(()=>{
@@ -98,7 +104,7 @@ export struct FilePage {
               //这里取读取到的内容，不用回调也可以使用async和await
             }
           }
-          ReadRawFileUtils.readRawFile(getContext(this) as common.UIAbilityContext,callBack)
+          ReadRawFileUtils.readRawFile(this.context,callBack)
         })
       Button('选择文件')
         .onClick(async ()=>{

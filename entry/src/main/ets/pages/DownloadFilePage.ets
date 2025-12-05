@@ -10,6 +10,7 @@ import fs from '@ohos.file.fs';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Environment } from '@kit.CoreFileKit';
 import { promptAction } from '@kit.ArkUI';
+import { fileManagerService } from '@kit.FileManagerServiceKit';
 
 @HMRouter({pageUrl:NavigationConstants.DOWNLOADFILE_PAGE})
 @Component
@@ -24,9 +25,18 @@ export struct DownloadFilePage {
 
       Button('获取Download下载路径')
         .onClick(()=>{
-          this.getDownloadPath("", this.context)
+          this.getDownloadPath("/filedemo.doc", this.context)
         })
-
+      Button('重命名文件/文件夹')
+        .onClick(async ()=>{
+          try {
+            let oldPath = await this.getDownloadPath("filedemo.doc", this.context)
+            let newPath = await this.getDownloadPath("filedemo_new.doc", this.context)
+            FileUtils.renameFileOrFolder(oldPath,newPath)
+          } catch (e) {
+            console.log(`e is ${e}`)
+          }
+        })
       Button('判断文件是否存在')
         .onClick(()=>{
           //判断文件是否存在
@@ -186,7 +196,7 @@ export struct DownloadFilePage {
   }
 
   /**
-   * 获取Download的完整路径
+   * 返回Download下文件的完整路径
    * 这个方法可以和saveDocumentPickerToDownload方法结合使用
    */
   async getDownloadPath(fileName: string, context: common.Context): Promise<string> {
@@ -199,12 +209,14 @@ export struct DownloadFilePage {
       let documentSaveResult: Array<string> = await documentViewPicker.save(documentSaveOptions)
       uri = documentSaveResult[0];
 
-      if(FileUtils.fileExists(new fileUri.FileUri(uri + "/filedemo.doc").path)){
+      let downloadPath = new fileUri.FileUri(uri + "/" + fileName).path
+
+      if(FileUtils.fileExists(downloadPath)){
         console.log('文件存在')
       }else {
         console.log('文件不存在')
       }
-      return "";
+      return downloadPath;
     } catch (e) {
       console.log(`error is ${e}}`)
       return ''
